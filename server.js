@@ -122,6 +122,10 @@ app.post("/signup", async (req, res) => {
     req.session.username = req.body.name; // Set session username
     res.redirect("/login"); // Redirect to home page
   } else {
+    // Alert if user already exists
+    console.log("User already exists");
+    res.redirect("/"); // Redirect back to the home page
+  }
 });
 
 // Route for home page
@@ -315,11 +319,15 @@ app.post("/login", async (req, res) => {
       }
     } else {
       // Alert if password is incorrect
-      res.send("<script>alert('Wrong Password');window.location.href = '/'</script>");
+      console.log("Wrong Password");
+      res.redirect("/"); // Redirect back to the home page
+
     }
   } catch {
     // Alert if login details are wrong
-    res.send("<script>alert('Wrong details');window.location.href = '/'</script>");
+    console.log("Wrong Details");
+    res.redirect("/"); // Redirect back to the home page
+
   }
 });
 
@@ -336,7 +344,9 @@ app.post("/compose", upload.single("image"), async (req, res) => {
   const postIdRegex = /^[a-zA-Z0-9]+$/; // Alphanumeric only
 
   if (!postIdRegex.test(postId)) {
-    return res.send("<script>alert('Invalid Post ID. Please use only alphanumeric characters (no spaces, dashes, etc.).');window.location.href = '/compose'</script>");
+    console.log("Invalid post ID");
+    res.redirect("/"); // Redirect back to the home page
+
   }
 
   const postData = {
@@ -354,7 +364,9 @@ app.post("/compose", upload.single("image"), async (req, res) => {
     res.redirect("/"); // Redirect to home page after post submission
   } catch (err) {
     console.log(err);
-    res.send("<script>alert('Error saving the post.');window.location.href = '/compose'</script>");
+    console.log("Error saving the post");
+    res.redirect("/"); // Redirect back to the home page
+
   }
 });
 
@@ -366,14 +378,18 @@ app.get("/posts/:postId", async (req, res) => {
     const post = await PosT.findById(postId);
 
     if (!post) {
-      return res.send("<script>alert('Post not found');window.location.href = '/'</script>");
+      console.log("Post not found");
+      res.redirect("/"); // Redirect back to the home page
+
     }
 
     // Render the "posts" view and pass the post data to it
     res.render("posts", { post: post }); 
   } catch (err) {
     console.log(err);
-    res.send("<script>alert('Error loading the post.');window.location.href = '/'</script>");
+    console.log("Error loading the post");
+    res.redirect("/"); // Redirect back to the home page
+
   }
 });
 
