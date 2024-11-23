@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script> <!-- CKEditor CDN -->
+    <script src="/js/ckeditorInit.js"></script>
+
+
+    <style>
+        /* Base Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        nav {
+            background-color: #6f4f33;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        nav .nav-items ul {
+            list-style-type: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav .nav-items ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        nav .nav-items ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 30px;
+            max-width: 1000px;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .comp-title-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .comp-title-container .title {
+            font-size: 2rem;
+            color: #6f4f33;
+        }
+
+        .post-textarea form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .post-textarea input[type="text"],
+        .post-textarea textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .post-textarea input[type="file"] {
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        .post-textarea .submit-button input {
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border: none;
+            background-color: #6f4f33;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .post-textarea .submit-button input[type="reset"] {
+            background-color: #e74c3c;
+        }
+
+        .post-textarea .submit-button input:hover {
+            background-color: #5a3f2a;
+        }
+
+        .post-textarea .submit-button input[type="reset"]:hover {
+            background-color: #c0392b;
+        }
+
+        .post-textarea input[type="file"] {
+            margin-top: 15px;
+        }
+
+        /* CKEditor Styling */
+        .ck-editor__editable {
+            min-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="/">myBlog</a></div>
+        <div class="nav-items">
+            <ul>
+                <li><a href="/"> Home</a></li>
+                <% if(user==="admin"){ %>
+                <li><a href="/admin">Dashboard</a></li>
+                <% } else { %>
+                <li><a href="/profile/<%= user %>"> My profile</a></li>
+                <% } %>
+                <li><a href="/logout"> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main>
+        <div class="comp-title-container">
+            <h1 class="title">Edit Post</h1>
+        </div>
+        
+        <div class="post-textarea">
+            <form action="/update/<%= post._id %>" method="post" enctype="multipart/form-data">
+                <p class="post-title">
+                    <input type="text" placeholder="Title" name="postTitle" value="<%= post.title %>" required>
+                </p>
+                
+                <p class="post-content">
+                    <textarea name="postBody" id="postBody" cols="30" rows="20" required><%= post.content %></textarea>
+                </p>
+                
+                <input type="file" class="custom-file-input" name="image">
+                
+                <p class="submit-button">
+                    <input type="submit" value="Update">
+                    <input type="reset" value="Discard">
+                </p>
+            </form>
+        </div>
+    </main>
+
+    
+</body>
+</html>

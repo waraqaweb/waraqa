@@ -1,0 +1,185 @@
+main{
+    padding-top: 8rem;
+    margin: 0  7rem;
+    
+}
+/* Container for the recent posts section */
+.recent-posts-container {
+    margin: 20px auto; /* Center the container and add some top/bottom spacing */
+    max-width: 90rem; /* Set a max width for the container */
+    flex-wrap: nowrap;
+}
+
+/* Container for all recent posts */
+.recent-posts {
+    display: flex; /* Use Flexbox to arrange posts in a line */
+    flex-wrap: wrap; /* Allow items to wrap onto the next line */
+    justify-content: center;
+}
+
+/* Individual post box */
+.recent-post-box {
+    flex: 0 1 calc(20% - 20px); /* Allow posts to take up to 20% of the row minus spacing */
+    margin: 10px; /* Add some spacing between posts */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Clip overflow */
+    background-color: #fff; /* White background for post boxes */
+}
+/* Animation effect */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Trigger animation on scroll */
+.recent-post-box.animate {
+    opacity: 1;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Target the most recent post */
+.recent-post-box.most-recent {
+    flex: 0 1 50%; /* Make the most recent post take up 50% of the width */
+    margin: 0 auto; /* Center the most recent post */
+}
+.link-card {
+    width: 100%;
+    margin-bottom: 0;
+}
+.link-card h3{
+    text-align: center;
+
+}
+.link-card p{
+    text-align: end;
+    margin-right: 1rem;
+
+}
+
+
+/* Adjust the width for the first post */
+.recent-post-box:first-of-type {
+    flex: 0 1 90%; /* Make the first post take the full width */
+    
+}
+
+/* Style for the next four posts */
+.recent-posts .recent-post-box:nth-child(n+2):nth-child(-n+5) {
+    border: 2px solid #007bff; /* Blue border for the next four posts */
+    border-radius: 8px; /* Keep the same border radius */
+    flex: 0 1 calc(23%); /* Make these four posts take 20% each */
+    margin: .5rem;    
+}
+
+/* Ensure the next four posts are in one line */
+.recent-posts .recent-post-box:nth-child(n+2):nth-child(-n+5) {
+    display: block; /* Ensure they are displayed as blocks */
+}
+
+/* Style for the rest of the posts */
+.recent-posts .recent-post-box:nth-child(n+6) {
+    flex: 3 3 calc(30%); /* Make these four posts take 20% each */
+}
+
+/* Title and author styles */
+h3 {
+    font-size: 1.2rem; /* Set a font size for the title */
+    margin: 0.5em 0; /* Add spacing around the title */
+    text-align: center;
+}
+
+p {
+    margin-bottom: 0rem;
+}
+p.days {
+    font-size: 0.9rem; /* Smaller font for the date */
+    color: #666; /* Grey color for the date text */
+    display: inline;
+}
+
+.most-recent-section {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.recent-post-box.most-recent {
+    width: 100%;
+    max-width: 1200px;
+    height: 50vh; /* Constrain overall height */
+    min-height: 50vh;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.img-container {
+    width: 100%;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.img-container img {
+    width: auto;
+    height: 100%; /* Ensure full height scaling */
+    min-height: 100%;
+    max-width: 100%; /* Cap width to avoid overflow */
+    object-fit: scale-down; /* Crop edges if necessary to fit within container */
+}
+.most-recent-section img {
+    width: 50%;
+    height: 100rem; /* Ensure full height scaling */
+}
+
+.post-info {
+    padding: 0.5rem;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.post-info h3 {
+    margin: 0.3rem 0;
+    font-size: 1.2rem;
+}
+
+.author-info {
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .page-link {
+    margin: 0 5px;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .page-link:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .page-link.active {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+  }
+  
