@@ -122,9 +122,6 @@ app.post("/signup", async (req, res) => {
     req.session.username = req.body.name; // Set session username
     res.redirect("/login"); // Redirect to home page
   } else {
-    // Alert if user already exists
-    res.send("<script>alert('User already exists');window.location.href = '/'</script>");
-  }
 });
 
 // Route for home page
