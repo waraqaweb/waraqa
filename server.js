@@ -52,20 +52,45 @@ app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
-        defaultSrc: ["'self'"], // Allow resources from the same origin
-        scriptSrc: ["'self'", "'unsafe-inline'"], // Allow inline scripts (if necessary)
-        // Alternatively: use 'nonce-...' or 'sha256-...' for more secure methods
-        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-        fontSrc: ["'self'", "https://fonts.gstatic.com"],
-        imgSrc: ["'self'", "data:", "https://example.com"],
-        connectSrc: ["'self'", "https://api.example.com"],
-        objectSrc: ["'none'"],
-        frameSrc: ["'none'"],
-        upgradeInsecureRequests: [],
+        defaultSrc: ["'self'", "*"], // Allow content from the same origin and any other source
+        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "*"], 
+        // Allow scripts from any source, inline scripts, and eval() (least secure but functional)
+
+        styleSrc: ["'self'", "'unsafe-inline'", "*"], 
+        // Allow styles from any source and inline styles
+
+        fontSrc: ["'self'", "*"], 
+        // Allow fonts from any source
+
+        imgSrc: ["'self'", "data:", "*"], 
+        // Allow images from any source, including data URIs
+
+        connectSrc: ["'self'", "*"], 
+        // Allow connections (e.g., API requests) to any domain
+
+        objectSrc: ["'self'", "*"], 
+        // Allow object, embed, and applet elements from any source (not recommended but functional)
+
+        frameSrc: ["'self'", "*"], 
+        // Allow iframes from any source
+
+        mediaSrc: ["'self'", "*"], 
+        // Allow media (audio, video) from any source
+
+        childSrc: ["'self'", "*"], 
+        // Allow child frames from any source
+
+        formAction: ["'self'", "*"], 
+        // Allow form submissions to any domain
+
+        upgradeInsecureRequests: [], 
+        // Upgrade HTTP requests to HTTPS automatically
       },
     },
+    crossOriginEmbedderPolicy: false, // Disable stricter cross-origin policies for flexibility
   })
 );
+
 
 // Mongoose schema for visits
 const visitSchema = new mongoose.Schema({
