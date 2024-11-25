@@ -49,41 +49,7 @@ app.use(
 );
 // Helmet setup with Content Security Policy (CSP) configuration
 // Use the Helmet middleware with specific configurations
-app.use(
-  helmet({
-    // Configure the Content Security Policy (CSP) to control resource loading
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"], // Allow content to load only from the same origin
-        scriptSrc: ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com"], 
-        // Allow scripts from the same origin, inline scripts (with caution), and a trusted CDN
-        
-        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"], 
-        // Allow CSS styles from the same origin, inline styles (e.g., style attributes), and Google Fonts
-        
-        fontSrc: ["'self'", "https://fonts.gstatic.com"], 
-        // Allow fonts to load from the same origin and Google Fonts
-
-        imgSrc: ["'self'", "data:", "https://example.com"], 
-        // Allow images from the same origin, data URIs (base64-encoded images), and a specific domain
-
-        connectSrc: ["'self'", "https://api.example.com"], 
-        // Allow connections (e.g., API calls, WebSockets) only to the same origin and a specific API domain
-
-        objectSrc: ["'none'"], 
-        // Block all object, embed, and applet elements (e.g., Flash, Java applets)
-
-        frameSrc: ["'none'"], 
-        // Block all iframe and frame sources to prevent embedding your site elsewhere
-
-        upgradeInsecureRequests: [], 
-        // Automatically upgrade HTTP requests to HTTPS for all resources
-      },
-    },
-    crossOriginEmbedderPolicy: true, 
-    // Enforce cross-origin isolation to mitigate certain attacks (like Spectre and side-channel attacks)
-  })
-);
+app.use("'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com");
 
 // Mongoose schema for visits
 const visitSchema = new mongoose.Schema({
