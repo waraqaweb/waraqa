@@ -48,8 +48,24 @@ app.use(
   })
 );
 // Helmet setup with Content Security Policy (CSP) configuration
-// Use the Helmet middleware with specific configurations
-app.use("'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com");
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"], // Allow resources from the same origin
+        scriptSrc: ["'self'", "'unsafe-inline'"], // Allow inline scripts (if necessary)
+        // Alternatively: use 'nonce-...' or 'sha256-...' for more secure methods
+        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+        fontSrc: ["'self'", "https://fonts.gstatic.com"],
+        imgSrc: ["'self'", "data:", "https://example.com"],
+        connectSrc: ["'self'", "https://api.example.com"],
+        objectSrc: ["'none'"],
+        frameSrc: ["'none'"],
+        upgradeInsecureRequests: [],
+      },
+    },
+  })
+);
 
 // Mongoose schema for visits
 const visitSchema = new mongoose.Schema({
