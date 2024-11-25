@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script> <!-- CKEditor CDN -->
+    <script src="/js/ckeditorBioInit.js"></script>
+
+
+    <style>
+        /* Base Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        main {
+            padding: 30px;
+            max-width: 1000px;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .edit-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .edit-container h1 {
+            font-size: 2rem;
+            color: #6f4f33;
+            margin-bottom: 30px;
+        }
+
+        .forms-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .forms-container div {
+            width: 80%;
+        }
+
+        .forms-container label {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .forms-container input[type="text"],
+        .forms-container textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .forms-container input[type="file"] {
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        .buttons input {
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border: none;
+            background-color: #6f4f33;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .buttons input[type="reset"] {
+            background-color: #e74c3c;
+        }
+
+        .buttons input:hover {
+            background-color: #5a3f2a;
+        }
+
+        .buttons input[type="reset"]:hover {
+            background-color: #c0392b;
+        }
+
+        /* CKEditor Styling */
+        .ck-editor__editable {
+            min-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="edit-container">
+            <h1>Edit Profile</h1>
+            <form action="" method="post" class="forms-container" enctype="multipart/form-data">
+                <div>
+                    <label for="">Username</label>
+                    <input type="text" readonly value="<%= username %>">
+                    <label for="">Full Name</label>
+                    <input type="text" name="fullname" value="<%= userdata.fullname %>">
+                    <label for="">E-mail</label>
+                    <input type="text" readonly value="<%= email %>">
+                    
+                    <label for="">Bio</label>
+                    <textarea name="bio" id="bio" cols="30" rows="10"><%= userdata.bio %></textarea>
+                    
+                    <label for="">Profile Picture</label>
+                    <input type="file" class="custom-file-input" name="image">
+                </div>
+
+                <div>
+                    <label for="">Website Link</label>
+                    <input type="text" name="weblink" value="<%= userdata.weblink %>">
+                    
+                    <label for="">Facebook Profile</label>
+                    <input type="text" name="fb" value="<%= userdata.facebook %>">
+                    
+                    <label for="">Instagram Profile</label>
+                    <input type="text" name="insta" value="<%= userdata.instagram %>">
+                    
+                    <label for="">Twitter Profile</label>
+                    <input type="text" name="tw" value="<%= userdata.twitter %>">
+                    
+                    <label for="">WhatsApp Number</label>
+                    <input type="text" name="wa" value="<%= userdata.whatsapp %>">
+                    
+                    <label for="">Phone Number</label>
+                    <input type="text" name="phno" value="<%= userdata.phoneno %>">
+                    
+                    <div class="buttons">
+                        <input type="reset" value="Discard">
+                        <input type="submit" value="Save">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+    
+</body>
+</html>

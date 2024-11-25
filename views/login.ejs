@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/index.css">
+
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #E1DFDB;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+        /* Tabs Styling */
+        .tab-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            background-color: #f4f7f9;
+            border-radius: 30px;
+            padding: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-link {
+            flex: 1;
+            padding: 10px 20px;
+            border: none;
+            background-color: #e0e4e8;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            color: #333;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tab-link.active {
+            background-color: #008cba;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 140, 186, 0.4);
+        }
+
+        .tab-link:hover {
+            background-color: #007ba7;
+            color: white;
+        }
+
+        /* Form Content */
+        .form-container {
+            margin-bottom: 15px;
+        }
+
+        input[type="email"], input[type="password"], input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="tel"] {
+    width: 100%;  /* Ensure it takes full width */
+    padding: 10px; /* Padding for better spacing */
+    margin: 10px 0; /* Spacing from other elements */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size for readability */
+    transition: border-color 0.3s ease; /* Smooth transition */
+}
+
+input[type="tel"]:focus {
+    border-color: #008CBA; /* Change border color on focus */
+    outline: none; /* Remove outline */
+}
+
+        input.lg-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #008cba;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input.lg-btn:hover {
+            background-color: #007ba7;
+        }
+
+        .s-text {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .link-btn {
+            background: none;
+            border: none;
+            color: #008cba;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .link-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <div class="tab-buttons">
+            <button class="tab-link active" onclick="showTab('login')">Login</button>
+            <button class="tab-link" onclick="showTab('register')">Sign Up</button>
+        </div>
+
+        <div class="login-container">
+            <!-- Login Section -->
+            <div id="login" class="tab-content active">
+                <h1>Welcome to Waraqa!</h1>
+                <h2>Login to your account</h2>
+                <div class="form-container">
+                    <form action="/login" method="post">
+                        <label>Email</label>
+                        <input type="email" name="email" required>
+                        <label>Password</label>
+                        <input type="password" name="password" required>
+                        <input type="submit" value="Login" class="lg-btn">
+                    </form>
+                </div>
+                <p class="s-text">Don't have an account? <button class="link-btn" onclick="showTab('register')">Sign Up</button></p>
+            </div>
+
+            <!-- Sign-Up Section -->
+             <!-- Sign-Up Section -->
+             <div id="register" class="tab-content">
+                <h1>Welcome to Waraqa!</h1>
+                <h2>Register your account</h2>
+                <div class="form-container">
+                    <form action="/signup" method="post">
+                        <label>First Name</label>
+                        <input type="text" name="firstName" required>
+                        <label>Last Name</label>
+                        <input type="text" name="lastName" required>
+                        <label>Email</label>
+                        <input type="email" name="email" required>
+                        <label>Password</label>
+                        <input type="password" name="password" required>
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone" required placeholder="+xx (xxx) xxx xxxx">
+                        <label>City, State, Country</label>
+                        <input type="text" name="location" placeholder="City, State, Country" required>
+                        <input type="submit" value="Register" class="lg-btn">
+                    </form>
+                </div>
+                <p class="s-text">Already have an account? <button class="link-btn" onclick="showTab('login')">Sign In</button></p>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/loginTab.js"></script>
+</body>
+</html>
