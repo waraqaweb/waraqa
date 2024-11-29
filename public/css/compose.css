@@ -1,0 +1,42 @@
+/* Styling for the post composing page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #0d6efd;
+    padding: 15px 0;
+    color: white;
+    text-align: center;
+}
+
+nav .logo a {
+    font-size: 1.8em;
+    color: white;
+    text-decoration: none;
+}
+
+nav .nav-items ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav .nav-items ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav .nav-items ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+main {
+    padding: 40px 20px;
+}
+

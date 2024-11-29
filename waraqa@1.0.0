@@ -1,0 +1,140 @@
+MongoDB Atlas
+ IP address (196.159.30.42) enable local connectivity
+email: waraqaweb@gmail.com
+user: waraqaweb
+password: kb40UWuV1mXJEE9i
+Connection String: mongodb+srv://waraqaweb:kb40UWuV1mXJEE9i@cluster0.2ysyr.mongodb.net/
+
+MongoDB uses SCRAM as its default authentication method.
+Database credintials 
+User: waraqaweb@admin
+Password Authentication:waraqaweb
+
+Waraqa/
+├── public/
+│   ├── css/
+│   │   ├── courses-style.css
+│   │   ├── pricing-style.css
+│   │   ├── about-style.css
+│   │   ├── contact-style.css
+│   │   ├── home-style.css
+│   │   └── dashboard-style.css
+│   ├── images/               // Store your website images here
+│   ├── thumbnails/           // Store course or blog thumbnails
+│   └── ...                   // Other static assets (e.g., JS, fonts)
+├── views/
+│   ├── courses/
+│   │   ├── quran-recitation.ejs
+│   │   ├── foundation-level.ejs
+│   │   ├── pre-reading-level.ejs
+│   │   ├── tajweed-basics.ejs
+│   │   ├── tajweed-intermediate.ejs
+│   │   ├── qari-level.ejs
+│   │   ├── khatmah-program.ejs
+│   │   ├── quran-memorization.ejs
+│   │   ├── short-surahs.ejs
+│   │   ├── one-juz.ejs
+│   │   ├── hafez-program.ejs
+│   │   ├── ijazah-program.ejs
+│   │   ├── arabic-basics.ejs
+│   │   ├── intermediate-arabic.ejs
+│   │   ├── upper-intermediate-arabic.ejs
+│   │   ├── classical-arabic.ejs
+│   │   ├── islamic-studies.ejs
+│   │   ├── established-facts.ejs
+│   │   ├── classical-books.ejs
+│   │   └── advanced-islamic-studies.ejs
+│   ├── pricing.ejs
+│   ├── about.ejs
+│   ├── contact.ejs
+│   ├── home.ejs
+│   ├── blog.ejs
+│   └── dashboard.ejs
+├── server.js
+└── package.json
+--------------------------------------
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Include the head template -->
+    <%- include('Layout/head') %>
+ 
+    <title>space</title>
+    <link rel="stylesheet" href="/css/courses.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <%- include('../../Layout/header'); %>
+    </header>
+    <main>
+        <!-- Light Section -->
+        <section class="course-section dark-section">
+            <div class="container">
+                <h1>spaceTitle</h1>
+                <h3>space</h3>
+                
+                <!-- Objectives Section -->
+                <div class="section-content image-right">
+                    <div class="text-content">
+                        <h4>Objectives</h4>
+                        <p>space</p>
+                        <ul>
+                            <li>space</li>
+                        
+                        </ul>
+                    </div>
+                    <div class="image-content">
+                        <img src="/images/space1" alt="space">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Waraqa Approach Section -->
+        <section class="course-section light-section">
+            <div class="container">
+                <div class="section-content image-left">
+                    <div class="text-content">
+                        <h4>space</h4>
+                        <p>space</p>
+                        <ul>
+                            <li>space</li>
+
+                     </ul>
+                    </div>
+                    <div class="image-content">
+                        <img src="/images/space2" alt="space">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Course Outline Section -->
+        <section class="course-section dark-section">
+            <div class="container">
+                <div class="section-content image-right">
+                    <div class="text-content">
+                        <h4>space</h4>
+                        <ul>
+                            <li>space</li>
+                            
+                        </ul>
+                    </div>
+                    <div class="image-content">
+                        <img src="/images/space3" alt="space">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <%- include('Layout/footer') %>
+    </footer>
+</body>
+</html>

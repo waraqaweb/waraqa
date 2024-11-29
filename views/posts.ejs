@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Include the head template -->
+    <%- include('Layout/head') %>
+    <title><%= post.title %> | My Blog</title>
+    <link rel="stylesheet" href="/css/posts.css">
+    <script src="/js/imageErrorHandler.js"></script>
+
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="/">myBlog</a></div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="post-image-container">
+            <img 
+    src="/thumbnails/<%= post.thumbnail %>" 
+    alt="Post Thumbnail" 
+    data-fallback="images/default-image.png" 
+    class="post-thumbnail"
+>
+
+        </div>
+        <h1 class="post-title"><%= post.title %></h1>
+        <p class="post-content"><%= post.content %></p>
+        <p class="post-author">Written by: <%= post.author %></p>
+        <p class="post-date">Date: <%= new Date(post.date).toLocaleDateString() %></p>
+        <p class="post-likes">Likes: <%= post.like %></p>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <%- include('Layout/footer') %>
+    </footer>
+</body>
+</html>
