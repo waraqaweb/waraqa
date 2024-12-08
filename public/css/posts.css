@@ -1,0 +1,93 @@
+/* Main Content Styles */
+.content-wrapper {
+  display: flex; /* Use flexbox to position sidebar and post content side by side */
+  justify-content: space-between; /* Space between content and sidebar */
+  align-items: flex-start; /* Align items at the start */
+  width: 90%; /* Set the overall width of the content area to 85% of the page */
+  margin: 1rem auto; /* Center the content wrapper */
+}
+
+.post-content {
+  width: 70%; /* Set the post content to take up 70% of the .content-wrapper width */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+  width: 30%; /* Set the sidebar to take up 30% of the .content-wrapper width */
+  height: 70vh;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 20px; /* Space between the content and sidebar */
+}
+/* Recent Posts Container with Scroll */
+.recent-posts {
+  max-height: 550px; /* Set a fixed height for the sidebar */
+  overflow-y: auto;  /* Enable vertical scrolling */
+  padding-right: 10px; /* Add some padding to prevent content from sticking to the edge */
+}
+
+/* Styling for individual post items */
+.recent-post {
+  margin-bottom: 15px; /* Space between each post */
+}
+.recent-post-link {
+  display: flex;
+  align-items: center;
+}
+
+.recent-post-thumbnail img {
+  border-radius: 5px; /* Rounded corners for the thumbnail */
+  margin: 10px; /* Space between image and text */
+  min-width: 5rem;
+}
+
+.recent-post-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin: 8px; /* Space between image and text */
+  padding: 5px 15px;
+}
+
+
+/* Styling for post hover effect */
+.recent-post:hover {
+  background-color: #f1f1f1; /* Light background on hover */
+  border-radius: 8px; /* Rounded corners on hover */
+  cursor: pointer;
+}
+.post-image-container {
+  padding: 0%;
+}
+/* Responsive Styles */
+@media (max-width: 1000px) {
+  .content-wrapper {
+      flex-direction: column; /* Stack content and sidebar vertically on small screens */
+      align-items: center;
+      width: 100%; /* Ensure the wrapper takes full width on small screens */
+  }
+
+  .post-content {
+      width: 100%; /* Ensure the post content takes full width */
+      padding: 15px;
+  }
+
+  .sidebar {
+      width: 100%; /* Ensure the sidebar takes full width */
+      margin-left: 0;
+      margin-top: 20px; /* Add space between post content and sidebar */
+  }
+}
+
+.ql-font-arial { font-family: Arial, sans-serif; }
+.ql-font-georgia { font-family: Georgia, serif; }
+.ql-font-helvetica { font-family: Helvetica, sans-serif; }
+.ql-font-courier { font-family: Courier New, monospace; }
+.ql-font-comic { font-family: "Comic Sans MS", cursive; }
+.ql-font-impact { font-family: Impact, sans-serif; }
+.ql-font-times { font-family: "Times New Roman", Times, serif; }

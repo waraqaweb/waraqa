@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Include the head template -->
+    <%- include('Layout/head') %>
+    <!-- Page-Specific Title -->
+    <title>User Profile</title>
+    <!-- Page-Specific Styles -->
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/js/statsDisplay.js"></script>
+    <script src="/js/imageErrorHandler.js"></script>
+</head>
+
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <!-- Brand logo -->
+        <div class="logo"><a href="/">Waraqa</a></div>
+        <a href="/blog">Blog</a>
+        <a href="/compose">Compose</a>
+        <a href="/admin">Dashboard</a>
+        <a class="nav-link" href="/profile/<%= username %>">My Profile</a>
+        <a href="/logout"> Logout</a>
+    </nav>
+
+    <main class="profile-page">
+        <!-- Profile Section -->
+        <section class="profile">
+            <div class="profile-header">
+                <div class="profile-picture">
+                    <img src="/thumbnails/<%= userdata.dp || 'default-profile.png' %>" alt="Profile Picture" />
+                </div>
+                <div class="profile-details">
+                    <h1><%= userdata.fullname || 'User Name' %></h1>
+                    <p class="bio"><%= userdata.bio || 'No bio provided.' %></p>
+                    <% if (userdata.weblink) { %>
+                        <a class="website-link" href="http://<%= userdata.weblink %>" target="_blank">
+                            <i class="fa-solid fa-link"></i> Visit Website
+                        </a>
+                    <% } %>
+                </div>
+            </div>
+            <div class="profile-stats">
+                <div>
+                    <p>Posts</p>
+                    <p id="pdisplay">0</p>
+                </div>
+                <div>
+                    <p>Likes</p>
+                    <p id="ldisplay">0</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact">
+            <h2>Contact Information</h2>
+            <div class="contact-info">
+                <p><i class="fa-solid fa-envelope"></i> <a href="mailto:<%= userdata.email %>"><%= userdata.email %></a></p>
+                <p><i class="fa-solid fa-phone"></i> <%= userdata.phoneno || 'No phone number provided.' %></p>
+            </div>
+            <div class="social-links">
+                <% if (userdata.facebook) { %>
+                    <a href="http://www.facebook.com/<%= userdata.facebook %>" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <% } %>
+                <% if (userdata.instagram) { %>
+                    <a href="http://www.instagram.com/<%= userdata.instagram %>" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <% } %>
+                <% if (userdata.twitter) { %>
+                    <a href="http://www.twitter.com/<%= userdata.twitter %>" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                <% } %>
+                <% if (userdata.whatsapp) { %>
+                    <a href="http://wa.me/+91<%= userdata.whatsapp %>" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                <% } %>
+            </div>
+        </section>
+
+        <!-- Recent Posts Section -->
+        <section class="recent-posts">
+            <h2>Recent Posts</h2>
+            <div class="posts-grid">
+                <% posts.reverse().forEach((post) => { %>
+                    <div class="post-card">
+                        <img src="/thumbnails/<%= post.thumbnail || 'default-post.png' %>" alt="Post Thumbnail" />
+                        <div class="post-content">
+                            <h3><%= post.title %></h3>
+                            <p><%= post.content %></p>
+                            <a href="/posts/<%= post.slug %>" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <%- include('Layout/footer') %>
+    </footer>
+</body>
+
+</html>

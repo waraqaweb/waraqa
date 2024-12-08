@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Include the head template for shared meta and styles -->
+    <%- include('Layout/head') %>
+    <!-- Page-specific title -->
+    <title>Edit Post</title>
+    <!-- Custom CSS for Compose Page -->
+    <link rel="stylesheet" href="/css/compose.css">
+</head>
+
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <!-- Brand logo -->
+        <div class="logo"><a href="/">Waraqa</a></div>
+        <a href="/blog">Blog</a>
+        <a href="/compose">Compose</a>
+        <a href="/admin">Dashboard</a>
+        <a href="/logout"> Logout</a>
+    </nav>
+        <!-- Main Content -->
+        <main class="compose-page">
+            <h1>Edit Post</h1>
+            <!-- Post Form -->
+            <form action="/update/<%- post._id %>" method="post" enctype="multipart/form-data" class="compose-form">
+                <!-- Title Input -->
+                <label for="postTitle">Post Title</label>
+                <input type="text" id="postTitle" name="postTitle" placeholder="Title" name="postTitle" value="<%- post.title %>" required>
+                <small class="hint" id="titleHint">
+                        <ul>
+                        <li>Descriptive, Engaging language, Relevant Keywords, Limit to 50 – 60 characters and Capitalize major words</li>
+                        <li><b>Example:</b> "Why Learning Arabic Is Easier Than You Think"</li>
+                        </ul>
+                    </small>
+    
+                    <!-- Slug Input -->
+                    <label for="postSlug">Post Slug (URL)</label>
+                    <input type="text" id="postSlug" name="postSlug" 
+                        placeholder="Slug" value="<%- post.slug %>" required>
+                    <small class="hint" id="slugHint">
+                        <ul>
+                            <li>Simple, Relevant, focusing on keywords and Avoiding Stop Words.</li>
+                        </ul>
+                    </small>
+    
+    
+                <!-- Rich Text Editor -->
+                <label for="postBody">Post Content</label>
+                <div id="editor"><%- post.content %></div>
+                <!-- Hidden Textarea for Rich Text Content -->
+                <textarea id="postBody" name="postBody" style="display: none;"></textarea>
+    
+                <!-- Image Upload -->
+                <label for="image">Post Thumbnail</label>
+                <input type="file" id="image" name="image">
+                <div>
+                    <img src="<%- post.imagePath %>" alt="Current Thumbnail" style="max-width: 100%; height: auto;">
+                </div>
+                <p class="submit-button">
+                    <input type="submit" value="Update">
+                    <input type="reset" value="Discard">
+                </p>
+            </form>
+        </div>
+    </main>
+
+    <!-- Include Quill.js and custom scripts -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="/js/quillInit.js"></script>
+    <script>
+        // Slug formatting function
+        function formatSlug(value) {
+            return value
+                .trim() // Remove leading/trailing spaces
+                .toLowerCase() // Convert to lowercase
+                .replace(/[^a-z0-9\s-]/g, "") // Remove special characters
+                .replace(/\s+/g, "-"); // Replace spaces with hyphens
+        }
+    
+        // Attach event listener to the slug input
+        const postSlugInput = document.getElementById("postSlug");
+        postSlugInput.addEventListener("input", (e) => {
+            e.target.value = formatSlug(e.target.value);
+        });
+    </script>
+</body>
+
+</html>

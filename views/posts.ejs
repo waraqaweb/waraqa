@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Include the head template -->
+    <%- include('Layout/head') %>
+    <!-- Page-Specific Title -->
+    <title><%= post.title %> | My Blog</title>
+    <!-- Page-Specific Styles -->
+    <link rel="stylesheet" href="/css/posts.css">
+    <script src="/js/imageErrorHandler.js"></script>
+
+</head>
+<body>
+    <header>
+        <%- include('Layout/header') %>
+    </header>
+        <main>
+            <div class="content-wrapper">
+                <!-- Main Post Content -->
+                <div class="post-content">
+                    <div class="post-image-container">
+                        <img 
+                            src="/thumbnails/<%= post.thumbnail %>" 
+                            alt="Post Thumbnail" 
+                            onerror="this.src='/images/default-image.png'" 
+                            class="post-thumbnail"
+                        >
+                    </div>
+                        <h1 class="post-title"><%- post.title %></h1>
+                        <p class="post-content"><%- post.content %></p>
+                        <p class="post-author">Written by: <%- post.author %></p>
+                        <p class="post-date">Date: <%- new Date(post.date).toLocaleDateString() %></p>
+                        <p class="post-likes">Likes: <%= post.like %></p>
+                    </div>
+        
+                <!-- Sidebar for Recent Posts -->
+                <aside class="sidebar">
+                    <h3>Recent Posts</h3>
+                    <div class="recent-posts">
+                        <% 
+                        const recentPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 10);
+                        recentPosts.forEach(post => {
+                        %>
+                        <div class="recent-post">
+                            <a href="/posts/<%= post.slug %>" class="recent-post-link">
+                                <div class="recent-post-thumbnail">
+                                    <img 
+                                        src="/thumbnails/<%= post.thumbnail %>" 
+                                        alt="Post Thumbnail" 
+                                        onerror="this.src='/images/default-image.png'" 
+                                        width="100" 
+                                        height="100"
+                                    >
+                                </div>
+                                <div class="recent-post-info">
+                                    <h4 class="recent-post-title"><%= post.title %></h4>
+                                </div>
+                            </a>
+                        </div>
+                        <% }); %>
+                    </div>
+                </aside>
+            </div>
+        </main>
+        
+
+    <!-- Footer Section -->
+    <footer>
+        <%- include('Layout/footer') %>
+    </footer>
+    
+</body>
+</html>

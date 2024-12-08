@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <!-- Include the head template -->
+<%- include('Layout/head') %>
+<!-- Page Specific Title -->
+    <title>Home</title>
+<!-- Page Specific Styles -->
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+<header>
+    <%- include('Layout/header') %>
+</header>
+
+<!-- Main Content -->
+<main>
+    <section
+    class="hero-banner"
+    style="background-image: url('/images/Alazhar_mosque.jpg'); background-size: cover; background-position: center;"
+  >
+    <div class="banner-split">
+      <!-- Left Side (1/3) -->
+      <div class="banner-message">
+        <h2>Begin<br>Your<br>Quran<br>and<br>Arabic<br>Journey<br>Today</h2>
+      </div>
+      
+      <!-- Right Side (2/3) -->
+      <div class="banner-content">
+        <h1>Waraqa</h1>
+        <div>
+          <p>Knowledge. Wisdom. Peace.</p>
+        </div>
+        <a href="/book-evaluation" class="calltoaction">START YOUR JOURNEY</a>
+      </div>
+    </div>
+  </section>
+  
+    
+<!-- About Section -->
+<section class="about-section">
+    <h2>About</h2>
+    <div class="container">
+        <div class="about-content">
+            <div class="thumbnail">
+                <img src="/images/Al_Azhar_Al_Sharif_logo.png" alt="10 USD/Hour">
+            </div>
+            <div class="about-text">
+
+                <p>We are an elite group of scholars of language and religion who graduated from al-Azhar University (pioneer center of Islamic and Arabic learning in the world). We have created an online school to share our knowledge with you. We do not belong to any sect or specific Islamic trend. Our team includes experienced instructors who teach a wide variety of subjects ranging from Arabic language to Quranic recitation, fiqh and tafsir. We are happy to meet with you to establish your learning needs and design a course that will meet them. <br>
+                    Since Allah’s Quranic revelation began with the word <i><b>‘iqra’</b></i> which means ‘read,’ we seek to please Allah (swt) by teaching his book and sharing the traditions of the prophet (pbh) as we learned them. Our prophet Mohamed (pbuh) said that the best among you are those who learn the Quran and teach it. Our teachers adhere to the highest ethical standards and your feedback is always welcomed by Waraqa.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Courses Section -->
+    <section class="courses-section">
+        <h2>Our courses</h2>
+        <div class="container">
+            
+            <div class="courses-container">
+                
+                <a href="/courses/quran-recitation" class="course-card-link">
+                    <div class="course-card">
+                        <img src="/thumbnails/Courses_Thumbnails (1).jpeg" alt="Quran Recitation">
+                        <h3>Quran Recitation</h3>
+                    </div>
+                </a>
+                <a href="/courses/quran-memorization" class="course-card-link">
+                    <div class="course-card">
+                        <img src="/thumbnails/Courses_Thumbnails (3).jpg" alt="Quran Memorization">
+                        <h3>Quran Memorization</h3>
+                    </div>
+                </a>
+                <a href="/courses/arabic-language" class="course-card-link">
+                    <div class="course-card">
+                        <img src="/thumbnails/Courses_Thumbnails (1).jpg" alt="Arabic Language">
+                        <h3>Arabic Language</h3>
+                    </div>
+                </a>
+                
+                
+                <a href="/courses/islamic-studies" class="course-card-link">
+                    <div class="course-card">
+                        <img src="/thumbnails/Courses_Thumbnails (2).jpg" alt="Islamic Studies">
+                        <h3>Islamic Studies</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why Choose Waraqa Section -->
+    <section class="why-choose-section">
+        <h2 class="why-choose-section-title">Why Choose Waraqa</h2>
+        <div class="container">
+            <div class="benefits-container">
+                <div class="benefit">
+                    <h3>Interactive Classrooms</h3>
+                    <p>Interact with your teacher, listen to audio, watch video and use the different tools for learning</p>
+                </div>
+                <div class="benefit">
+                    <h3>Flexibility 24/7</h3>
+                    <p>While you at work, at the weekend or even on your lunch break: any day, any time you like, we’re here!</p>
+                </div>
+                <div class="benefit">
+                    <h3>Classes Made For You</h3>
+                    <p>Our classes are available at any time. Choose your class from our curriculum or request your own date and time and learn with your teacher.</p>
+                </div>
+                <div class="benefit">
+                    <h3>Most Effective Way</h3>
+                    <p>to achieve your goal in a shorter period of time. Your teacher will prepare a class based on your personal needs. Within the class you will get a one-on-one explanations, correction to improve your language skills as fast as we can.</p>
+                </div>
+                <div class="benefit">
+                    <h3>Native-Speaking Teachers</h3>
+                    <p>Our teachers are native Arabic speakers as well as very highly qualified and skilled teachers. Many of our teachers graduated of al-Azhar University and are active in the field of Dawah.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer Section -->
+<footer>
+    <%- include('Layout/footer') %>
+</footer>
+</body>
+</html>

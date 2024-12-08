@@ -1,0 +1,63 @@
+/* Footer Styles */
+.footer {
+    background-color: #222; /* Dark footer background */
+    color: #fff; /* White text */
+    padding: 20px; /* Padding around the footer */
+    text-align: center; /* Center text */
+    width: 100%; /* Full width */
+    margin-top: auto; /* Push footer to bottom */
+    position: relative;
+}
+
+.footer a {
+    color: #f5b74b; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.footer a:hover {
+    text-decoration: underline; /* Underline on hover for better visibility */
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Center modal */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Adjust modal width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px; /* Rounded corners */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Social Links Spacing */
+.social-links a {
+    margin: 0 10px;
+    font-size: 18px;
+}

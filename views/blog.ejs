@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('Layout/head') %>
+    <title>Waraqa Blog</title>
+    <link rel="stylesheet" href="/css/blog.css">
+    <script src="/js/imageErrorHandler.js"></script>
+</head>
+
+<body>
+    <header>
+        <%- include('Layout/header') %>
+    </header>
+
+    <main>
+        <h2>Waraqa Blog</h2>
+
+        <div class="recent-posts-container">
+            <!-- Section for the most recent post -->
+            <% if (posts.length > 0) { const firstPost = posts[0]; %>
+            <section class="most-recent-section">
+                <div class="recent-post-box most-recent">
+                    <div class="img-container">
+                        <img src="/thumbnails/<%= firstPost.thumbnail %>" alt="Post Thumbnail" 
+                             onerror="this.src='/images/default-image.png'" class="post-thumbnail">
+                    </div>
+                    <a href="/posts/<%= firstPost.slug %>" class="link-card">
+                        <div class="post-info">
+                            <h3 title="<%= firstPost.title %>"><%= firstPost.title %></h3>
+                            <p><%= firstPost.author %></p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+            <% } %>
+
+            <!-- Section for the next 3 most recent posts -->
+            <div class="next-recent-section">
+                <% for (let i = 1; i < Math.min(4, posts.length); i++) { 
+                    const post = posts[i]; %>
+                <div class="recent-post-box next-posts">
+                    <a href="/posts/<%= post.slug %>" class="link-card">
+                        <div class="img-container">
+                            <img src="/thumbnails/<%= post.thumbnail %>" alt="Post Thumbnail" 
+                                 onerror="this.src='/images/default-image.png'" class="post-thumbnail">
+                        </div>
+                        <div class="post-info">
+                            <h3 title="<%= post.title %>"><%= post.title %></h3>
+                            <p><%= post.author %></p>
+                        </div>
+                    </a>
+                </div>
+                <% } %>
+            </div>
+
+            <!-- Section for the remaining posts -->
+            <div class="remaining-posts">
+                <% for (let i = 4; i < posts.length; i++) { 
+                    const post = posts[i]; %>
+                <div class="recent-post-box">
+                    <a href="/posts/<%= post.slug %>" class="link-card">
+                        <div class="img-container">
+                            <img src="/thumbnails/<%= post.thumbnail %>" alt="Post Thumbnail" 
+                                 onerror="this.src='/images/default-image.png'" class="post-thumbnail">
+                        </div>
+                        <div class="post-info">
+                            <h3 title="<%= post.title %>"><%= post.title %></h3>
+                            <p><%= post.author %></p>
+                        </div>
+                    </a>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </main>
+
+    <% if (totalPages > 1) { %>
+    <div class="pagination">
+        <% if (currentPage > 1) { %>
+        <a href="/blog?page=<%= currentPage - 1 %>" class="page-link">Previous</a>
+        <% } %>
+        <% for (let i = 1; i <= totalPages; i++) { %>
+        <a href="/blog?page=<%= i %>" class="page-link <%= i === currentPage ? 'active' : '' %>"><%= i %></a>
+        <% } %>
+        <% if (currentPage < totalPages) { %>
+        <a href="/blog?page=<%= currentPage + 1 %>" class="page-link">Next</a>
+        <% } %>
+    </div>
+    <% } %>
+
+    <footer>
+        <%- include('Layout/footer') %>
+    </footer>
+</body>
+
+</html>

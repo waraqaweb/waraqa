@@ -1,0 +1,191 @@
+main {
+    padding-top: 8rem;
+    margin: 0 7rem;
+}
+
+/* Container for the recent posts section */
+.recent-posts-container {
+    margin: 20px auto;
+    max-width: 90rem;
+    text-align: center;
+}
+
+/* Section for the most recent post */
+.most-recent-section {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.recent-post-box.most-recent {
+    width: 100%;
+    max-width: 1200px;
+    height: 50vh;
+    border-radius: 8px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.most-recent-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Section for the next 3 posts */
+.next-recent-section {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+.next-recent-section .recent-post-box {
+    flex: 1;
+    max-width: 30%;
+    margin: 0 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.next-recent-section img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Section for remaining posts */
+.remaining-posts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.remaining-posts .recent-post-box {
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.remaining-posts img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* Post info styles */
+.post-info {
+    padding: 0.5rem;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.post-info h3 {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.post-info p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Pagination styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.page-link {
+    margin: 0 5px;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.page-link:hover {
+    background-color: #f0f0f0;
+}
+
+.page-link.active {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Tablet and below (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .next-recent-section {
+        flex-direction: column; /* Stack next posts vertically */
+        align-items: center; /* Center the posts */
+    }
+
+    .next-recent-section .recent-post-box {
+        max-width: 90%; /* Allow cards to take up more space */
+        margin: 10px 0;
+    }
+
+    .remaining-posts {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for remaining posts */
+    }
+}
+
+/* Mobile and smaller tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    .most-recent-section {
+        flex-direction: column; /* Stack the most recent section vertically */
+    }
+
+    .next-recent-section {
+        flex-direction: column; /* Stack next posts vertically */
+        align-items: center; /* Center the posts */
+    }
+
+    .next-recent-section .recent-post-box {
+        max-width: 90%; /* Make cards take up more width */
+        margin: 10px 0;
+    }
+
+    .remaining-posts {
+        grid-template-columns: 1fr; /* 1 column for remaining posts */
+    }
+
+    .recent-posts-container {
+        margin: 10px 0; /* Reduce margin for smaller screens */
+        padding: 0 20px;
+    }
+}
+
+/* Small screens (max-width: 480px) */
+@media (max-width: 480px) {
+    main{
+        margin:0%;
+
+    }
+    .most-recent-section img,
+    .next-recent-section img {
+        height: 100%; /* Allow images to scale to fit the container */
+    }
+
+    .post-info h3 {
+        font-size: 1rem; /* Smaller title text */
+    }
+
+    .post-info p {
+        font-size: 0.8rem; /* Smaller paragraph text */
+    }
+
+    .recent-post-box.most-recent {
+        height: 40vh; /* Make the most recent post shorter on small screens */
+    }
+    .recent-posts-container{
+        padding: 1%;
+    }
+}

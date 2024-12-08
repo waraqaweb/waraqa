@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Include the head template for shared meta and styles -->
+    <%- include('Layout/head') %>
+    <!-- Page-specific title -->
+    <title>Create New Post</title>
+    <!-- Custom CSS for Compose Page -->
+    <link rel="stylesheet" href="/css/compose.css">
+</head>
+
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <!-- Brand logo -->
+        <div class="logo"><a href="/">Waraqa</a></div>
+        <a href="/blog">Blog</a>
+        <a href="/compose">Compose</a>
+        <a href="/admin">Dashboard</a>
+        <a href="/logout"> Logout</a>
+    </nav>
+
+    <main class="compose-page">
+        <h1>Create New Post</h1>
+        <form action="/compose" method="post" enctype="multipart/form-data" class="compose-form">
+    
+            <!-- Input Fields -->
+            <div class="input-fields">
+                <!-- Post Title -->
+                <div class="input-container">
+                    <label for="postTitle">Post Title</label>
+                    <input type="text" id="postTitle" name="postTitle" placeholder="Enter the post title" required>
+                    <div class="char-counter" id="titleCounter">Characters: 0/60 (Remaining: 60)</div>
+                    <small class="hint" id="titleHint">
+                        <ul>
+                            <li>Descriptive, engaging language, relevant keywords, limit to 50–60 characters, capitalize major words</li>
+                            <b>Example:</b> "Why Learning Arabic Is Easier Than You Think"
+                        </ul>
+                    </small>
+                </div>
+            
+                <!-- Post Slug -->
+                <div class="input-container">
+                    <label for="postSlug">Post Slug (URL)</label>
+                    <input type="text" id="postSlug" name="postSlug" placeholder="Enter a URL-friendly post slug" required>
+                    <div class="char-counter" id="slugCounter">Characters: 0/60 (Remaining: 60)</div>
+                    <small class="hint" id="slugHint">
+                        <ul>
+                            <li>Simple, relevant, focusing on keywords, avoiding stop words.</li>
+                            <b>Could be shorter than the Title</b>
+                        </ul>
+                    </small>
+                </div>
+            
+                <div class="input-container">
+                    <label for="image">Post Thumbnail</label>
+                    <input type="file" id="image" name="image" accept="image/*">
+                    <!-- Image Preview -->
+                    <div id="imagePreviewContainer" style="display: none; margin-top: 8px;">
+                        <img id="imagePreview" src="" alt="Image Preview" style="max-width: 100px; max-height: 100px; border: 1px solid #ccc; border-radius: 4px;">
+                    </div>
+                </div>
+                
+            
+    
+            <!-- Toolbar and Content Area -->
+            <div class="editor-section">
+                
+                <div id="editor" aria-placeholder="Post Body"></div>
+                <textarea id="postBody" name="postBody" style="display: none;"></textarea>
+            </div>
+            <div id="editorWordCounter">Words: 0</div>
+            <!-- Action Buttons -->
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Publish</button>
+                <button type="reset" class="btn btn-secondary">Discard</button>
+            </div>
+
+        </form>
+    </main>
+        
+
+    <!-- Footer Section -->
+
+    <!-- Include Quill.js and custom scripts -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="/js/quillInit.js"></script>
+    <script src="/js/characterCounter.js"></script>
+    <script src="/js/image-preview.js"></script>
+    
+    <script>
+        // Initialize the Quill editor
+        const quill = new Quill('#editor', {
+            theme: 'snow',
+            placeholder: 'Write your post content here...',
+        });
+
+        // Sync Quill editor content with the hidden textarea
+        const postBody = document.getElementById('postBody');
+        quill.on('text-change', () => {
+            postBody.value = quill.root.innerHTML;
+        });
+    </script>
+    <script>
+        // Slug formatting function
+        function formatSlug(value) {
+            return value
+                .trim() // Remove leading/trailing spaces
+                .toLowerCase() // Convert to lowercase
+                .replace(/[^a-z0-9\s-]/g, "") // Remove special characters
+                .replace(/\s+/g, "-"); // Replace spaces with hyphens
+        }
+    
+        // Attach event listener to the slug input
+        const postSlugInput = document.getElementById("postSlug");
+        postSlugInput.addEventListener("input", (e) => {
+            e.target.value = formatSlug(e.target.value);
+        });
+    </script>
+</body>
+
+</html>

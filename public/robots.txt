@@ -1,0 +1,4 @@
+Sitemap: https://www.waraqaweb.com/sitemap.xml
+
+User-agent: *
+Allow: /

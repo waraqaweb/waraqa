@@ -1,0 +1,1430 @@
+/* Universal Styling and Resets */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+      user-select: none; /* Prevent text selection by default */
+      /*user-select: none;*/
+}
+
+html, body {
+    height: 100%;
+    color: #242424;
+    background-color: #E1DFDB;
+    scroll-behavior: smooth;
+    font-size: 18px; /* Slightly smaller font for a refined look */
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    
+}
+
+/* Container and Layout */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 10px 20px;
+}
+main{
+  margin-top: 7rem;
+  padding-top: 0rem;
+  flex: 1;
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------*/
+/* Text Scaling for Responsiveness */
+/* Universal Heading Styles */
+h1, h2, h3 {
+    text-align: center; /* Center align headings for consistency */
+    margin-bottom: 20px; /* Consistent bottom margin */
+}
+h1 {
+    font-size: 2.3rem; /* Default size for main sections */
+    font-weight: bold;
+  }
+  /* Main Page h1 (e.g., Banner or Hero Section) */
+.banner-content h1 {
+    color: #ffffff; /* Default color */
+    font-size: 3.5rem; /* Slightly larger for primary focus */
+    margin-bottom: 10px;
+    font-family: 'Merienda';
+}
+
+/* Universal h2 Styling */
+h2 {
+    font-size: 2.5rem; /* Default size for h2 */
+    margin-bottom: 20px;
+}
+
+/* Specific h2 Styles */
+.light-section h2 {
+    color: #333; /* Heading color for light section */
+}
+
+.dark-section h2 {
+    color: #fff !important; /* Heading color for dark section */
+}
+
+.post-box p,
+.post-box h2 {
+    font-size: 1.1rem; /* Smaller for post box */
+    color: var(--light-black);
+    padding: 0px 3px;
+    margin-top: -20px;
+    overflow: hidden;
+}
+
+/* Universal h3 Styling */
+h3 {
+    font-size: 1rem; /* Default size for h3 */
+}
+
+/* Specific h3 Styles */
+.info-item h3 {
+    margin-bottom: 10px;
+    color: var(--light-black);
+}
+
+.course-card h3 {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+p, input, label {
+    font-size: 1rem;
+}
+
+/* Responsive Image and Button Styling */
+img {
+    display: block;  
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Optional for rounded images */
+    margin-left: auto;
+    margin-right: auto;
+}
+/*---------------------------------------------------------------------------------------------------------------------------*/
+button {
+    padding: 10px 20px; /* Default padding for buttons */
+    font-size: 1rem; /* Default font size */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Default border radius */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    text-align: center; /* Center align text */
+}
+
+/* Default Button Styles */
+.btn-primary {
+    background-color: #f5b74b; /* Button background */
+    color: #fff; /* Button text color */
+}
+
+.btn-primary:hover {
+    background-color: #e0a848; /* Hover state */
+}
+
+/* Specific Button Styles */
+.edit-btn {
+    background-color: green; /* Edit button color */
+}
+
+.delete-btn {
+    background-color: red; /* Delete button color */
+}
+
+.submit-btn {
+    background-color: var(--uiclr); /* UI color */
+    color: white; /* Button text color */
+}
+
+.submit-btn:hover {
+    background-color: #007f6e; /* Darker shade on hover */
+}
+
+/* Evaluation Button */
+.btn-evaluation {
+    background-color: #f5b74b; /* Evaluation button color */
+    color: #fff; /* Button text color */
+}
+
+/* Login Button Styles */
+.lg-btn {
+    width: 40%; /* Width of login button */
+    height: 50px; /* Height of login button */
+    background-color: var(--uiclr); /* UI color */
+    color: white; /* White text */
+    margin-top: 2%; /* Top margin */
+    box-shadow: 1px 3px 10px rgb(178, 176, 176); /* Subtle shadow */
+}
+
+.lg-btn:hover {
+    background-color: #017763; /* Darker shade on hover */
+}
+
+/* Small Button Styles */
+.s-btn {
+    padding: 1% 3%; /* Padding */
+    border: 1px solid rgb(135, 134, 134); /* Border */
+    margin-left: 2%; /* Left margin */
+    background-color: transparent; /* Transparent background */
+    color: rgb(113, 111, 111); /* Gray text color */
+    font-weight: bold; /* Bold text */
+    font-size: 0.8rem; /* Font size */
+    transition: 0.15s; /* Transition for hover effects */
+}
+
+.s-btn:hover {
+    border: 1px solid var(--uiclr); /* Border color change on hover */
+    color: var(--uiclr); /* Text color change on hover */
+}
+
+/* Form Button Styles */
+.form-buttons-wrapper button {
+    width: 100%; /* Full width for buttons in form */
+}
+
+/* Control Buttons */
+.controls button {
+    background-color: #ccebe6; /* Background color for controls */
+}
+
+.controls button:hover {
+    background-color: var(--uiclr); /* Change background color on hover */
+    color: white; /* Change text color on hover */
+}
+
+/* Button Hover Effect */
+button:hover {
+    transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Reset and Submit Button Styles */
+.buttons input {
+    padding: 8px 20px; /* Padding for buttons */
+    margin-right: 20px; /* Margin to the right */
+    font-size: 1rem; /* Font size */
+    border-radius: 8px; /* Rounded corners */
+    border: none; /* Remove border */
+    color: white; /* Button text color */
+    transition: 0.3s; /* Smooth transition */
+}
+
+.buttons input[type="reset"] {
+    background-color: red; /* Reset button color */
+}
+
+.buttons input[type="submit"] {
+    background-color: #00af34c7; /* Submit button color */
+}
+
+.buttons input[type="reset"]:hover {
+    background-color: rgb(219, 1, 1); /* Darker shade on reset button hover */
+}
+
+.buttons input[type="submit"]:hover {
+    background-color: #00af34f6; /* Darker shade on submit button hover */
+}
+
+/* Additional Specific Styles */
+.reset-btn {
+    z-index: 5;
+    position: absolute;
+    left: 66%;
+    background-color: transparent; /* Transparent background */
+    color: rgb(178, 175, 175); /* Color for reset button */
+    font-size: 1rem; /* Font size */
+}
+
+/* Like Button Styles */
+.like-button {
+    margin-top: 2%; /* Margin for like button text */
+    color: var(--black); /* Color for like button text */
+    font-size: 1.3rem; /* Font size for like button text */
+}
+
+.like-button button {
+    margin-right: 5px; /* Margin for right side of like button */
+    font-size: 1.3rem; /* Font size for like button */
+    text-shadow: 0px 0px 1px black; /* Text shadow for visibility */
+    background-color: transparent; /* Transparent background for like button */
+    transition: .15s; /* Quick transition effect for like button */
+}
+
+/* Content Section */
+.content-section {
+    margin: 3% 0;
+    line-height: 30px; /* Line height for readability */
+    text-justify: distribute-all-lines; /* Justify text */
+    width: 100%; /* Full width */
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Edit Profile Button */
+.edit-profile-container {
+    width: 100%; /* Full width */
+    display: flex; /* Flexbox layout */
+    justify-content: center; /* Center items */
+    padding: 20px 0; /* Vertical padding */
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------*/
+  /* Light Section */
+.light-section {
+    background-color: #f4f4f4; /* Light background */
+    color: #242424; /* Dark text */
+    padding: 50px 0;
+    text-align: left;
+}
+
+
+
+.light-section p {
+    color: #000000; /* Paragraph color for light section */
+}
+
+/* Dark Section */
+.dark-section {
+    background-color: #E1DFDB !important; /* Ensure dark background */
+    color: #fff !important; /* Light text */
+    padding: 50px 0;
+    text-align: left;
+    z-index: 10; /* Ensure dark section is on top */
+}
+
+.dark-section p {
+    color: #000000 !important; /* Paragraph color for dark section */
+}
+/*---------------------------------------------------------------------------------------------------------------------------*/
+
+/* Hero Banner Section */
+.hero-banner {
+  background-image: url('/images/Alazhar_Mosque.jpg'); /* Corrected file name */
+  background-size: cover; /* Ensure background covers the entire section */
+  background-position: center; /* Center the background image */
+  height: 100vh; /* Full viewport height */
+  display: flex; /* Flexbox for centering content */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center; /* Center text */
+  position: relative; /* Position relative for overlay */
+  color: #fff; /* Default text color */
+  font-size: 1.3rem; /* Default font size for main text */
+}
+
+/* Split Layout for Banner Content */
+.banner-split {
+  display: flex; /* Flexbox for horizontal layout */
+  width: 100%; /* Full width of the banner */
+  height: 100%; /* Full height of the banner */
+}
+
+/* Left Section (1.8/5) */
+.banner-message {
+  flex: 0.5; /* Decides that this section takes 1.8/5 of the banner's width */
+  display: flex; /* Enables Flexbox for layout */
+  align-items: center; /* Vertically center the content */
+  justify-content: flex-start; /* Align content to the start (left side) */
+  text-align: left; /* Align text inside the element to the left */
+  padding: 1.5rem; /* Add some spacing around the content */
+  color: #ffffff; /* White text for visibility */
+  font-size: 4.5rem; /* Large text for emphasis */
+  font-weight: 800; /* Extra-bold text for readability */
+  background-color: rgba(77, 65, 39, 0.534); /* Optional: Add a dark background */
+  font-family: 'Playfair Display', serif; /* Attractive and modern serif font */
+  letter-spacing: 0.05em; /* Slight spacing for elegance */
+  word-spacing: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    /* Animation */
+    animation: slideInFromLeft 1s ease-out; /* 1-second animation */
+}
+
+/* Keyframes for Slide-In Animation */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%); /* Start off-screen on the left */
+    opacity: 0; /* Fully transparent */
+  }
+  100% {
+    transform: translateX(0); /* End at original position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+/* Right Section (2/3) */
+.banner-content {
+  flex: 5; /* Decides that this section takes 2/3 of the banner's width */
+  position: relative; /* Position content above the overlay */
+  z-index: 1; /* Bring content above overlay */
+  display: flex; /* Flexbox for centering */
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  text-align: center; /* Center text */
+  padding: 2rem; /* Add spacing */
+}
+
+/* Dark Overlay for Better Text Visibility */
+.hero-banner::before {
+  content: "";
+  position: absolute; /* Position overlay absolutely */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+}
+
+/* Banner Paragraph */
+.banner-content p {
+  font-size: 1.2rem; /* Larger font size for emphasis */
+  margin: 3rem; /* Add spacing around paragraph */
+}
+
+/* Call-to-Action Button */
+.calltoaction {
+  background-color: #FFFFFF;
+  color: #212121;
+  border-radius: 50px;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .hero-banner {
+      font-size: 1.2rem; /* Adjust font size for smaller screens */
+  }
+
+  .banner-content p {
+      font-size: 1.5rem; /* Adjust paragraph size for smaller screens */
+  }
+
+  .banner-message {
+      display: none;
+  }
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------*/
+/* Base Section Styles */
+.section {
+    padding: 50px 0; /* Default padding for sections */
+    text-align: center; /* Centered text alignment */
+}
+
+/* Light Section */
+.light-section {
+    background-color: #f4f4f4; /* Light background */
+    color: #333; /* Dark text */
+}
+
+/* Light Section Paragraph */
+.light-section p {
+    color: #555; /* Paragraph color for light section */
+}
+
+/* Dark Section */
+.dark-section {
+    background-color: #E1DFDB !important; /* Dark background */
+    color: #fff !important; /* Light text */
+    z-index: 10; /* Ensure dark section is on top */
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .section {
+        padding: 30px 0; /* Reduce padding for mobile */
+    }
+}
+/* Main section styling */
+.main-section {
+    width: 70%;                        /* Width of the main section */
+    padding: 0 5%;                     /* Horizontal padding */
+    height: 88vh;                     /* Height of the section */
+    overflow-y: scroll;                /* Enable vertical scrolling */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    border-radius: 8px;                /* Rounded corners */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+    transition: transform 0.3s;        /* Smooth scaling effect */
+  }
+  
+  /* Hover effect for the main section */
+  .main-section:hover {
+    transform: scale(1.02);            /* Slightly scale up on hover */
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    main {
+      flex-direction: column;           /* Stack elements vertically on smaller screens */
+    }
+  
+    .main-section {
+      width: 90%;                       /* Adjust width for smaller screens */
+      height: 80vh;                    /* Adjust height */
+    }
+  }
+/*---------------------------------------------------------------------------------------------------------------------------*/
+/* Footer Styles */
+.footer {
+    background-color: #222; /* Dark footer background */
+    color: #fff; /* White text */
+    padding: 20px; /* Padding around the footer */
+    text-align: center; /* Center text */
+    width: 100%; /* Full width */
+    position: relative; /* Position relative for footer */
+    margin-top: auto; /* Ensure footer stays at the bottom */
+}
+
+/* Footer Links */
+.footer a {
+    color: #f5b74b; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.footer a:hover {
+    text-decoration: underline; /* Underline on hover for better visibility */
+}
+
+/* Footer Paragraph Styles */
+.footer p {
+    margin: 0; /* Remove default margin */
+}
+
+/* Footer Content */
+.footer-content {
+    margin-top: 30px; /* Space above footer content */
+}
+
+.footer-content p {
+    margin: 10px 0; /* Vertical spacing for footer content */
+    font-weight: bold; /* Bold text for emphasis */
+}
+/* Content Area for Flexbox */
+.content {
+    flex-grow: 1; /* Allow content to grow */
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------*/
+/* Media Queries for Different Devices */
+
+/* Extra Large Screens (Desktops) */
+@media (min-width: 1600px) {
+    html { font-size: 18px; }
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.5rem; }
+    h3 { font-size: 2rem; }
+}
+
+/* Large Screens (Laptops, Desktops) */
+@media (min-width: 1200px) and (max-width: 1599px) {
+    html { font-size: 17px; }
+}
+
+/* Tablets and Medium-Sized Screens */
+@media (min-width: 768px) and (max-width: 1199px) {
+    html { font-size: 15px; }
+    .container { width: 95%; }
+}
+
+/* Large Mobile Devices (e.g., iPhone Plus, Small Tablets) */
+@media (min-width: 480px) and (max-width: 767px) {
+    html { font-size: 14px; }
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Small Mobile Devices (Phones, Small Phones) */
+@media (max-width: 479px) {
+    html { font-size: 12px; }
+    .container { width: 100%; padding: 5px; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    p, button, input, label { font-size: 0.9rem; }
+    button {
+        padding: 6px 12px;
+    }
+}
+/*---------------------------------------------------------------------------------------------------------------------------*/
+/* Navigation styles */
+nav {
+    background-color: var(--uiclr); /* Background color from root variable */
+    height: 70px;                   /* Height of nav */
+    width: 100%;                    /* Full width */
+    display: flex;                  /* Flexbox layout */
+    justify-content: space-between;  /* Space between items */
+    align-items: center;            /* Center items vertically */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+  }
+  
+  /* Logo styles */
+  .logo {
+    width: 10%;                     /* Width of logo */
+    font-size: 2rem;                /* Font size */
+    font-weight: bold;              /* Bold text */
+    color: rgb(223, 223, 223);      /* Light grey for logo */
+    margin-left: 10px;              /* Left margin */
+  }
+  
+  .logo img {
+    height: 40px;                   /* Logo image height */
+  }
+  
+  /* Navigation items */
+  .nav-items {
+    width: 30%;                     /* Width of nav items */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+  }
+  
+  .nav-items ul {
+    display: flex;                  /* Flexbox layout */
+    justify-content: space-around;  /* Space between items */
+    flex-direction: row;            /* Row layout */
+    list-style: none;               /* Remove list styling */
+    padding: 0;                     /* Remove padding */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+  }
+  
+  .nav-items ul li {
+    margin: 0 15px;                /* Spacing between items */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+  }
+  
+  .nav-items ul li a {
+    text-decoration: none;           /* Remove underline */
+    color: rgb(141, 132, 132);      /* Slightly grey text color */
+    font-size: 1.08rem;             /* Font size */
+    transition: color 0.3s;         /* Smooth transition for color */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+  }
+  
+  /* Hover effects */
+  .nav-items ul li a:hover {
+    color: rgb(255, 255, 255);      /* Change color on hover */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Optional glow effect */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column;       /* Stack items vertically on smaller screens */
+    }
+  
+    .nav-items ul {
+      flex-direction: column;       /* Stack nav items vertically */
+      align-items: center;          /* Center nav items */
+    }
+  
+    .nav-items ul li {
+      margin: 10px 0;              /* Vertical spacing for items */
+    }
+  }
+  
+/*---------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------------*/
+.search form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Space between form elements */
+  }
+  
+  #search {
+    position: absolute;
+    width: 35%;
+    height: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    padding: 0 15px;
+    font-size: 1rem;
+    color: var(--light-black);
+    background-color: rgb(248, 248, 248);
+    transition: all 0.3s ease;
+  }
+  
+  #search:hover,
+  #search:focus {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  
+  #search::placeholder {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    color: #888;
+  }
+  
+  #searchDiv {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35%;
+    background-color: rgb(248, 248, 248);
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  #search:focus + #searchDiv {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  #searchDiv p {
+    margin: 8px 0;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #searchDiv p:hover {
+    background-color: rgba(200, 200, 200, 0.2);
+  }
+  
+  #searchDiv p a {
+    text-decoration: none;
+    color: gray;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+  
+  #searchDiv p:hover a {
+    color: var(--light-black);
+  
+  }
+/*---------------------------------------------------------------------------------------------------------------------------*/
+/* Modal Background */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000; /* High stacking order */
+    top: 0;
+    left: 0;
+    width: 500vh;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px); /* Optional blur effect */
+    transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    width: 80%;
+    max-width: 60%; /* Set max width for better readability */
+    max-height: 70vh; /* Limit height for scrolling */
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    overflow-y: auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease; /* Fade-in animation */
+}
+
+/* Close Button */
+.close {
+    color: #999;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 90%;
+        max-width: 100%;
+        margin-top: 20%;
+        padding: 15px;
+    }
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------*/
+/* Post and file edit input fields*/
+/* Container for Edit and Posting */
+.edit-container {
+    width: 70%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 20px rgba(190, 190, 190, 0.5);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+  }
+  
+  .edit-container h1 {
+    color: var(--light-black);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Form Layout */
+  .forms-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+  }
+  
+  .forms-container div {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .forms-container input[type="text"],
+  .forms-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px;
+    border: 2px solid #c5c2c2;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .forms-container input[type="text"]:focus,
+  .forms-container textarea:focus {
+    border-color: var(--uiclr);
+    box-shadow: 0px 0px 8px rgba(0, 157, 131, 0.3);
+  }
+  
+  .forms-container label {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: rgb(84, 84, 84);
+    margin: 5px 2px;
+  }
+  
+  /* Custom File Input */
+  .custom-file-input {
+    margin: 1% 0;
+    width: 70%;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .custom-file-input::before {
+    content: "⬆️ Upload image";
+    display: inline-block;
+    background: rgba(0, 157, 131, 0.3);
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #333;
+    transition: background 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .custom-file-input:hover::before {
+    border-color: #333;
+    background-color: rgba(0, 157, 131, 0.5);
+  }
+  
+  /* Link Card */
+  .link-card {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    transition: color 0.2s ease;
+  }
+  
+  .link-card:hover {
+    color: #00796b;
+  }
+  
+  /* Middle Button for Popup Links */
+  .middle a {
+    background-color: white;
+    padding: 10px 15px;
+    position: relative;
+    top: 20px;
+    left: 70px;
+    opacity: 0;
+    transition: opacity 1s ease;
+    text-decoration: none;
+    color: white;
+    border-radius: 2px;
+  }
+  
+  .middle:hover a {
+    opacity: 1;
+  }
+  
+  /* Image Container */
+  .img-container {
+    height: 80%;
+    padding: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .img-container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .img-container div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .img-container div img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.5s ease;
+  }
+  
+  .img-container div:hover img {
+    transform: scale(1.05); /* Slight zoom effect */
+  }
+  
+  /* Date/Time Label */
+  .days {
+    margin: 10px;
+    text-align: end;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #575555;
+  }
+  
+  
+/*---------------------------------------------------------------------------------------------------------------------------*/
+/* Contact Us Page */
+/* General Contact Section Styling */
+
+.contact-section {
+  padding: 50px 0;
+  color: rgb(95, 95, 95);
+  text-align: center;
+}
+
+.contact-info {
+  text-align: center;
+  color: #242424;
+}
+
+.contact-info p {
+  margin-bottom: 40px;
+  font-size: 1.2rem;
+  color: gray;
+  transition: color 0.3s ease;
+}
+
+.contact-info p:hover {
+  color: #555; /* Slightly darker on hover */
+}
+  
+/* Info Grid */
+.info-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.info-item {
+  text-align: center;
+  flex-basis: 200px;
+  transition: transform 0.3s ease;
+}
+
+.info-item:hover {
+  transform: scale(1.05); /* Subtle zoom on hover */
+}
+
+.info-item i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #00796b; /* Primary UI color */
+}
+
+/* Social Links */
+.social-links a {
+  margin: 0 10px;
+  font-size: 1.5rem;
+  color: #00796b;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #00574b; /* Darker shade on hover */
+  transform: scale(1.1); /* Slight zoom */
+}
+
+/* Map Container */
+.map-container {
+  margin-top: 50px;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 450px;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.map-container iframe:hover {
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------*/
+/* Thumbnail Container */
+.thumbnail {
+    flex: 1;
+    max-width: 40%; /* Adjusts width of the image container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+  }
+  
+  /* Thumbnail Image */
+  .thumbnail img {
+    width: 100%; /* Responsive width by default */
+    max-width: 80%; /* Two-thirds of text content width */
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 1rem;
+  }
+  
+  /* Hover Effects */
+  .thumbnail:hover img {
+    transform: scale(1.05); /* Subtle zoom effect */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+/*---------------------------------------------------------------------------------------------------------------------------*/
+/* About Section Styling */
+  .about-section {
+  padding: 30px 0;
+  text-align: center; /* Center-aligns the title */
+  }
+  .about-section h2 {
+    margin-bottom: 20px; /* Space between the title and benefits */
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Merienda';
+    
+  }
+  .about-content {
+    display: flex; /* This ensures the image and text are side by side */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .about-text {
+    flex: 1;
+    padding-left: 20px;
+  }
+ 
+  .about-text p {
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+  }
+
+  .header-content {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .header-content p {
+    font-size: 1.5rem;
+  }
+  
+  .alazhar-logo {
+    width: 150px;
+    height: 250px;
+  }
+/*---------------------------------------------------------------------------------------------------------------------------*/
+.courses-section {
+  background-color: #333;
+  color: #fff;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.courses-section h2 {
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+  font-family: 'Merienda';
+  text-wrap: nowrap;
+}
+
+/* Courses Container */
+.courses-container {
+  display: flex;
+  flex-wrap: wrap; /* Ensures the items wrap when the screen gets smaller */
+  justify-content: center; /* Centers cards in the container */
+  gap: 20px; /* Space around each card */
+  max-width: 1200px; /* Sets a max-width for centering */
+  margin: 0 auto; /* Centers the container */
+}
+
+/* Course Card */
+.course-card-link {
+  text-decoration: none;
+  color: inherit;
+  flex: 1 1 calc(27% - 40px); /* Responsive card width */
+  max-width: 27%;
+  box-sizing: border-box;
+}
+
+.course-card {
+  background-color: #444;
+  padding: 15px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
+  
+}
+
+/* Image inside the card */
+.course-card img {
+  width: 100%;
+  max-height: 10rem;
+  border-radius: 8px;
+}
+
+/* Card Hover Effect */
+.course-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  
+}
+
+.course-card-link:hover,
+.course-card {
+  color: #fff;
+  text-decoration: none;
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------*/
+/* Why Choose Waraqa Section */
+.why-choose-section {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.why-choose-section h2 {
+  margin-bottom: 30px; /* Space between the title and benefits */
+  font-weight: bold;
+  color: #333;
+  font-family: 'Merienda';
+}
+
+.benefits-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 100%;
+}
+.benefit h3{
+  text-wrap: nowrap;
+}
+
+.benefit {
+  flex: 1 1 300px;
+  padding: 10px;
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
+}
+.benefit:hover{
+  transform: translateY(-10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 5%;  
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------*/
+/* Profile Page Styles */
+.profile-page {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Profile Section */
+.profile {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-picture img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-details h1 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.bio {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.website-link {
+  font-size: 0.9rem;
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.profile-stats div {
+  text-align: center;
+}
+
+/* Contact Section */
+.contact {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.contact h2 {
+  margin-bottom: 10px;
+}
+
+.contact-info p {
+  margin: 5px 0;
+}
+
+.social-links a {
+  font-size: 1.5rem;
+  margin-right: 10px;
+  color: #007BFF;
+  text-decoration: none;
+}
+
+/* Recent Posts Section */
+.recent-posts .posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.post-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+}
+
+.post-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.post-content {
+  padding: 5px 25px;
+}
+
+dl, ol, ul {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding: 0px 40px;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background: #007BFF;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------------------------------------------*/
+
+/* Header styles */
+header {
+  background: #333;         /* Dark background */
+  color: #fff;              /* White text */
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+}
+
+    /* Custom Styling */
+    .navbar { padding: 1rem 2rem; background-color: #f8f9fa; }
+    .navbar-brand { font-size: 1.5rem; font-weight: bold; }
+    .nav-item { margin-left: 1rem; }
+    .navbar-collapse {
+      background-color: white;
+    }
+  
+    /* Adjusting dropdown and submenu styles */
+    .dropdown-menu {
+        display: none; /* Hide all dropdowns initially */
+        position: absolute;
+        z-index: 1000;
+        min-width: 200px; /* Ensure a minimum width for dropdowns */
+    }
+    
+    /* Show dropdown on hover */
+    .dropdown:hover > .dropdown-menu {
+        display: block; /* Show main dropdown */
+    }
+  
+    /* Adjust submenu positioning */
+    .dropdown-submenu {
+        position: relative;
+    }
+  
+    .dropdown-submenu .dropdown-menu {
+        top: 0;
+        left: 100%; /* Position submenu to the right of its parent */
+        margin-top: -1px; /* Fine-tuning vertical alignment */
+        z-index: 1001; /* Higher z-index to prevent overlap issues */
+    }
+  
+    /* Show submenu on hover for that specific item only */
+    .dropdown-submenu:hover > .dropdown-menu {
+        display: block; /* Show only the submenu for the hovered item */
+    }
+  
+    /* Link styling for parent items with subitems */
+    .dropdown-submenu > .dropdown-item {
+        display: flex; /* Use flexbox to align items */
+        justify-content: space-between; /* Space between text and arrow */
+        align-items: center; /* Center items vertically */
+        padding: 0.5rem 1rem; /* Padding for the dropdown item */
+        color: black; /* Text color */
+    }
+  
+    /* Modern arrow indicator only for parent items with subitems */
+    .dropdown-submenu > .dropdown-item:after {
+        content: '';
+        display: inline-block;
+        width: 0; /* No width needed */
+        height: 0; /* No height needed */
+        margin-left: 0.25rem; /* Spacing between text and arrow */
+        border-top: 5px solid transparent; /* Top part of the arrow */
+        border-bottom: 5px solid transparent; /* Bottom part of the arrow */
+        border-left: 5px solid gray; /* Left part of the arrow (color can be adjusted) */
+    }
+  
+    /* Highlighting hovered dropdown items */
+    .dropdown-item:hover {
+        background-color: #ddd;
+        color: black;
+    }
+  
+    /* Ensure proper z-index and prevent overlap */
+    .navbar-nav .dropdown-menu {
+        z-index: 1000;
+    }
+    .top-line {
+    background-color: #7e745e;
+    color: white;
+    padding: 15px;
+    text-align: center;
+  }
+  .top-line a {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 5px 10px;
+    margin: 0 !important;
+
+  }
+  a:hover{
+    text-decoration: none;
+  }

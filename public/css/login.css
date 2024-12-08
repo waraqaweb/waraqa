@@ -1,0 +1,128 @@
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #E1DFDB;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        main{
+            margin: 5rem;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Tabs Styling */
+        .tab-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            background-color: #f4f7f9;
+            border-radius: 30px;
+            padding: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-link {
+            flex: 1;
+            padding: 10px 20px;
+            border: none;
+            background-color: #e0e4e8;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            color: #333;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tab-link.active {
+            background-color: #008cba;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 140, 186, 0.4);
+        }
+
+        .tab-link:hover {
+            background-color: #007ba7;
+            color: white;
+        }
+
+        /* Form Content */
+        .form-container {
+            margin-bottom: 15px;
+        }
+
+        input[type="email"], input[type="password"], input[type="text"], input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="tel"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus {
+            border-color: #008CBA; /* Change border color on focus */
+            outline: none;
+        }
+
+        input.lg-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #008cba;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input.lg-btn:hover {
+            background-color: #007ba7;
+        }
+
+        .s-text {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .link-btn {
+            background: none;
+            border: none;
+            color: #008cba;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .link-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Responsive Styles */
+        @media only screen and (max-width: 600px) {
+            .login-container {
+                width: 90vw;
+                height: auto;
+            }
+        }

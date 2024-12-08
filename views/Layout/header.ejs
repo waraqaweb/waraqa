@@ -1,0 +1,97 @@
+<script src="/js/bootstrapScripts.js"></script>
+<!-- Head Content (Bootstrap & Custom CSS) -->
+<link rel="stylesheet" href="/css/index.css"> <!-- Link to your custom CSS -->
+<div class="top-line">
+  <div>Unlock your learning potential. <a href="/book-evaluation">Book Your Free Evaluation</a></div>
+</div>
+<!-- Header Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Waraqa</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Courses</a>
+        <div class="dropdown-menu" aria-labelledby="coursesDropdown">
+          <!-- Quran Recitation -->
+          <div class="dropdown-submenu">
+            <a class="dropdown-item" href="/courses/quran-recitation">Quran Recitation</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/courses/quran-recitation/foundation-level">Foundation Level</a>
+              <a class="dropdown-item" href="/courses/quran-recitation/pre-reading-level">Pre-reading Level</a>
+              <a class="dropdown-item" href="/courses/quran-recitation/tajweed-basics">Tajweed Basics</a>
+              <a class="dropdown-item" href="/courses/quran-recitation/tajweed-intermediate">Tajweed Intermediate</a>
+              <a class="dropdown-item" href="/courses/quran-recitation/qari-level">Qari Level</a>
+              <a class="dropdown-item" href="/courses/quran-recitation/khatmah-program">Khatmah Program</a>
+            </div>
+          </div>
+          <!-- Quran Memorization -->
+          <div class="dropdown-submenu">
+            <a class="dropdown-item" href="/courses/quran-memorization">Quran Memorization</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/courses/quran-memorization/short-surahs">Short Surahs</a>
+              <a class="dropdown-item" href="/courses/quran-memorization/one-juz">One Juz</a>
+              <a class="dropdown-item" href="/courses/quran-memorization/hafez-program">Hafez Program</a>
+              <a class="dropdown-item" href="/courses/quran-memorization/ijazah-program">Ijazah Program</a>
+            </div>
+          </div>
+          <!-- Arabic Language -->
+          <div class="dropdown-submenu">
+            <a class="dropdown-item" href="/courses/arabic-language">Arabic Language</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/courses/arabic-language/arabic-basics">Arabic Basics</a>
+              <a class="dropdown-item" href="/courses/arabic-language/intermediate-arabic">Intermediate Arabic</a>
+              <a class="dropdown-item" href="/courses/arabic-language/upper-intermediate-arabic">Upper Intermediate Arabic</a>
+              <a class="dropdown-item" href="/courses/arabic-language/classical-arabic">Classical Arabic</a>
+            </div>
+          </div>
+          <!-- Islamic Studies -->
+          <div class="dropdown-submenu">
+            <a class="dropdown-item" href="/courses/islamic-studies">Islamic Studies</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/courses/islamic-studies/established-facts">Established Facts of Religion</a>
+              <a class="dropdown-item" href="/courses/islamic-studies/introduction-to-classical-books">Introduction to Classical Books</a>
+              <a class="dropdown-item" href="/courses/islamic-studies/advanced-islamic-studies">Advanced Islamic Studies</a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/pricing">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/contact">Contact Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog">Blog</a>
+      </li>
+    </ul>
+
+    <!-- User Profile Section -->
+    <ul class="navbar-nav">
+      
+      <% if (user === "admin") { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile/<%= user %>">My Profile</a>
+        </li>
+      <% } else { %>
+      <% } %>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+

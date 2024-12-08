@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Include the head template for common head content -->
+    <%- include('Layout/head') %>
+
+    <!-- Page-specific title -->
+    <title>Admin Dashboard</title>
+
+    <!-- Link to the custom admin CSS for styling -->
+    <link rel="stylesheet" href="/css/admin.css">
+
+    <!-- Include Quill.js library for the editor -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    <!-- Include custom JavaScript for tab toggling -->
+    <script src="/js/toggleTab.js"></script>
+
+    <!-- Include custom JavaScript for initializing the Quill editor -->
+    <script src="/js/quillInit.js"></script>
+
+    <!-- Include custom JavaScript for handling pagination -->
+    <script src="/js/pagination.js"></script>
+
+    <!-- Include custom JavaScript for handling fallback images -->
+    <script src="/js/imageErrorHandler.js"></script>
+    
+</head>
+
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <!-- Brand logo -->
+        <div class="logo"><a href="/">Waraqa</a></div>
+        <a href="/blog">Blog</a>
+        <a href="/compose">Compose</a>
+        <a href="/admin">Dashboard</a>
+        <a class="nav-link" href="/profile/<%= username %>">My Profile</a>
+        <a href="/logout"> Logout</a>
+    </nav>
+
+    <main>
+        <!-- Tabs Section -->
+        <div class="tabs">
+            <!-- Tab for managing posts -->
+            <button class="tab-btn active" id="posts-btn"> Manage Posts</button>
+
+            <!-- Tab for managing users -->
+            <button class="tab-btn" id="users-btn"> Manage Users</button>
+
+            <!-- Tab for viewing analytics -->
+            <button class="tab-btn" id="analytics-btn"> Analytics</button>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content-container">
+            <!-- Posts Tab Content -->
+            <section class="tab-content" id="posts">
+                <!-- Container for post cards -->
+                <div class="cards-container">
+                    <!-- Loop through posts in reverse order -->
+                    <% posts.reverse().forEach((post) => { %>
+                    <div class="card">
+                        <!-- Post thumbnail image -->
+                        <img 
+                            src="/thumbnails/<%= post.thumbnail %>" 
+                            alt="Post Thumbnail" 
+                            data-fallback="images/default-image.png" 
+                            class="post-thumbnail"
+                        >
+                        
+                        <!-- Post title -->
+                        <h2><%= post.title %></h2>
+
+                        <!-- Post author -->
+                        <p>By <%= post.author %></p>
+
+                        <!-- Edit and Delete buttons -->
+                        <div class="buttons">
+                            <a href="/update/<%= post._id %>" class="edit-btn">Edit</a>
+                            <a href="/delete/<%= post._id %>" class="delete-btn">Delete</a>
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+
+                <!-- Pagination controls for posts -->
+                <div class="pagination">
+                    <button class="prev-page-btn" data-section="posts">Prev</button>
+                    <button class="next-page-btn" data-section="posts">Next</button>
+                </div>
+            </section>
+
+            <!-- Users Tab Content -->
+            <section class="tab-content" id="users" style="display: none;">
+                <!-- Header for the users section -->
+                <h1>Users</h1>
+
+                <!-- Container for user cards -->
+                <div class="cards-container">
+                    <!-- Loop through profiles, excluding admins -->
+                    <% profiles.forEach(profile => { %>
+                    <% if (profile.type != 'admin') { %> <!-- Correct the condition to check for 'admin' -->
+                    <div class="card">
+                        <!-- User avatar -->
+                        <img src="/images/avatars/<%= profile.dp %>" alt="User Avatar"> <!-- Update to match correct dp key -->
+                        
+                        <!-- User name -->
+                        <h2><%= profile.username %> <%= profile.fullname %></h2> <!-- Use profile.username and profile.fullname -->
+
+                        <!-- Action buttons: Edit and Delete -->
+                        <div class="action-buttons">
+                            <!-- Edit Profile Button -->
+                            <a href="/editprofile/<%= profile._id %>" class="edit-btn">Edit</a>
+
+                            <!-- Delete Profile Button -->
+                            <a href="/removeuser/<%= profile._id %>" class="delete-btn">Delete</a> <!-- Correct the link to pass _id -->
+                        </div>
+                    </div>
+                    <% } %>
+                    <% }) %>
+                </div>
+
+                <!-- Pagination controls for users -->
+                <div class="pagination">
+                    <button class="prev-page-btn" data-section="users">Prev</button>
+                    <button class="next-page-btn" data-section="users">Next</button>
+                </div>
+            </section>
+
+
+            <!-- Analytics Tab Content -->
+            <section class="tab-content" id="analytics" style="display: none;">
+                <!-- Placeholder for analytics data -->
+                <h1>Analytics</h1>
+                <p>Analytics data and charts will go here.</p>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <!-- Include the footer template -->
+        <%- include('Layout/footer') %>
+    </footer>
+</body>
+</html>

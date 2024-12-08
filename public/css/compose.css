@@ -1,0 +1,311 @@
+.compose-page {
+    max-width: 100%;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+    margin-top: 0px;
+    max-width: 90%;
+    align-self: center;
+}
+
+/* General Form Styling */
+.compose-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Space between each section */
+}
+
+/* Flexbox container for input fields */
+.input-fields {
+    display: flex;
+    gap: 16px; /* Add spacing between elements */
+    flex-wrap: wrap; /* Allow wrapping if the screen is small */
+    text-align: center;
+}
+
+/* Individual input containers */
+.input-container {
+    flex: 1; /* Allow each element to take equal width */
+    min-width: 200px; /* Ensure a minimum size for smaller screens */
+    position: relative; /* For hint positioning */
+}
+
+/* Labels and inputs */
+.input-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+.input-container input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px rgb(9 9 9 / 10%);
+}
+
+.compose-form input,
+.compose-form textarea {
+    width: 100%; /* Ensure inputs are 100% of their column */
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box; /* Ensure proper sizing */
+    box-shadow: 0 5px 29px rgb(9 9 9 / 50%);
+
+}
+
+
+/* Tooltip Styling */
+.hint {
+    position: absolute; /* Removed from normal flow */
+    display: none; /* Initially hidden */
+    background: #fdfdfd;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 0.85rem;
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 250px;
+    z-index: 1000; /* Ensures tooltip is above other elements */
+}
+
+/* Position container for absolute tooltip */
+.input-container {
+    position: relative; /* Required for tooltip positioning */
+}
+
+/* Show tooltip on hover */
+.input-container:hover .hint {
+    display: block;
+    position-anchor: initial;
+}
+
+/* Tooltip Positioning */
+#titleHint {
+    bottom: 70%; /* Below the input field */
+    right: 0; /* Align with left edge of input */
+}
+
+#slugHint {
+    bottom: 70%; /* Below the input field */
+    right: 0; /* Align with left edge of input */
+    
+}
+
+/* Align hints below their associated fields */
+.hint ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+.hint b {
+    display: block;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+/* Styling for the character counter */
+.char-counter {
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: right;
+    color: #777;
+}
+/* Styling the file input */
+.compose-form input[type="file"] {
+    border: none; /* Remove border for file input */
+    height: 2.5rem;
+    padding: 0;
+}
+#editor {
+    min-height: 200px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.form-actions {
+    display: block;
+    gap: 10px;
+}
+
+.form-actions .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: #2f2f30;
+    color: white;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+.navbar {
+    padding: 1rem 2rem;
+    background-color: #7E745E;
+    
+}
+a {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: transparent;
+}
+a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+.hint {
+    display: none;
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 4px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 5px;
+    max-width: 300px;
+  }
+
+  /* Show the hint on hover */
+  input:hover + .hint {
+    display: block;
+  }
+.ql-font-arial { font-family: Arial, sans-serif; }
+.ql-font-georgia { font-family: Georgia, serif; }
+.ql-font-helvetica { font-family: Helvetica, sans-serif; }
+.ql-font-courier { font-family: Courier New, monospace; }
+.ql-font-comic { font-family: "Comic Sans MS", cursive; }
+.ql-font-impact { font-family: Impact, sans-serif; }
+.ql-font-times { font-family: "Times New Roman", Times, serif; }
+
+/* Make the toolbar sticky */
+.ql-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure it stays above other elements */
+    background-color: #f5f5f5; /* Light background for a professional look */
+    border-bottom: 1px solid #ddd; /* Add a subtle border */
+    padding: 10px 15px; /* Add some padding for spacing */
+}
+.ql-toolbar.ql-snow {
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    padding: 14px;
+    margin-top: 10px;
+    justify-self: center;
+
+}
+
+.ql-toolbar.ql-snow {
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    top: 2rem;
+    padding: 8px;
+    box-shadow:0 5px 29px rgb(9 9 9 / 50%);
+}
+
+#imagePreview {
+    display: block;
+    margin: auto;
+    border: 1px solid #ddd;
+    padding: 4px;
+    border-radius: 4px;
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover; /* Ensures the image fits nicely inside the container */
+}
+
+/* Style the editor container */
+#editor {
+    width: 90%; /* Make the editor wide, like a word editor */
+    max-width: 1200px; /* Prevent it from getting too wide */
+    margin: 20px auto; /* Center the editor on the page */
+    background: #ffffff; /* White background for better contrast */
+    padding: 15px; /* Add padding inside the editor */
+    border: 1px solid #ddd; /* Subtle border for structure */
+    border-radius: 5px; /* Slightly rounded corners for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    min-height: 500px; /* Ensure a minimum height */
+    overflow-y: auto; /* Add scroll if content overflows */
+}
+
+.editor-section {
+    display: block; /* Ensure it takes a full row */
+    width: 100%; /* Occupy full width */
+    margin-bottom: 8rem; /* Add space below the editor section */
+}
+
+.form-actions {
+    display: flex; /* Flex container for buttons */
+    gap: 10px; /* Add spacing between buttons */
+    width: 100%; /* Ensure it takes a full row */
+    justify-content: space-around;
+    padding: 10px 0 30px;
+}
+
+/* Add some space between toolbar and editor */
+.ql-container {
+    margin-top: 10px;
+}
+
+/* Style buttons in the toolbar */
+.ql-toolbar button {
+    margin: 0 5px; /* Add spacing between buttons */
+    padding: 5px 10px; /* Make buttons larger for easier clicks */
+    border: none; /* Remove default borders */
+    background: #ffffff; /* Button background matches editor */
+    transition: background-color 0.2s, box-shadow 0.2s;
+    border-radius: 4px; /* Rounded corners for buttons */
+}
+
+/* Hover effect for buttons */
+.ql-toolbar button:hover {
+    background-color: #f0f0f0; /* Light gray hover effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+}
+
+/* Focused or active buttons */
+.ql-toolbar button.ql-active {
+    background-color: #e0e0e0; /* Slightly darker gray for active state */
+    color: #333; /* Darker text for active state */
+    font-weight: bold;
+}
+
+/* Customize dropdowns */
+.ql-toolbar .ql-picker {
+    margin: 0 5px;
+}
+
+/* Ensure dropdowns align properly */
+.ql-toolbar .ql-picker-label {
+    padding: 5px;
+}
+
+/* Align dropdown content */
+.ql-toolbar .ql-picker-options {
+    border: 1px solid #ddd;
+    background: #ffffff;
+}
+
+/* Add spacing for the page layout */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; /* Ensure clean font */
+    background-color: #E6E6E6; /* Subtle background to contrast the editor */
+}
+.editorWordCounter{
+    text-align: center;
+    align-self: center;
+}

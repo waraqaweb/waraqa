@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Include the head template -->
+    <%- include('Layout/head') %>
+    <!-- Page-Specific Title -->
+    <title>Login</title>
+    <!-- Page-Specific Styles -->
+    <link rel="stylesheet" href="/css/login.css">
+
+</head>
+<body>
+    <main>
+        <div class="tab-buttons">
+            <button class="tab-link active" data-tab="login">Login</button>
+            <button class="tab-link" data-tab="register">Sign Up</button>
+        </div>
+
+        <div class="login-container">
+            <!-- Login Section -->
+            <div id="login" class="tab-content active">
+                <h1>Welcome to Waraqa!</h1>
+                <h2>Login to your account</h2>
+                <div class="form-container">
+                    <form action="/login" method="post">
+                        <label>Email</label>
+                        <input type="email" name="email" required>
+                        <label>Password</label>
+                        <input type="password" name="password" required>
+                        <input type="submit" value="Login" class="lg-btn">
+                    </form>
+                </div>
+                <p class="s-text">
+                    Don't have an account? 
+                    <button class="link-btn" data-tab="register">Sign Up</button>
+                </p>
+                
+            </div>
+
+            <!-- Sign-Up Section -->
+             <!-- Sign-Up Section -->
+             <div id="register" class="tab-content">
+                <h1>Welcome to Waraqa!</h1>
+                <h2>Register your account</h2>
+                <div class="form-container">
+                    <form action="/signup" method="post">
+                        <input type="text" name="firstName" required placeholder="First Name">
+                        <input type="text" name="lastName" required placeholder="Last Name">
+                        <input type="email" name="email" required placeholder="Email">
+                        <input type="password" name="password" required placeholder="Password">
+                        <input type="tel" name="phone" required placeholder="+xx (xxx) xxx xxxx">
+                        <input type="text" name="location" placeholder="City, State, Country" required>
+                        <input type="submit" value="Register" class="lg-btn">
+                    </form>
+                </div>
+                <p class="s-text">
+                    Don't have an account? 
+                    <button class="link-btn" data-tab="register">Sign Up</button>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/loginTab.js"></script>
+</body>
+</html>

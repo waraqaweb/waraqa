@@ -1,0 +1,58 @@
+<head>
+    <!-- Character encoding for the document -->
+    <meta charset="UTF-8">
+
+    <!-- Compatibility for older Internet Explorer versions -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Viewport settings for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title (dynamic for each page) -->
+    <title><%= pageTitle || "Waraqa - Knowledge. Wisdom. Peace." %></title>
+
+    <!-- Favicon for browser tab (replace path with your actual logo path) -->
+    <link rel="icon" href="/images/Logo.png" type="image/x-icon">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="<%= metaDescription || 'Learn Arabic, Quran, and Islamic Studies online with native speakers.' %>">
+    <meta name="keywords" content="<%= metaKeywords || 'Arabic, Quran, Islamic Studies, online learning, Waraqa' %>">
+    <meta name="author" content="Waraqa Team">
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="<%= pageTitle || 'Waraqa - Knowledge. Wisdom. Peace.' %>">
+    <meta property="og:description" content="<%= metaDescription || 'Learn Arabic, Quran, and Islamic Studies online with native speakers.' %>">
+    <meta property="og:image" content="<%= ogImage || '/images/Logo.png' %>">
+    <meta property="og:url" content="<%= ogUrl || 'https://www.waraqaweb.com' %>">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= pageTitle || 'Waraqa - Knowledge. Wisdom. Peace.' %>">
+    <meta name="twitter:description" content="<%= metaDescription || 'Learn Arabic, Quran, and Islamic Studies online with native speakers.' %>">
+    <meta name="twitter:image" content="<%= ogImage || '/images/Logo.png' %>">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+    
+    <!-- Link Quill.js CSS for the rich text editor -->
+    <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
+
+    <!-- Normalize CSS for cross-browser consistency -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/eabac940d1.js" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Merienda|Roboto:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Sans+MS&family=Arial&family=Georgia&family=Helvetica&family=Courier+New&family=Impact&family=Times+New+Roman&display=swap" rel="stylesheet">
+
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/eabac940d1.js" crossorigin="anonymous"></script>
+
+    <!-- Dynamic direction for RTL or LTR languages -->
+    <script src="/js/setDirection.js"></script>
+</head>
