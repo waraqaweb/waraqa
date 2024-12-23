@@ -766,10 +766,10 @@ app.get("/posts/:slug", async (req, res) => {
     // Render the "posts" view and pass the post data to it
     res.render("posts", { 
       pageTitle: `Posts - ${post.title} - Waraqa`,
-      metaDescription: post.title,
-      metaDescription: 'Read the latest post on Waraqa Blog: <%= post.title %>. Explore insights on Quranic studies, Islamic knowledge, and more. Written by <%= post.author %> on <%= new Date(post.date).toLocaleDateString() %>.',
-      metaKeywords: 'Waraqa blog, Quranic studies, Islamic knowledge, <%= post.title %>, <%= post.author %>, latest blog post, Islamic blog, online education, religious studies, recent posts, Waraqa articles',
+      metaDescription: `Read the latest post on Waraqa Blog: ${post.title}. Explore insights on Quranic studies, Islamic knowledge, and more. Written by ${post.author} on ${new Date(post.date).toLocaleDateString()}.`,
+      metaKeywords: `Waraqa blog, Quranic studies, Islamic knowledge, ${post.title}, ${post.author}, latest blog post, Islamic blog, online education, religious studies, recent posts, Waraqa articles`,
       ogUrl: `http://localhost:3000/posts/${slug}`,
+      ogImage: post.thumbnail ? `/thumbnails/${post.thumbnail}` : '/images/default-image.png', // Ensure ogImage is defined
       post,
       posts, // Pass recent posts
       user: req.session.username, 
