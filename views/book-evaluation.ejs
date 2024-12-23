@@ -72,11 +72,16 @@
       <script type="text/javascript" src="https://form.jotform.com/jsform/230323546168555"></script>
     </div>
   </main>
-
-  <!-- Include footer -->
-  <footer>
-    <%- include('Layout/footer') %>
-  </footer>
-
+  <script>
+    // Wait for the JotForm form to fully load
+    window.onload = function() {
+      // Select the JotForm footer by class and hide it
+      var jotformFooter = document.querySelector('.formFooter.f6');
+      if (jotformFooter) {
+        jotformFooter.style.display = 'none';
+      }
+    };
+  </script>
+  
 </body>
 </html>
