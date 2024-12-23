@@ -1,27 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <!-- Include the head template -->
-    <%- include('Layout/head') %>
-    <!-- Page-specific title -->
-     <title>Book Evaluation</title>
-     <link rel="stylesheet" href="/css/index.css">
-    <style>
-      .formFooter.f6 {
-        display: none;
-      }
-      .supernova{
-        padding-top: 7rem;
-      }
-    </style>
-</main>
-    <!-- Include header -->
-    <header>
-        <%- include('Layout/header') %>
-    </header>
-    <!-- Include Jotform -->
-    <script type="text/javascript" src="https://form.jotform.com/jsform/230323546168555"></script>
+  <!-- Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WB7DNKPL');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Include the head template -->
+  <%- include('Layout/head') %>
+  <!-- Page-specific title -->
+  <title>Book Evaluation Form</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Fill out our Book Evaluation form to share your thoughts and feedback about the book. Your feedback helps us improve our resources.">
+  <meta name="keywords" content="book evaluation, feedback form, book review, form, book feedback">
+  <meta name="author" content="Waraqah Academy">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Book Evaluation Form - Waraqah Academy">
+  <meta property="og:description" content="Submit your book evaluation form to share your feedback and help us improve our resources.">
+  <meta property="og:url" content="https://www.waraqahweb.com/book-evaluation">
+  <meta property="og:image" content="https://www.waraqahweb.com/images/og-book-evaluation.jpg">
+  
+  <!-- Link to CSS file -->
+  <link rel="stylesheet" href="/css/index.css">
+
+  <style>
+    /* Hide Jotform Footer */
+    .formFooter.f6 {
+      display: none !important;
+    }
+
+    /* Additional styling for the page */
+    main {
+      padding-top: 7rem;
+    }
+
+    /* Ensure form is responsive and properly aligned */
+    .book-evaluation-form {
+      margin: 0 auto;
+      max-width: 900px;
+      padding: 20px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB7DNKPL" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  
+  <!-- Include header -->
+  <header>
+    <%- include('Layout/header') %>
+  </header>
+
+  <!-- Main content section -->
+  <main>
+    <div class="book-evaluation-form">
+      <!-- Embed Jotform form -->
+      <script type="text/javascript" src="https://form.jotform.com/jsform/230323546168555"></script>
+    </div>
+  </main>
+
+  <!-- Include footer -->
+  <footer>
+    <%- include('Layout/footer') %>
+  </footer>
 
 </body>
 </html>
