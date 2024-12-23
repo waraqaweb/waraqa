@@ -9,7 +9,21 @@
     <!-- Page-Specific Styles -->
     <link rel="stylesheet" href="/css/posts.css">
     <script src="/js/imageErrorHandler.js"></script>
+    <style>
+        /* Ensures that images and videos inside .post-content are responsive */
+        .post-content img, .post-content video {
+        width: 100%; /* Makes the media take up the full width of the container */
+        max-width: 100%; /* Prevents the media from becoming too large */
+        height: auto; /* Maintains the aspect ratio */
+        display: block; /* Ensures media elements are block-level (no inline issues) */
+        margin: 0 auto; /* Centers the media in the container */
+        }
 
+        /* Optional: Set a specific max width for media */
+        .post-content img, .post-content video {
+        max-width: 800px; /* Optional: Maximum width of 800px */
+        }
+    </style>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
