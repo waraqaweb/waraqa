@@ -1,4 +1,9 @@
 Sitemap: https://www.waraqaweb.com/sitemap.xml
 
 User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /signup/
+Disallow: /dashboard/
+Disallow: /private/
 Allow: /
