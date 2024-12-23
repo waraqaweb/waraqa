@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /signup/
+Disallow: /dashboard/
+Disallow: /private/
+Disallow: /test/
+Allow: /
+
+Sitemap: https://www.waraqainc.com/sitemap.xml
