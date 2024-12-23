@@ -3,7 +3,7 @@
 
 <head>
     <!-- Include the head template -->
-    
+    <%- include('Layout/head') %>
     <!-- Page-Specific Title -->
     <title><%= post.title %> | My Blog</title>
     <!-- Page-Specific Styles -->
@@ -16,7 +16,9 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB7DNKPL"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    
+    <header>
+        <%- include('Layout/header') %>
+    </header>
         <main>
             <div class="content-wrapper">
                 <!-- Main Post Content -->
@@ -69,7 +71,7 @@
 
     <!-- Footer Section -->
     <footer>
-        
+        <%- include('Layout/footer') %>
     </footer>
     
 </body>
