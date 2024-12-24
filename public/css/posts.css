@@ -14,7 +14,9 @@
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
+.post-thumbnail{
+  max-height: 50vh;
+}
 .sidebar {
   width: 30%; /* Set the sidebar to take up 30% of the .content-wrapper width */
   height: 70vh;
