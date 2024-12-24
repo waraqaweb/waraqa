@@ -686,10 +686,10 @@ const getEjsFiles = (dir) => {
       "Layout/header.ejs", //Not important
       "Layout/head.ejs", //Not important
       "Layout/footer.ejs", //Not important
-      "courses/arabic-language/arabic-language", //Excluded because the directory is different
-      "courses/islamic-studies/islamic-studies", //Excluded because the directory is different
-      "courses/quran-memorization/quran-memorization", //Excluded because the directory is different
-      "courses/quran-recitation/quran-recitation", //Excluded because the directory is different
+      "courses/arabic-language", //Excluded because the directory is different
+      "courses/islamic-studies", //Excluded because the directory is different
+      "courses/quran-memorization", //Excluded because the directory is different
+      "courses/quran-recitation", //Excluded because the directory is different
     ];
     // Get all `.ejs` files, filter out excluded ones, and map to routes
     const ejsFiles = getEjsFiles(path.join(__dirname, "views")).filter((file) => {
