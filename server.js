@@ -628,6 +628,10 @@ app.get("/sitemap.xml", async (req, res) => {
       { loc: "pricing", priority: "0.7", changefreq: "monthly" }, // Pricing
       { loc: "contact", priority: "0.7", changefreq: "yearly" }, // Contact
       { loc: "book-evaluation", priority: "0.9", changefreq: "weekly" }, // Book Evaluation
+      { loc: "courses/arabic-language", priority: "0.5", changefreq: "monthly" }, //Arabic Language
+      { loc: "courses/islamic-studies", priority: "0.5", changefreq: "monthly" }, //Islamic Studies
+      { loc: "courses/quran-memorization", priority: "0.5", changefreq: "monthly" }, //Quran Memorization
+      { loc: "courses/quran-recitation", priority: "0.5", changefreq: "monthly" }, //Quran Recitation
     ];
     
 
@@ -667,21 +671,25 @@ const getEjsFiles = (dir) => {
 
     // Excluded pages that shouldn't appear in the sitemap
     const excludedPages = [
-      "profile.ejs",
-      "blog.ejs",
-      "about.ejs",
-      "pricing.ejs",
-      "contact.ejs",
-      "book-evaluation.ejs",
-      "posts.ejs",
-      "notfound.ejs",
-      "edit-profile.ejs",
-      "edit-post.ejs",
-      "dashboard.ejs",
-      "compose.ejs",
-      "Layout/header.ejs",
-      "Layout/head.ejs",
-      "Layout/footer.ejs",
+      "profile.ejs", //Not important
+      "blog.ejs", //to avoid duplication
+      "about.ejs", //to avoid duplication
+      "pricing.ejs", //to avoid duplication
+      "contact.ejs", //to avoid duplication
+      "book-evaluation.ejs", //to avoid duplication
+      "posts.ejs", //to avoid duplication
+      "notfound.ejs", //Not important
+      "edit-profile.ejs", //Not important
+      "edit-post.ejs", //Not important
+      "dashboard.ejs", //Not important
+      "compose.ejs", //Not important
+      "Layout/header.ejs", //Not important
+      "Layout/head.ejs", //Not important
+      "Layout/footer.ejs", //Not important
+      "courses/arabic-language/arabic-language", //Excluded because the directory is different
+      "courses/islamic-studies/islamic-studies", //Excluded because the directory is different
+      "courses/quran-memorization/quran-memorization", //Excluded because the directory is different
+      "courses/quran-recitation/quran-recitation", //Excluded because the directory is different
     ];
     // Get all `.ejs` files, filter out excluded ones, and map to routes
     const ejsFiles = getEjsFiles(path.join(__dirname, "views")).filter((file) => {
