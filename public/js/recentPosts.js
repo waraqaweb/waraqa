@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("animate");
-                observer.unobserve(entry.target); // Stop observing once animated
+                observer.unobserve(entry.target); // Stop observing after animation
             }
         });
-    }, { threshold: 0.1 }); // Trigger animation when 10% of element is in view
+    }, { threshold: 0.1 }); // Trigger animation when 10% of the element is in view
 
     recentPosts.forEach(post => observer.observe(post));
 });
