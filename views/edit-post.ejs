@@ -60,7 +60,7 @@
                 <label for="image">Post Thumbnail</label>
                 <input type="file" id="image" name="image">
                 <div>
-                    <img src="<%- post.imagePath %>" alt="Current Thumbnail" style="max-width: 100%; height: auto;">
+                    <img src="<%- post.imagePath %>" alt="Current Thumbnail" style="max-width: 100%; height: auto;" loading="lazy">
                 </div>
                 <p class="submit-button">
                     <input type="submit" value="Update">

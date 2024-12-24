@@ -33,7 +33,7 @@
         <section class="profile">
             <div class="profile-header">
                 <div class="profile-picture">
-                    <img src="/thumbnails/<%= userdata.dp || 'default-profile.png' %>" alt="Profile Picture" />
+                    <img src="/thumbnails/<%= userdata.dp || 'default-profile.png' %>" alt="Profile Picture" loading="lazy" />
                 </div>
                 <div class="profile-details">
                     <h1><%= userdata.fullname || 'User Name' %></h1>
@@ -86,7 +86,7 @@
             <div class="posts-grid">
                 <% posts.reverse().forEach((post) => { %>
                     <div class="post-card">
-                        <img src="/thumbnails/<%= post.thumbnail || 'default-post.png' %>" alt="Post Thumbnail" />
+                        <img src="/thumbnails/<%= post.thumbnail || 'default-post.png' %>" alt="Post Thumbnail" loading="lazy" />
                         <div class="post-content">
                             <h3><%= post.title %></h3>
                             <p><%= post.content %></p>

@@ -26,7 +26,7 @@
             <section class="most-recent-section">
                 <div class="recent-post-box most-recent">
                     <div class="img-container">
-                        <img src="/thumbnails/<%= firstPost.thumbnail %>" alt="Post Thumbnail" 
+                        <img src="/thumbnails/<%= firstPost.thumbnail %>" alt="Post Thumbnail"  loading="lazy"
                              onerror="this.src='/images/default-image.png'" class="post-thumbnail">
                     </div>
                     <a href="/posts/<%= firstPost.slug %>" class="link-card">
@@ -46,7 +46,7 @@
                 <div class="recent-post-box next-posts">
                     <a href="/posts/<%= post.slug %>" class="link-card">
                         <div class="img-container">
-                            <img src="/thumbnails/<%= post.thumbnail %>" alt="Post Thumbnail" 
+                            <img src="/thumbnails/<%= post.thumbnail %>" alt="Post Thumbnail"  loading="lazy"
                                  onerror="this.src='/images/default-image.png'" class="post-thumbnail">
                         </div>
                         <div class="post-info">
@@ -65,7 +65,7 @@
                 <div class="recent-post-box">
                     <a href="/posts/<%= post.slug %>" class="link-card">
                         <div class="img-container">
-                            <img src="/thumbnails/<%= post.thumbnail %>" alt="Post Thumbnail" 
+                            <img src="/thumbnails/<%= post.thumbnail %>" alt="Post Thumbnail"  loading="lazy"
                                  onerror="this.src='/images/default-image.png'" class="post-thumbnail">
                         </div>
                         <div class="post-info">

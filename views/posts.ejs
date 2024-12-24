@@ -1,77 +1,112 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <!-- Include the head template -->
     <%- include('Layout/head') %>
-    <!-- Page-Specific Title -->
     <title><%= post.title %> | My Blog</title>
-    <!-- Page-Specific Styles -->
     <link rel="stylesheet" href="/css/posts.css">
     <script src="/js/imageErrorHandler.js"></script>
 </head>
+
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB7DNKPL"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <header>
         <%- include('Layout/header') %>
     </header>
-        <main>
-            <div class="content-wrapper">
-                <!-- Main Post Content -->
-                <div class="post-content">
-                    <div class="post-image-container">
-                        <img 
-                            src="/thumbnails/<%= post.thumbnail %>" 
-                            alt="Post Thumbnail" 
-                            onerror="this.src='/images/default-image.png'" 
-                            class="post-thumbnail"
-                        >
-                    </div>
-                        <h1 class="post-title"><%- post.title %></h1>
-                        <p class="post-content"><%- post.content %></p>
-                        <p class="post-author">Written by: <%- post.author %></p>
-                        <p class="post-date">Date: <%- new Date(post.date).toLocaleDateString() %></p>
-                        <p class="post-likes">Likes: <%= post.like %></p>
-                    </div>
-        
-                <!-- Sidebar for Recent Posts -->
-                <aside class="sidebar">
-                    <h3>Recent Posts</h3>
-                    <div class="recent-posts">
-                        <% 
-                        const recentPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 10);
-                        recentPosts.forEach(post => {
-                        %>
-                        <div class="recent-post">
-                            <a href="/posts/<%= post.slug %>" class="recent-post-link">
-                                <div class="recent-post-thumbnail">
-                                    <img 
-                                        src="/thumbnails/<%= post.thumbnail %>" 
-                                        alt="Post Thumbnail" 
-                                        onerror="this.src='/images/default-image.png'" 
-                                        width="100" 
-                                        height="100"
-                                    >
-                                </div>
-                                <div class="recent-post-info">
-                                    <h4 class="recent-post-title"><%= post.title %></h4>
-                                </div>
-                            </a>
-                        </div>
-                        <% }); %>
-                    </div>
-                </aside>
-            </div>
-        </main>
-        
 
-    <!-- Footer Section -->
+    <main>
+        <div class="content-wrapper">
+            <div class="post-content">
+                <div class="post-image-container">
+                    <img 
+                        src="/thumbnails/<%= post.thumbnail %>" 
+                        alt="Post Thumbnail" 
+                        onerror="this.src='/images/default-image.png'" 
+                        class="post-thumbnail"
+                        loading="lazy"
+                    >
+                </div>
+                <h1 class="post-title"><%- post.title %></h1>
+                <div id="postContent" class="post-content">
+                    <%- post.content %>
+                </div>
+                <p class="post-author">Written by: <%- post.author %></p>
+                <p class="post-date">Date: <%- new Date(post.date).toLocaleDateString() %></p>
+                <p class="post-likes">Likes: <%= post.like %></p>
+            </div>
+            
+            <!-- Sidebar for Recent Posts -->
+            <aside class="sidebar">
+                <h3>Recent Posts</h3>
+                <div class="recent-posts">
+                    <% 
+                    const recentPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 10);
+                    recentPosts.forEach(post => {
+                    %>
+                    <div class="recent-post">
+                        <a href="/posts/<%= post.slug %>" class="recent-post-link">
+                            <div class="recent-post-thumbnail">
+                                <img 
+                                    src="/thumbnails/<%= post.thumbnail %>" 
+                                    alt="Post Thumbnail" 
+                                    onerror="this.src='/images/default-image.png'" 
+                                    width="100" 
+                                    height="100"
+                                    loading="lazy"
+                                >
+                            </div>
+                            <div class="recent-post-info">
+                                <h4 class="recent-post-title"><%= post.title %></h4>
+                            </div>
+                        </a>
+                    </div>
+                    <% }); %>
+                </div>
+            </aside>
+        </div>
+    </main>
+
     <footer>
         <%- include('Layout/footer') %>
     </footer>
-    
+
+    <script>
+        // Lazy loading for images and videos in post content
+        document.addEventListener("DOMContentLoaded", function() {
+            // Lazy load images
+            const images = document.querySelectorAll('#postContent img');
+            images.forEach(img => {
+                const src = img.src;
+                img.setAttribute('data-src', src);
+                img.removeAttribute('src');
+                img.setAttribute('loading', 'lazy');
+            });
+
+            // Lazy load videos (if videos are added as <video> tags)
+            const videos = document.querySelectorAll('#postContent video');
+            videos.forEach(video => {
+                const videoSrc = video.src;
+                video.setAttribute('data-src', videoSrc);
+                video.removeAttribute('src');
+                video.setAttribute('loading', 'lazy');
+            });
+
+            // IntersectionObserver to load media when it comes into view
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.tagName === "IMG") {
+                            img.src = img.getAttribute('data-src');
+                        } else if (img.tagName === "VIDEO") {
+                            img.src = img.getAttribute('data-src');
+                        }
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => observer.observe(img));
+            videos.forEach(video => observer.observe(video));
+        });
+    </script>
 </body>
 </html>

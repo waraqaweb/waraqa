@@ -72,6 +72,7 @@
                             alt="Post Thumbnail" 
                             data-fallback="images/default-image.png" 
                             class="post-thumbnail"
+                            loading="lazy"
                         >
                         
                         <!-- Post title -->
@@ -108,7 +109,7 @@
                     <% if (profile.type != 'admin') { %> <!-- Correct the condition to check for 'admin' -->
                     <div class="card">
                         <!-- User avatar -->
-                        <img src="/images/avatars/<%= profile.dp %>" alt="User Avatar"> <!-- Update to match correct dp key -->
+                        <img src="/images/avatars/<%= profile.dp %>" alt="User Avatar" loading="lazy"> <!-- Update to match correct dp key -->
                         
                         <!-- User name -->
                         <h2><%= profile.username %> <%= profile.fullname %></h2> <!-- Use profile.username and profile.fullname -->
