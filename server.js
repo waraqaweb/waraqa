@@ -155,7 +155,8 @@ app.get("/logout", (req, res) => {
 app.get("/", async (req, res) => {
   console.log("GET request to '/'");
   try {
-    const posts = await PosT.find({}, 'title slug thumbnail date').sort({ date: -1 }).skip(skip).limit(limit).exec(); // Fetch all posts
+    const posts = await PosT.find().exec(); // Fetch all posts
+    const sortedPosts = await PosT.find().sort({ like: "desc" }).exec(); // Fetch posts sorted by likes
 
     // Render home page with posts and user data
     res.render("home", {
@@ -447,23 +448,17 @@ app.get('/contact', (req, res) => {
 
 // Blog Page
 app.get('/blog', async (req, res) => {
-  const cacheKey = 'posts-page-' + (parseInt(req.query.page) || 1);
-  if (cache[cacheKey]) {
-      return res.render('blog', cache[cacheKey]);
-  }
+  console.log("GET request to '/blog'");
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = 17; // Display up to 17 posts per page
     const skip = (page - 1) * limit;
 
     // Fetch posts for the current page
-    const posts = await PosT.find()
-    .select('title slug thumbnail date')  // Only fetch the needed fields
-    .sort({ date: -1 })
-    .skip(skip)
-    .limit(limit)
-    .exec();
+    const posts = await PosT.find().sort({ date: -1 }).skip(skip).limit(limit).exec();
     const totalPosts = await PosT.countDocuments(); // Count total posts for pagination
+
+    const sortedPosts = await PosT.find().sort({ like: -1 }).limit(5).exec(); // Top liked posts
 
     res.render('blog', {
       pageTitle: 'Blog - Waraqa',
@@ -478,11 +473,7 @@ app.get('/blog', async (req, res) => {
       date: Date.now(),
       currentPage: page,
       totalPages: Math.ceil(totalPosts / limit)
-    },
-    // Store the result in cache for 10 minutes
-    cache[cacheKey] = pageData;
-    setTimeout(() => delete cache[cacheKey], 600000);  // Cache expires in 10 minutes
-
+    });
     console.log("Blog page rendered successfully");
 
   } catch (err) {
@@ -766,7 +757,7 @@ app.get("/posts/:slug", async (req, res) => {
   try {
     // Find the post by its unique slug
     const post = await PosT.findOne({ slug });
-    const posts = await PosT.find({}, 'title slug thumbnail date').sort({ date: -1 }).skip(skip).limit(limit).exec(); // Fetch all posts for the sidebar
+    const posts = await PosT.find().sort({ date: -1 }); // Fetch all posts for the sidebar
 
     if (!post) {
       return res.send("<script>alert('Post not found');window.location.href = '/'</script>");
