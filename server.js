@@ -178,7 +178,7 @@ app.get("/", async (req, res) => {
 });
 
 // Route for Subjects Main pages
-app.get('/courses/quran-recitation', (req, res) => {
+app.get('/courses/quran-recitation/quran-recitation', (req, res) => {
   console.log("GET request to 'a subject page'");
   const user = req.user ? req.user.role : null;
   res.render('courses/quran-recitation/quran-recitation', { 
@@ -189,7 +189,7 @@ app.get('/courses/quran-recitation', (req, res) => {
     ogUrl: 'https://www.waraqaweb.com/courses/quran-recitation',
     user });
 });
-app.get('/courses/quran-memorization', (req, res) => {
+app.get('/courses/quran-memorization/quran-memorization', (req, res) => {
   console.log("GET request to 'a subject page'");
   const user = req.user ? req.user.role : null;
   res.render('courses/quran-memorization/quran-memorization', { 
@@ -200,7 +200,7 @@ app.get('/courses/quran-memorization', (req, res) => {
     ogUrl: 'https://www.waraqaweb.com/courses/quran-memorization',
     user });
 });
-app.get('/courses/arabic-language', (req, res) => {
+app.get('/courses/arabic-language/arabic-language', (req, res) => {
   console.log("GET request to 'a subject page'");
   const user = req.user ? req.user.role : null;
   res.render('courses/arabic-language/arabic-language', { 
@@ -211,7 +211,7 @@ app.get('/courses/arabic-language', (req, res) => {
     ogUrl: 'https://www.waraqaweb.com/courses/arabic-language',
     user });
 });
-app.get('/courses/islamic-studies', (req, res) => {
+app.get('/courses/islamic-studies/islamic-studies', (req, res) => {
   console.log("GET request to 'a subject page'");
   const user = req.user ? req.user.role : null;
   res.render('courses/islamic-studies/islamic-studies', { 
@@ -628,10 +628,6 @@ app.get("/sitemap.xml", async (req, res) => {
       { loc: "pricing", priority: "0.7", changefreq: "monthly" }, // Pricing
       { loc: "contact", priority: "0.7", changefreq: "yearly" }, // Contact
       { loc: "book-evaluation", priority: "0.9", changefreq: "weekly" }, // Book Evaluation
-      { loc: "courses/arabic-language", priority: "0.5", changefreq: "monthly" }, //Arabic Language
-      { loc: "courses/islamic-studies", priority: "0.5", changefreq: "monthly" }, //Islamic Studies
-      { loc: "courses/quran-memorization", priority: "0.5", changefreq: "monthly" }, //Quran Memorization
-      { loc: "courses/quran-recitation", priority: "0.5", changefreq: "monthly" }, //Quran Recitation
     ];
     
 
@@ -686,10 +682,6 @@ const getEjsFiles = (dir) => {
       "Layout/header.ejs", //Not important
       "Layout/head.ejs", //Not important
       "Layout/footer.ejs", //Not important
-      "courses/arabic-language", //Excluded because the directory is different
-      "courses/islamic-studies", //Excluded because the directory is different
-      "courses/quran-memorization", //Excluded because the directory is different
-      "courses/quran-recitation", //Excluded because the directory is different
     ];
     // Get all `.ejs` files, filter out excluded ones, and map to routes
     const ejsFiles = getEjsFiles(path.join(__dirname, "views")).filter((file) => {
