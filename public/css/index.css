@@ -45,8 +45,7 @@ h1, h2, h3 {
     margin-bottom: 20px; /* Consistent bottom margin */
 }
 h1 {
-    font-size: 2.3rem; /* Default size for main sections */
-    font-weight: bold;
+    font-size: 1.7rem; /* Default size for main sections */
   }
   /* Main Page h1 (e.g., Banner or Hero Section) */
 .banner-content h1 {
@@ -58,7 +57,7 @@ h1 {
 
 /* Universal h2 Styling */
 h2 {
-    font-size: 2.5rem; /* Default size for h2 */
+    font-size: 1.6rem; /* Default size for h2 */
     margin-bottom: 20px;
 }
 
@@ -82,7 +81,7 @@ h2 {
 
 /* Universal h3 Styling */
 h3 {
-    font-size: 1rem; /* Default size for h3 */
+    font-size: 1.2rem; /* Default size for h3 */
 }
 
 /* Specific h3 Styles */
