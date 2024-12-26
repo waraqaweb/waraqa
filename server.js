@@ -53,7 +53,10 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage }); // Creating an upload instance with defined storage
+const upload = multer({ 
+  storage: storage,
+  limits: { fileSize: 10 * 1024 * 1024 } // Limit set to 10MB
+}); // Creating an upload instance with defined storage
 console.log("Multer configured with custom storage");
 let user; // Variable for storing user data (not used directly)
 
@@ -765,10 +768,10 @@ app.get("/posts/:slug", async (req, res) => {
 
     // Render the "posts" view and pass the post data to it
     res.render("posts", { 
-      pageTitle: `Posts - ${post.title} - Waraqa`,
+      pageTitle: `Posts - ${post.title} - Waraqa Blog`,
       metaDescription: `Read the latest post on Waraqa Blog: ${post.title}. Explore insights on Quranic studies, Islamic knowledge, and more. Written by ${post.author} on ${new Date(post.date).toLocaleDateString()}.`,
       metaKeywords: `Waraqa blog, Quranic studies, Islamic knowledge, ${post.title}, ${post.author}, latest blog post, Islamic blog, online education, religious studies, recent posts, Waraqa articles`,
-      ogUrl: `http://localhost:3000/posts/${slug}`,
+      ogUrl: `https://www.waraqaweb.com/posts/${slug}`,
       ogImage: post.thumbnail ? `/thumbnails/${post.thumbnail}` : '/images/default-image.png', // Ensure ogImage is defined
       post,
       posts, // Pass recent posts
