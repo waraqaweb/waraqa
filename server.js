@@ -41,7 +41,7 @@ const { profile } = require("console"); // Importing console profile (not used h
 console.log("Initialization: Console utilities loaded");
 
 // Setting up multer storage for file uploads
-const storage = multer.diskStorage({
+const storage = multer.memoryStorage({
   destination: (req, file, cb) => {
     console.log("Setting multer destination.");
     cb(null, "./public/thumbnails"); // Specify upload destination
@@ -155,11 +155,10 @@ app.get("/logout", (req, res) => {
 });
 
 // Route for home page
+
 app.get("/", async (req, res) => {
   console.log("GET request to '/'");
   try {
-    const posts = await PosT.find().exec(); // Fetch all posts
-    const sortedPosts = await PosT.find().sort({ like: "desc" }).exec(); // Fetch posts sorted by likes
 
     // Render home page with posts and user data
     res.render("home", {
@@ -169,9 +168,7 @@ app.get("/", async (req, res) => {
       ogImage: '/images/home-og-image.jpg',
       ogUrl: 'https://www.waraqaweb.com/home',
       user: req.session.username || "Guest", // Provide a default username for guests
-      posts: posts,
       date: Date.now(),
-      sposts: sortedPosts,
     });
     console.log("Home page rendered");
   } catch (err) {
@@ -531,7 +528,6 @@ app.post("/login", async (req, res) => {
     res.send("<script>alert('Wrong details');window.location.href = '/'</script>");
   }
 });
-
 // Route for composing a new post
 app.get("/compose", (req, res) => {
   if (req.session.username) { // Check if user is logged in
@@ -540,11 +536,56 @@ app.get("/compose", (req, res) => {
       metaDescription: 'Discover our online courses in Arabic, Quran, and Islamic Studies.',
       metaKeywords: 'Arabic, Quran, Islamic Studies, online courses',
       ogImage: '/images/home-og-image.jpg',
-      ogUrl: 'https://www.waraqaweb.com/compose',
+      ogUrl: 'https://www.waraqaweb.com/home',
       user: req.session.username, 
     }); // Render compose page
   }
 });
+// Route for composing a new post
+const sharp = require("sharp"); // Import sharp for image processing
+
+app.post("/compose", upload.single("image"), async (req, res) => {
+  const { postTitle, postBody, postSlug } = req.body;
+
+  // Preprocess slug
+  const formattedSlug = postSlug
+    ? postSlug.trim().toLowerCase().replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, "-")
+    : postTitle.trim().toLowerCase().replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, "-");
+
+  try {
+    let thumbnail = null;
+
+    // Compress and save the image if uploaded
+    if (req.file) {
+      const optimizedPath = `./public/thumbnails/${formattedSlug}.jpeg`;
+      await sharp(req.file.buffer)
+        .resize(300, 300) // Resize to 300x300 pixels
+        .toFormat("jpeg")
+        .jpeg({ quality: 80 }) // Compress with 80% quality
+        .toFile(optimizedPath);
+
+      thumbnail = `${formattedSlug}.jpeg`; // Set thumbnail filename
+    }
+
+    // Save post to the database
+    const postData = {
+      author: req.session.username,
+      title: postTitle,
+      slug: formattedSlug,
+      content: postBody,
+      thumbnail: thumbnail, // Save compressed image filename
+      date: Date.now(),
+      like: 0,
+    };
+
+    await PosT.create(postData); // Save to the database
+    res.redirect("/admin");
+  } catch (err) {
+    console.error("Error saving the post:", err);
+    res.status(500).send("Error saving post");
+  }
+});
+
 // Preprocess slug: Replace spaces with dashes and ensure lowercase
 const formatSlug = (slug) => {
   return slug
@@ -756,32 +797,44 @@ const getEjsFiles = (dir) => {
 //----------------------------------------------------------------------------------------------------------------------
 // Route for individual post page
 app.get("/posts/:slug", async (req, res) => {
-  const { slug } = req.params; // Capture the slug from the URL
+  const { slug } = req.params;
+
+  if (postCache.has(slug)) {
+    // Serve cached HTML if available
+    return res.send(postCache.get(slug));
+  }
+
   try {
-    // Find the post by its unique slug
     const post = await PosT.findOne({ slug });
-    const posts = await PosT.find().sort({ date: -1 }); // Fetch all posts for the sidebar
+    const recentPosts = await PosT.find({}, "title slug thumbnail date").sort({ date: -1 }).limit(5).exec();
 
     if (!post) {
-      return res.send("<script>alert('Post not found');window.location.href = '/'</script>");
+      return res.status(404).send("Post not found");
     }
 
-    // Render the "posts" view and pass the post data to it
-    res.render("posts", { 
+    // Pass all required data for rendering
+    const html = await ejs.renderFile("views/posts.ejs", {
       pageTitle: `Posts - ${post.title} - Waraqa Blog`,
       metaDescription: `Read the latest post on Waraqa Blog: ${post.title}. Explore insights on Quranic studies, Islamic knowledge, and more. Written by ${post.author} on ${new Date(post.date).toLocaleDateString()}.`,
       metaKeywords: `Waraqa blog, Quranic studies, Islamic knowledge, ${post.title}, ${post.author}, latest blog post, Islamic blog, online education, religious studies, recent posts, Waraqa articles`,
       ogUrl: `https://www.waraqaweb.com/posts/${slug}`,
-      ogImage: post.thumbnail ? `/thumbnails/${post.thumbnail}` : '/images/default-image.png', // Ensure ogImage is defined
+      ogImage: post.thumbnail ? `/thumbnails/${post.thumbnail}` : '/images/default-image.png',
       post,
-      posts, // Pass recent posts
-      user: req.session.username, 
+      posts: recentPosts,
+      user: req.session.username,
     });
+
+    // Cache the rendered HTML
+    postCache.set(slug, html);
+
+    // Send the cached HTML as the response
+    res.send(html);
   } catch (err) {
-    console.log(err);
-    res.send("<script>alert('Error loading the post.');window.location.href = '/'</script>");
+    console.error(err);
+    res.status(500).send("Error loading the post.");
   }
 });
+
 
 
 // Route to like or dislike a post
@@ -1092,6 +1145,10 @@ app.get("/notfound", (req, res) => {
     }); // Render not found page
   }
 });
+
+const NodeCache = require("node-cache");
+const postCache = new NodeCache({ stdTTL: 300 }); // Cache for 5 minutes
+
 // Start the server
 app.listen(process.env.PORT || 3000, () => {
   console.log("Server started at http://localhost:3000"); // Log server start message

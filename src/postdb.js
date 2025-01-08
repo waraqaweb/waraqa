@@ -40,6 +40,11 @@ const postSchema = new mongoose.Schema({
 
 console.log("PostDB: Post schema updated with slug field");
 //----------------------------------------------------------------------------------
+// Add indexes for better performance
+postSchema.index({ slug: 1 });
+postSchema.index({ date: -1 });
+postSchema.index({ like: -1 });
+//----------------------------------------------------------------------------------
 
 
 // Create a Mongoose model based on the `postSchema`
