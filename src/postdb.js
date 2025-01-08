@@ -40,16 +40,6 @@ const postSchema = new mongoose.Schema({
 
 console.log("PostDB: Post schema updated with slug field");
 //----------------------------------------------------------------------------------
-// Post-save hook to update the sitemap whenever a new post is added
-postSchema.post('save', function (doc, next) {
-  // Call updateSitemap after a post is saved
-  updateSitemap(); // This will update the sitemap whenever a post is saved
-  next();
-});
-
-
-
-//----------------------------------------------------------------------------------
 
 
 // Create a Mongoose model based on the `postSchema`
