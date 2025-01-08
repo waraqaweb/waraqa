@@ -27,163 +27,20 @@
   <link rel="stylesheet" href="/css/index.css">
 
   <style>
-    /* Modern and Smooth Styling for Evaluation Form */
-
-/* General Reset and Base Styles */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: "Inter", sans-serif;
-  background-color: #f9fafc;
-  color: #333;
-  line-height: 1.6;
-}
-
-.compose-page {
-  max-width: 90%;
-  padding: 20px;
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-  align-self: center;
-}
-
-/* Form Container */
-.compose-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* Input Field Container */
-.input-fields {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  text-align: center;
-}
-
-.input-container {
-  flex: 1;
-  min-width: 200px;
-  position: relative;
-}
-
-.input-container label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-
-.input-container input,
-.compose-form textarea {
-  width: 100%;
-  padding: 15px;
-  border-radius: 5px;
-
-  font-size: 14px;
-  box-shadow: 0 5px 29px rgb(9 9 9 / 10%);
-}
-
-input:hover,
-textarea:hover {
-  background-color: #fdfdfd;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Tooltip Styling */
-.hint {
-  position: absolute;
-  display: none;
-  background: #f9f9f9;
-  border-radius: 5px;
-  padding: 8px;
-  font-size: 0.85rem;
-  color: #333;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 250px;
-  z-index: 1000;
-}
-
-.input-container:hover .hint {
-  display: block;
-}
-
-/* Character Counter */
-.char-counter {
-  font-size: 12px;
-  margin-top: 5px;
-  text-align: right;
-  color: #777;
-}
-
-/* File Input */
-input[type="file"] {
-  border: none;
-  height: 2.5rem;
-  padding: 0;
-}
-
-/* Editor Section */
-.editor-section {
-  display: block;
-  width: 100%;
-  margin-bottom: 8rem;
-}
-
-#editor {
-  min-height: 200px;
-  background: white;
-
-  border-radius: 5px;
-  margin-bottom: 20px;
-  padding: 10px;
-}
-
-/* Form Actions */
-.form-actions {
-  display: flex;
-  gap: 10px;
-  justify-content: space-around;
-  padding: 10px 0 30px;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button.btn-primary {
-  background: #2f2f30;
-  color: white;
-}
-
-button.btn-secondary {
-  background: #6c757d;
-  color: white;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .compose-page {
-    padding: 1rem;
-  }
-
-  .input-container input,
-  .compose-form textarea {
-    padding: 10px;
-    font-size: 14px;
-  }
-}
-
+    /* Ensure the footer in Jotform is hidden after page loads */
+    body {
+    font-size: 16px;
+    background-color: #f3f3fe;
+    color: #2c3345;
+    height: 111vh !important;
+    }
+    .form-content{
+      padding-top: 5rem;
+      height: fit-content;
+    }
+    .formFooter {
+      display: none !important;
+    }
   </style>
 </head>
 
@@ -195,408 +52,1010 @@ button.btn-secondary {
   <header>
     <%- include('Layout/header') %>
   </header>
-
-  <main>
+  <section class="form-content">
     <script>window.enableEventObserver=true</script>
-<script src="https://cdn02.jotfor.ms/static/prototype.forms.js?v=3.3.60035" type="text/javascript"></script>
-<script src="https://cdn03.jotfor.ms/static/jotform.forms.js?v=3.3.60035" type="text/javascript"></script>
-<script src="https://cdn01.jotfor.ms/js/punycode-1.4.1.min.js?v=3.3.60035" type="text/javascript" defer></script>
-<script src="https://cdn01.jotfor.ms/s/umd/13f219da68a/for-appointment-field.js?v=3.3.60035" type="text/javascript"></script>
-<script src="https://cdn01.jotfor.ms/s/umd/13f219da68a/for-form-branding-footer.js?v=3.3.60035" type="text/javascript" defer></script>
-<script src="https://cdn02.jotfor.ms/js/vendor/smoothscroll.min.js?v=3.3.60035" type="text/javascript"></script>
-<script src="https://cdn03.jotfor.ms/js/errorNavigation.js?v=3.3.60035" type="text/javascript"></script>
-<script type="text/javascript">	JotForm.newDefaultTheme = true;
-	JotForm.extendsNewTheme = false;
-	JotForm.singleProduct = false;
-	JotForm.newPaymentUIForNewCreatedForms = false;
-	JotForm.texts = {"confirmEmail":"E-mail does not match","pleaseWait":"Please wait...","validateEmail":"You need to validate this e-mail","confirmClearForm":"Are you sure you want to clear the form","lessThan":"Your score should be less than or equal to","incompleteFields":"There are incomplete required fields. Please complete them.","required":"This field is required.","requireOne":"At least one field required.","requireEveryRow":"Every row is required.","requireEveryCell":"Every cell is required.","email":"Enter a valid e-mail address","alphabetic":"This field can only contain letters","numeric":"This field can only contain numeric values","alphanumeric":"This field can only contain letters and numbers.","cyrillic":"This field can only contain cyrillic characters","url":"This field can only contain a valid URL","currency":"This field can only contain currency values.","fillMask":"Field value must fill mask.","uploadExtensions":"You can only upload following files:","noUploadExtensions":"File has no extension file type (e.g. .txt, .png, .jpeg)","uploadFilesize":"File size cannot be bigger than:","uploadFilesizemin":"File size cannot be smaller than:","gradingScoreError":"Score total should only be less than or equal to","inputCarretErrorA":"Input should not be less than the minimum value:","inputCarretErrorB":"Input should not be greater than the maximum value:","maxDigitsError":"The maximum digits allowed is","minCharactersError":"The number of characters should not be less than the minimum value:","maxCharactersError":"The number of characters should not be more than the maximum value:","freeEmailError":"Free email accounts are not allowed","minSelectionsError":"The minimum required number of selections is ","maxSelectionsError":"The maximum number of selections allowed is ","pastDatesDisallowed":"Date must not be in the past.","dateLimited":"This date is unavailable.","dateInvalid":"This date is not valid. The date format is {format}","dateInvalidSeparate":"This date is not valid. Enter a valid {element}.","ageVerificationError":"You must be older than {minAge} years old to submit this form.","multipleFileUploads_typeError":"{file} has invalid extension. Only {extensions} are allowed.","multipleFileUploads_sizeError":"{file} is too large, maximum file size is {sizeLimit}.","multipleFileUploads_minSizeError":"{file} is too small, minimum file size is {minSizeLimit}.","multipleFileUploads_emptyError":"{file} is empty, please select files again without it.","multipleFileUploads_uploadFailed":"File upload failed, please remove it and upload the file again.","multipleFileUploads_onLeave":"The files are being uploaded, if you leave now the upload will be cancelled.","multipleFileUploads_fileLimitError":"Only {fileLimit} file uploads allowed.","dragAndDropFilesHere_infoMessage":"Drag and drop files here","chooseAFile_infoMessage":"Choose a file","maxFileSize_infoMessage":"Max. file size","generalError":"There are errors on the form. Please fix them before continuing.","generalPageError":"There are errors on this page. Please fix them before continuing.","wordLimitError":"Too many words. The limit is","wordMinLimitError":"Too few words.  The minimum is","characterLimitError":"Too many Characters.  The limit is","characterMinLimitError":"Too few characters. The minimum is","ccInvalidNumber":"Credit Card Number is invalid.","ccInvalidCVC":"CVC number is invalid.","ccInvalidExpireDate":"Expire date is invalid.","ccInvalidExpireMonth":"Expiration month is invalid.","ccInvalidExpireYear":"Expiration year is invalid.","ccMissingDetails":"Please fill up the credit card details.","ccMissingProduct":"Please select at least one product.","ccMissingDonation":"Please enter numeric values for donation amount.","disallowDecimals":"Please enter a whole number.","restrictedDomain":"This domain is not allowed","ccDonationMinLimitError":"Minimum amount is {minAmount} {currency}","requiredLegend":"All fields marked with * are required and must be filled.","geoPermissionTitle":"Permission Denied","geoPermissionDesc":"Check your browser's privacy settings.","geoNotAvailableTitle":"Position Unavailable","geoNotAvailableDesc":"Location provider not available. Please enter the address manually.","geoTimeoutTitle":"Timeout","geoTimeoutDesc":"Please check your internet connection and try again.","selectedTime":"Selected Time","formerSelectedTime":"Former Time","cancelAppointment":"Cancel Appointment","cancelSelection":"Cancel Selection","noSlotsAvailable":"No slots available","slotUnavailable":"{time} on {date} has been selected is unavailable. Please select another slot.","multipleError":"There are {count} errors on this page. Please correct them before moving on.","oneError":"There is {count} error on this page. Please correct it before moving on.","doneMessage":"Well done! All errors are fixed.","invalidTime":"Enter a valid time","doneButton":"Done","reviewSubmitText":"Review and Submit","nextButtonText":"Next","prevButtonText":"Previous","seeErrorsButton":"See Errors","notEnoughStock":"Not enough stock for the current selection","notEnoughStock_remainedItems":"Not enough stock for the current selection ({count} items left)","soldOut":"Sold Out","justSoldOut":"Just Sold Out","selectionSoldOut":"Selection Sold Out","subProductItemsLeft":"({count} items left)","startButtonText":"START","submitButtonText":"Submit","submissionLimit":"Sorry! Only one entry is allowed. <br> Multiple submissions are disabled for this form.","reviewBackText":"Back to Form","seeAllText":"See All","progressMiddleText":"of","fieldError":"field has an error.","error":"Error"};
-	JotForm.newPaymentUI = true;
-	JotForm.originalLanguage = "en";
-	JotForm.isFormViewTrackingAllowed = true;
-	JotForm.replaceTagTest = true;
-	JotForm.uploadServerURL = "https://upload.jotform.com/upload";
-
-   JotForm.setConditions([{"action":[{"id":"action_1675371913767","visibility":"Show","isError":false,"field":"17"}],"id":"1675371931738","index":"0","link":"Any","priority":"0","terms":[{"id":"term_1675371913767","field":"11","operator":"equals","value":"1","isError":false}],"type":"field"},{"action":[{"id":"action_1675370695672","visibility":"ShowMultiple","isError":false,"fields":["17","20","19","18"]}],"id":"1675370711526","index":"1","link":"Any","priority":"1","terms":[{"id":"term_1675370695672","field":"11","operator":"equals","value":"4","isError":false}],"type":"field"},{"action":[{"id":"action_1675370667271","visibility":"Hide","isError":false,"field":"18"},{"id":"action_1675370634888","visibility":"ShowMultiple","isError":false,"fields":["17","20","19"]}],"id":"1675370687335","index":"2","link":"Any","priority":"2","terms":[{"id":"term_1675370634888","field":"11","operator":"equals","value":"3","isError":false}],"type":"field"},{"action":[{"id":"action_1675370561553","visibility":"HideMultiple","isError":false,"fields":["19","18"]},{"id":"action_1675370512018","visibility":"ShowMultiple","isError":false,"fields":["17","20"]}],"id":"1675370583400","index":"3","link":"Any","priority":"3","terms":[{"id":"term_1675370512018","field":"11","operator":"equals","value":"2","isError":false}],"type":"field"},{"action":[{"id":"action_0_1675369997248","visibility":"HideMultiple","isError":false,"fields":["20","19","18"]}],"id":"1675363940992","index":"5","link":"Any","priority":"5","terms":[{"id":"term_0_1675369997248","field":"11","operator":"isEmpty","value":"","isError":false}],"type":"field"}]);	JotForm.submitError="jumpToFirstError";
-	window.addEventListener('DOMContentLoaded',function(){window.brandingFooter.init({"formID":230323546168555,"campaign":"powered_by_jotform_le","isCardForm":false,"isLegacyForm":true,"formLanguage":"en"})});	JotForm.isFullSource = true;
-
-	JotForm.init(function(){
-	/*INIT-START*/
-
-    JotForm.calendarMonths = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-    JotForm.appointmentCalendarMonths = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-    JotForm.appointmentCalendarDays = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
-    JotForm.calendarOther = "Today";
-    window.initializeAppointment({"text":{"text":"Question","value":"Evaluation Time"},"labelAlign":{"text":"Label Align","value":"Auto","dropdown":[["Auto","Auto"],["Left","Left"],["Right","Right"],["Top","Top"]]},"required":{"text":"Required","value":"Yes","dropdown":[["No","No"],["Yes","Yes"]]},"description":{"text":"Hover Text","value":"","textarea":true},"slotDuration":{"text":"Slot Duration","value":"30","dropdown":[[15,"15 min"],[30,"30 min"],[45,"45 min"],[60,"60 min"],["custom","Custom min"]],"hint":"Select how long each slot will be."},"startDate":{"text":"Start Date","value":""},"endDate":{"text":"End Date","value":""},"intervals":{"text":"Intervals","value":[{"from":"8:00","to":"17:00","days":["Mon","Tue","Wed","Thu"]}],"hint":"The hours will be applied to the selected days and repeated."},"useBlockout":{"text":"Blockout Custom Dates","value":"No","dropdown":[["No","No"],["Yes","Yes"]],"hint":"Disable certain date(s) in the calendar."},"blockoutDates":{"text":"Blockout dates","value":[{"startDate":"2023-05-29","endDate":"2023-05-29"}]},"useLunchBreak":{"text":"Lunch Time","value":"No","dropdown":[["No","No"],["Yes","Yes"]],"hint":"Enable lunchtime in the calendar."},"lunchBreak":{"text":"Lunchtime hours","value":[{"from":"12:00","to":"14:00"}]},"timezone":{"text":"Timezone","value":"Africa\u002FCairo (GMT+02:00)"},"timeFormat":{"text":"Time Format","value":"AM\u002FPM","dropdown":[["24 Hour","24 Hour"],["AM\u002FPM","AM\u002FPM"]],"icon":"images\u002Fblank.gif","iconClassName":"toolbar-time_format_24"},"months":{"value":["January","February","March","April","May","June","July","August","September","October","November","December"],"hidden":true},"days":{"value":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"hidden":true},"startWeekOn":{"text":"Start Week On","value":"Monday","dropdown":[["Monday","Monday"],["Sunday","Sunday"]],"toolbar":false},"rollingDays":{"text":"Rolling Days","value":"7","toolbar":false},"prevMonthButtonText":{"text":"Previous month","value":""},"nextMonthButtonText":{"text":"Next month","value":""},"prevYearButtonText":{"text":"Previous year","value":""},"nextYearButtonText":{"text":"Next year","value":""},"prevDayButtonText":{"text":"Previous day","value":""},"nextDayButtonText":{"text":"Next day","value":""},"appointmentType":{"hidden":true,"value":"single"},"autoDetectTimezone":{"hidden":true,"value":"Yes"},"dateFormat":{"hidden":true,"value":"mm\u002Fdd\u002Fyyyy"},"hidden":{"hidden":true,"value":"No"},"maxAttendee":{"hidden":true,"value":"5"},"maxEvents":{"hidden":true,"value":""},"minScheduleNotice":{"hidden":true,"value":"3"},"name":{"hidden":true,"value":"appointment"},"order":{"hidden":true,"value":"13"},"qid":{"toolbar":false,"value":"input_15"},"reminderEmails":{"hidden":true,"value":{"schedule":[{"value":"1","unit":"day"},{"value":"2","unit":"hour"}],"emailSettings":{"PDFPassword":"","attachPDF":"false","updateEmail":"true","type":"APPOINTMENT_REMINDER","to":[{"id":"6","value":"{studentEmail}","name":"E-mail","text":"E-mail","isValid":"true","isQuestion":"true"}],"subject":"Waraqa: Your evaluation is on {appointment}","content":"\u003C!DOCTYPE html\u003E\r\n\u003Chtml\u003E\r\n\u003Chead\u003E\r\n\u003C\u002Fhead\u003E\r\n\u003Cbody\u003E\r\n\u003Ctable width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"#ecedf2\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 32px; min-width: 32px;\" width=\"32\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003Ctd\u003E\r\n\u003Ctable class=\"jmTable-wrapper\" style=\"width: 100%;\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"min-height: 36px;\" height=\"36\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"text-align: center;\" align=\"center\"\u003E\u003Cspan style=\"font-size: 18pt; font-family: arial, helvetica, sans-serif;\"\u003E\u003Cstrong\u003E\u003Cimg src=\"https:\u002F\u002Fwww.jotform.com\u002Fuploads\u002Fwaraqainc\u002Fform_files\u002FLogo.63dbd09e7d3169.95934229.png\" alt=\"Waraqa\" width=\"93\" height=\"93\" \u002F\u003E\u003C\u002Fstrong\u003E\u003C\u002Fspan\u003E\u003Cbr \u002F\u003E\r\n\u003Ctable id=\"jmOutcome-container\" class=\"jmTable\" style=\"min-width: 480px; max-width: 720px; width: 100%; background-color: transparent;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%; max-width: 100%; min-width: 100%;\"\u003E\r\n\u003Ctable width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr style=\"min-height: 26px; background-color: #fff;\"\u003E\r\n\u003Ctd style=\"width: 106%;\" colspan=\"3\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr style=\"background-color: #fff;\"\u003E\r\n\u003Ctd style=\"min-width: 40px; width: 6%;\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003Ctd id=\"jmButton-container\" style=\"width: 39.1686%;\"\u003E\r\n\u003Ctable class=\"jmTable\" style=\"min-width: 480px; max-width: 720px; width: 100%; background-color: #fff; font-weight: 300;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%; max-width: 100%; min-width: 100%;\"\u003E\r\n\u003Ctable style=\"width: 112.182%;\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%;\"\u003E\r\n\u003Ctable class=\"jmTable\" style=\"min-width: 480px; max-width: 720px; width: 472px; background-color: #ffffff; text-align: left; color: #0a1551; font-size: 18px; font-weight: bold; line-height: 28px; height: 26px;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 475.556px; max-width: 100%; min-width: 100%;\"\u003EHere is a friendly reminder email of your&nbsp;evaluation\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%;\" height=\"18\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%;\"\u003E\r\n\u003Ctable class=\"jmTable\" style=\"min-width: 100%; max-width: 100%; width: 100%; background-color: rgba(233, 236, 249, 0.4); text-align: center; border-radius: 4px; overflow: hidden;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%; max-width: 100%; min-width: 100%;\"\u003E\u003Ccenter\u003E\r\n\u003Ctable style=\"width: auto; max-width: 100%; padding: 15px 0;\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr style=\"vertical-align: text-top;\"\u003E\r\n\u003Ctd\u003E\u003Cimg style=\"margin-right: 5px;\" src=\"https:\u002F\u002Femails.jotform.com\u002Fimg\u002Fappointment\u002Fdate.png?v=1.0\" alt=\"appointment icon\" width=\"14\" \u002F\u003E\u003C\u002Ftd\u003E\r\n\u003Ctd\u003E\r\n\u003Ctable\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd\u003E\u003Cspan style=\"color: #a5a8b3; font-size: 12px; font-weight: 400; line-height: 20px;\"\u003EAppointment\u003C\u002Fspan\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd\u003E\u003Cspan style=\"color: #2b3245; font-size: 14px; font-weight: 400; line-height: 20px;\"\u003E{appointment:date}\u003C\u002Fspan\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr style=\"vertical-align: text-top;\"\u003E\r\n\u003Ctd\u003E\u003Cimg style=\"margin-right: 5px;\" src=\"https:\u002F\u002Femails.jotform.com\u002Fimg\u002Fappointment\u002Fduration.png?v=1.0\" alt=\"appointment icon\" width=\"14\" \u002F\u003E\u003C\u002Ftd\u003E\r\n\u003Ctd\u003E\r\n\u003Ctable\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd\u003E\u003Cspan style=\"color: #a5a8b3; font-size: 12px; font-weight: 400; line-height: 20px;\"\u003EDuration\u003C\u002Fspan\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd\u003E\u003Cspan style=\"color: #2b3245; font-size: 14px; font-weight: 400; line-height: 20px;\"\u003E{appointment:duration}\u003C\u002Fspan\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr style=\"vertical-align: text-top;\"\u003E\r\n\u003Ctd\u003E\r\n\u003Cp\u003E&nbsp;\u003C\u002Fp\u003E\r\n\u003Cp\u003E\u003Cimg style=\"margin-right: 5px;\" src=\"https:\u002F\u002Femails.jotform.com\u002Fimg\u002Fappointment\u002Ftimezone.png?v=1.0\" alt=\"appointment icon\" width=\"14\" \u002F\u003E\u003C\u002Fp\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003Ctd\u003E\r\n\u003Ctable style=\"width: 470px;\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 558.799px;\"\u003E\u003Cspan style=\"color: #a5a8b3; font-size: 12px; font-weight: 400; line-height: 20px;\"\u003ETimezone\u003C\u002Fspan\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 558.799px;\"\u003E\u003Cspan style=\"color: #2b3245; font-size: 14px; font-weight: 400; line-height: 20px;\"\u003E{appointment:timezone}\u003C\u002Fspan\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 558.799px;\"\u003E\u003Cspan style=\"color: #2b3245;\"\u003EZoom Link\u003C\u002Fspan\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 558.799px;\"\u003E\r\n\u003Cp\u003E\u003Ca href=\"https:\u002F\u002Fus04web.zoom.us\u002Fj\u002F7874054018?pwd=UDJzdFpZVWlUYWxGa2ZmeDE3WHp0UT09\"\u003Ehttps:\u002F\u002Fus04web.zoom.us\u002Fj\u002F7874054018?pwd=UDJzdFpZVWlUYWxGa2ZmeDE3WHp0UT09\u003C\u002Fa\u003E\u003C\u002Fp\u003E\r\n\u003Cp\u003EMeeting ID: 787 405 4018\u003C\u002Fp\u003E\r\n\u003Cp\u003E&nbsp;Passcode: 00\u003C\u002Fp\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003Ctd style=\"width: 10px;\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Fcenter\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%;\"\u003E\r\n\u003Ctable class=\"jmTable\" style=\"min-width: 480px; max-width: 720px; width: 100%; background-color: #fff; text-align: center; font-size: 14px; line-height: 16px;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%; max-width: 100%; min-width: 100%;\"\u003EAdd to&nbsp; \u003Ca href=\"{googleCalendarLink:appointment}\"\u003EGoogle\u003C\u002Fa\u003E &nbsp;&bull;&nbsp; \u003Ca href=\"{outlookLink:appointment}\"\u003EOutlook\u003C\u002Fa\u003E &nbsp;&bull;&nbsp; \u003Ca href=\"{icalLink:appointment}\"\u003EiCal\u003C\u002Fa\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%;\"\u003E\r\n\u003Ctable class=\"jmTable\" style=\"min-width: 480px; max-width: 720px; width: 518px; background-color: #ffffff; text-align: center; height: 67px;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 513.542px; max-width: 100%; min-width: 100%;\"\u003E\u003Ca style=\"min-width: 64px; background-color: #ff6100; color: #fff; border-radius: 4px; font-size: 20px; font-weight: bold; line-height: 23px; text-align: center; padding: 16px 26px; display: inline-block; text-decoration: none; margin-top: 8px;\" href=\"{edit_link_v2}\"\u003E&nbsp;Reschedule or Cancel Appointment&nbsp;\u003C\u002Fa\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003Ctd style=\"min-width: 40px; width: 60.8314%;\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr style=\"min-height: 26px; background-color: #fff;\"\u003E\r\n\u003Ctd style=\"width: 106%;\" colspan=\"3\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003Cbr \u002F\u003E\r\n\u003Ctable class=\"jmTable-wrapper\" style=\"width: 100%;\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr style=\"display: none;\"\u003E\r\n\u003Ctd style=\"min-height: 64px;\" height=\"64\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd align=\"center\"\u003E\r\n\u003Ctable style=\"max-width: 720px;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"line-height: 0; font-size: 0; border-radius: 4px 4px 0 0;\" bgcolor=\"#FF6100\" height=\"8\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003Ctable class=\"jmTable\" style=\"min-width: 480px; max-width: 720px; width: 100%; background-color: #fff;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%; max-width: 100%; min-width: 100%;\"\u003E\r\n\u003Ctable width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr style=\"min-height: 24px;\"\u003E\r\n\u003Ctd colspan=\"3\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"min-width: 40px;\" width=\"40\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003Ctd\u003E\u003Cspan id=\"jmTitle-container\" style=\"font-size: 18px; font-weight: bold; color: #0a1551;\"\u003E{form_titlef}\u003C\u002Fspan\u003E\u003C\u002Ftd\u003E\r\n\u003Ctd style=\"min-width: 40px;\" width=\"40\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr style=\"min-height: 16px;\"\u003E\r\n\u003Ctd style=\"min-width: 40px;\" width=\"40\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003Ctd style=\"border-bottom: 1px solid #ECEDF2;\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003Ctd style=\"min-width: 40px;\" width=\"40\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd colspan=\"3\"\u003E\r\n\u003Ctable id=\"jmSubmission-container\" class=\"jmSubmissionTable\" style=\"width: 100%;\" cellspacing=\"0\" cellpadding=\"24\"\u003E\r\n\u003Ctbody id=\"emailFieldsTableBody\"\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd\u003E\r\n\u003Ctable id=\"jmSubmission-container\" class=\"emailFieldsInnerTable\" width=\"100%\" cellspacing=\"0\" cellpadding=\"12\"\u003E\r\n\u003Ctbody id=\"emailFieldsTableInnerBody\"\u003E\r\n\u003Ctr id=\"row_11\" class=\"questionRow\"\u003E\r\n\u003Ctd id=\"question_11\" class=\"questionColumn\" style=\"color: #6f76a7; font-size: 14px; width: 32.3934%;\" bgcolor=\"transparent\"\u003EHow many students?\u003C\u002Ftd\u003E\r\n\u003Ctd id=\"value_11\" class=\"valueColumn\" style=\"color: #0a1551; font-size: 14px; width: 66.6066%;\" bgcolor=\"transparent\"\u003E{typeA}\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr id=\"row_4\" class=\"questionRow\"\u003E\r\n\u003Ctd id=\"question_4\" class=\"questionColumn\" style=\"color: #6f76a7; font-size: 14px; width: 32.3934%;\" bgcolor=\"transparent\"\u003EStudent Name\u003C\u002Ftd\u003E\r\n\u003Ctd id=\"value_4\" class=\"valueColumn\" style=\"color: #0a1551; font-size: 14px; width: 66.6066%;\" bgcolor=\"transparent\"\u003E{studentName}\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr id=\"row_6\" class=\"questionRow\"\u003E\r\n\u003Ctd id=\"question_6\" class=\"questionColumn\" style=\"color: #6f76a7; font-size: 14px; width: 32.3934%;\" bgcolor=\"transparent\"\u003EE-mail\u003C\u002Ftd\u003E\r\n\u003Ctd id=\"value_6\" class=\"valueColumn\" style=\"color: #0a1551; font-size: 14px; width: 66.6066%;\" bgcolor=\"transparent\"\u003E{studentEmail}\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr id=\"row_12\" class=\"questionRow\"\u003E\r\n\u003Ctd id=\"question_12\" class=\"questionColumn\" style=\"color: #6f76a7; font-size: 14px; width: 32.3934%;\" bgcolor=\"transparent\"\u003EPhone \u002F Whatsapp\u003C\u002Ftd\u003E\r\n\u003Ctd id=\"value_12\" class=\"valueColumn\" style=\"color: #0a1551; font-size: 14px; width: 66.6066%;\" bgcolor=\"transparent\"\u003E{phoneNumber}\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr id=\"row_13\" class=\"questionRow\"\u003E\r\n\u003Ctd id=\"question_13\" class=\"questionColumn\" style=\"color: #6f76a7; font-size: 14px; width: 32.3934%;\" bgcolor=\"transparent\"\u003ECountry\u003C\u002Ftd\u003E\r\n\u003Ctd id=\"value_13\" class=\"valueColumn\" style=\"color: #0a1551; font-size: 14px; width: 66.6066%;\" bgcolor=\"transparent\"\u003E{address}\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr id=\"row_15\" class=\"questionRow\"\u003E\r\n\u003Ctd id=\"question_15\" class=\"questionColumn\" style=\"color: #6f76a7; font-size: 14px; width: 32.3934%;\" bgcolor=\"transparent\"\u003EAppointment\u003C\u002Ftd\u003E\r\n\u003Ctd id=\"value_15\" class=\"valueColumn\" style=\"color: #0a1551; font-size: 14px; width: 66.6066%;\" bgcolor=\"transparent\"\u003E{appointment}\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"min-height: 64px;\" height=\"64\"\u003E\r\n\u003Cdiv class=\"gmail_signature\" dir=\"ltr\" style=\"color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; text-align: start;\" data-smartmail=\"gmail_signature\"\u003E\r\n\u003Cdiv dir=\"ltr\"\u003E\r\n\u003Ctable id=\"emailFieldsTable\" class=\"mceNonEditable\" style=\"font-size: 14px; font-family: Helvetica, sans-serif;\" border=\"0\" width=\"100%\" cellspacing=\"0\" cellpadding=\"5\"\u003E\r\n\u003Ctbody id=\"emailFieldsTableBody\"\u003E\r\n\u003Ctr id=\"row_21\" class=\"questionRow\"\u003E\r\n\u003Ctd id=\"question_21\" class=\"questionColumn\" style=\"padding: 5px !important; width: 17.9806%;\" valign=\"top\" bgcolor=\"white\"\u003E\u003Cimg style=\"display: block; margin-left: auto; margin-right: auto;\" src=\"https:\u002F\u002Fwww.jotform.com\u002Fuploads\u002Fwaraqainc\u002Fform_files\u002Flogo.e09b367c.632ccc605b77e6.28867472.jpg\" alt=\"\" width=\"104\" height=\"105\" \u002F\u003E\u003C\u002Ftd\u003E\r\n\u003Ctd id=\"value_21\" class=\"valueColumn\" style=\"padding: 5px !important; width: 78.0194%;\" bgcolor=\"white\"\u003E\r\n\u003Cp\u003E\u003Cspan style=\"font-size: 14pt; font-family: book antiqua, palatino, serif;\"\u003E\u003Cstrong\u003EWaraqa\u003C\u002Fstrong\u003E\u003C\u002Fspan\u003E\u003C\u002Fp\u003E\r\n\u003Cp\u003E\u003Cspan style=\"font-family: arial, helvetica, sans-serif;\"\u003E\u003Cstrong\u003EQuran and Arabic online institute.\u003C\u002Fstrong\u003E\u003C\u002Fspan\u003E\u003C\u002Fp\u003E\r\n\u003Cp\u003E\u003Cspan style=\"font-family: Arial; font-size: small;\"\u003E\u003Cstrong\u003EP +20 120 032 4956\u003C\u002Fstrong\u003E\u003C\u002Fspan\u003E\u003C\u002Fp\u003E\r\n\u003Cp\u003E\u003Cstrong style=\"text-align: center; background-color: #f3f3fe;\"\u003E\u003Cspan style=\"font-family: Arial; font-size: small;\"\u003EW&nbsp; https:\u002F\u002Fwww.waraqaweb.com\u003C\u002Fspan\u003E\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\r\n\u003Cp\u003E\u003Cspan style=\"font-size: 10pt;\"\u003E\u003Cstrong\u003EE waraqainc@gmail.com | Alexandria, Egypt\u003C\u002Fstrong\u003E\u003C\u002Fspan\u003E\u003C\u002Fp\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Fdiv\u003E\r\n\u003C\u002Fdiv\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003Ctd style=\"width: 32px; min-width: 32px;\" width=\"32\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Fbody\u003E\r\n\u003C\u002Fhtml\u003E","senderName":"Waraqa","replyTo":"waraqainc@gmail.com","branding21Email":"1","attachment":"","senderEmail":"noreply@jotform.com","hideEmptyFields":"true","sendOnEdit":"false","sendOnSubmit":"","enablePDFPassword":"false","sendDate":"","uploadAttachment":"","usesNewPDF":"Yes","recipientLimit":"0","teamMembers":""}}},"type":{"hidden":true,"value":"control_appointment"},"useReminderEmails":{"hidden":true,"value":"Yes"},"id":{"toolbar":false,"value":"15"},"qname":{"toolbar":false,"value":"q15_appointment"},"cdnconfig":{"CDN":"https:\u002F\u002Fcdn.jotfor.ms\u002F"},"passive":false,"formProperties":{"highlightLine":"Enabled","coupons":false,"useStripeCoupons":false,"taxes":false,"comparePaymentForm":"","paymentListSettings":false,"newPaymentUIForNewCreatedForms":false,"formBackground":"#fff","newAppointment":false,"isAutoCompleteEnabled":true},"formID":230323546168555,"isPaymentForm":false,"isOpenedInPortal":false,"isCheckoutForm":false,"isImportPDFForm":false,"isOfflineForms":false,"SSL_URL":"https:\u002F\u002Fwww.jotform.com\u002F","themeVersion":"v2","isEnterprise":false,"environment":"PRODUCTION"});
-        JotForm.alterTexts({"ageVerificationError":"You must be older than {minAge} years old to submit this form.","alphabetic":"This field can only contain letters","alphanumeric":"This field can only contain letters and numbers.","appointmentSelected":"You’ve selected {time} on {date}","ccDonationMinLimitError":"Minimum amount is {minAmount} {currency}","ccInvalidCVC":"CVC number is invalid.","ccInvalidExpireDate":"Expire date is invalid.","ccInvalidExpireMonth":"Expiration month is invalid.","ccInvalidExpireYear":"Expiration year is invalid.","ccInvalidNumber":"Credit Card Number is invalid.","ccMissingDetails":"Please fill up the credit card details.","ccMissingDonation":"Please enter numeric values for donation amount.","ccMissingProduct":"Please select at least one product.","characterLimitError":"Too many Characters.  The limit is","characterMinLimitError":"Too few characters. The minimum is","confirmClearForm":"Are you sure you want to clear the form","confirmEmail":"E-mail does not match","currency":"This field can only contain currency values.","cyrillic":"This field can only contain cyrillic characters","dateInvalid":"This date is not valid. The date format is {format}","dateInvalidSeparate":"This date is not valid. Enter a valid {element}.","dateLimited":"This date is unavailable.","disallowDecimals":"Please enter a whole number.","doneButton":"Done","doneMessage":"Well done! All errors are fixed.","dragAndDropFilesHere_infoMessage":"Drag and drop files here","email":"Enter a valid e-mail address","fillMask":"Field value must fill mask.","freeEmailError":"Free email accounts are not allowed","generalError":"There are errors on the form. Please fix them before continuing.","generalPageError":"There are errors on this page. Please fix them before continuing.","geoNotAvailableDesc":"Location provider not available. Please enter the address manually.","geoNotAvailableTitle":"Position Unavailable","geoPermissionDesc":"Check your browser's privacy settings.","geoPermissionTitle":"Permission Denied","geoTimeoutDesc":"Please check your internet connection and try again.","geoTimeoutTitle":"Timeout","gradingScoreError":"Score total should only be less than or equal to","incompleteFields":"There are incomplete required fields. Please complete them.","inputCarretErrorA":"Input should not be less than the minimum value:","inputCarretErrorB":"Input should not be greater than the maximum value:","justSoldOut":"Just Sold Out","lessThan":"Your score should be less than or equal to","maxDigitsError":"The maximum digits allowed is","maxFileSize_infoMessage":"Max. file size","maxSelectionsError":"The maximum number of selections allowed is ","minCharactersError":"The number of characters should not be less than the minimum value:","minSelectionsError":"The minimum required number of selections is ","multipleError":"There are {count} errors in this page. Please correct them before moving on.","multipleFileUploads_emptyError":"{file} is empty, please select files again without it.","multipleFileUploads_fileLimitError":"Only {fileLimit} file uploads allowed.","multipleFileUploads_minSizeError":"{file} is too small, minimum file size is {minSizeLimit}.","multipleFileUploads_onLeave":"The files are being uploaded, if you leave now the upload will be cancelled.","multipleFileUploads_sizeError":"{file} is too large, maximum file size is {sizeLimit}.","multipleFileUploads_typeError":"{file} has invalid extension. Only {extensions} are allowed.","multipleFileUploads_uploadFailed":"File upload failed, please remove it and upload the file again.","nextButtonText":"Next","noSlotsAvailable":"No slots available","notEnoughStock":"Not enough stock for the current selection","notEnoughStock_remainedItems":"Not enough stock for the current selection ({count} items left)","noUploadExtensions":"File has no extension file type (e.g. .txt, .png, .jpeg)","numeric":"This field can only contain numeric values","oneError":"There is {count} error in this page. Please correct it before moving on.","pastDatesDisallowed":"Date must not be in the past.","pleaseWait":"Please wait...","prevButtonText":"Previous","required":"This field is required.","requiredLegend":"All fields marked with * are required and must be filled.","requireEveryCell":"Every cell is required.","requireEveryRow":"Every row is required.","requireOne":"At least one field required.","restrictedDomain":"This domain is not allowed","reviewSubmitText":"Review and Submit","seeErrorsButton":"See Errors","selectionSoldOut":"Selection Sold Out","slotUnavailable":"{time} on {date} has been selected is unavailable. Please select another slot.","soldOut":"Sold Out","subProductItemsLeft":"({count} items left)","uploadExtensions":"You can only upload following files:","uploadFilesize":"File size cannot be bigger than:","uploadFilesizemin":"File size cannot be smaller than:","url":"This field can only contain a valid URL","validateEmail":"You need to validate this e-mail","wordLimitError":"Too many words. The limit is","wordMinLimitError":"Too few words.  The minimum is"});
-	/*INIT-END*/
-	});
-
-   setTimeout(function() {
-JotForm.paymentExtrasOnTheFly([null,{"name":"clickTo","qid":"1","text":"Unlock your learning potential!","type":"control_head"},null,null,{"description":"","name":"studentName","qid":"4","text":"Gurdian Name","type":"control_fullname"},null,{"description":"","name":"studentEmail","qid":"6","subLabel":"","text":"Email","type":"control_email"},null,null,null,null,{"description":"","name":"typeA","qid":"11","text":"How many students?","type":"control_radio"},{"description":"","name":"phoneNumber","qid":"12","text":"Phone \u002F Whatsapp","type":"control_phone"},{"description":"","name":"address","qid":"13","text":"Country","type":"control_address"},{"name":"pageBreak","qid":"14","text":"Page Break","type":"control_pagebreak"},{"description":"","name":"appointment","qid":"15","text":"Evaluation Time","type":"control_appointment"},{"name":"submit","qid":"16","text":"Submit","type":"control_button"},{"description":"","name":"studentName17","qid":"17","text":"Student Name","type":"control_fullname"},{"description":"","name":"studentName18","qid":"18","text":"Fourth Student","type":"control_fullname"},{"description":"","name":"studentName19","qid":"19","text":"Third Student","type":"control_fullname"},{"description":"","name":"studentName20","qid":"20","text":"Second Student","type":"control_fullname"},{"description":"","name":"howDid","qid":"21","text":"How did you know about us?","type":"control_radio"}]);}, 20); 
-</script>
-<link type="text/css" rel="stylesheet" href="https://cdn01.jotfor.ms/stylebuilder/static/form-common.css?v=3ff9d3e
-"/>
-
-<link type="text/css" rel="stylesheet" href="https://cdn02.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?v=3.3.60035&themeRevisionID=63a2351435646363a50e3ee0"/>
-<link type="text/css" rel="stylesheet" href="https://cdn03.jotfor.ms/css/styles/payment/payment_styles.css?3.3.60035" />
-<link type="text/css" rel="stylesheet" href="https://cdn01.jotfor.ms/css/styles/payment/payment_feature.css?3.3.60035" />
-
-
-<form class="jotform-form" onsubmit="return typeof testSubmitFunction !== 'undefined' && testSubmitFunction();" action="https://submit.jotform.com/submit/230323546168555" method="post" name="form_230323546168555" id="230323546168555" accept-charset="utf-8" autocomplete="on"><input type="hidden" name="formID" value="230323546168555" /><input type="hidden" id="JWTContainer" value="" /><input type="hidden" id="cardinalOrderNumber" value="" /><input type="hidden" id="jsExecutionTracker" name="jsExecutionTracker" value="build-date-1736261733158" /><input type="hidden" id="submitSource" name="submitSource" value="unknown" /><input type="hidden" id="buildDate" name="buildDate" value="1736261733158" /><input type="hidden" name="uploadServerUrl" value="https://upload.jotform.com/upload" /><input type="hidden" name="eventObserver" value="1" />
-  <div id="formCoverLogo" style="margin-bottom:10px" class="form-cover-wrapper form-has-cover form-page-cover-image-align-center">
-    <div class="form-page-cover-image-wrapper" style="max-width:752px"><img src="https://www.jotform.com/uploads/waraqainc/form_files/logo.e09b367c.632ccc605b77e6.28867472.jpg" class="form-page-cover-image" width="140" height="140" alt="Waraqa Evaluation Logo" style="aspect-ratio:140/140" /></div>
-  </div>
-  <div role="main" class="form-all">
-    <ul class="form-section page-section" role="presentation">
-      <li id="cid_1" class="form-input-wide" data-type="control_head">
-        <div class="form-header-group  header-default">
-          <div class="header-text httac htvam">
-            <h2 id="header_1" class="form-header" data-component="header">Unlock your learning potential!</h2>
-          </div>
-        </div>
-      </li>
-      <li class="form-line form-line-column form-col-1 jf-required" data-type="control_fullname" id="id_4" data-compound-hint="First Name,First Name"><label class="form-label form-label-top" id="label_4" for="first_4" aria-hidden="false"> Gurdian Name<span class="form-required">*</span> </label>
-        <div id="cid_4" class="form-input-wide jf-required" data-layout="full">
-          <div data-wrapper-react="true"><span class="form-sub-label-container" style="vertical-align:top" data-input-type="first"><input type="text" id="first_4" name="q4_studentName[first]" class="form-textbox validate[required]" data-defaultvalue="" autoComplete="section-input_4 given-name" size="10" placeholder="First Name" data-component="first" aria-labelledby="label_4" required="" value="" /></span><span class="form-sub-label-container" style="vertical-align:top" data-input-type="last"><input type="text" id="last_4" name="q4_studentName[last]" class="form-textbox validate[required]" data-defaultvalue="" autoComplete="section-input_4 family-name" size="15" placeholder="First Name" data-component="last" aria-labelledby="label_4" required="" value="" /></span></div>
-        </div>
-      </li>
-      <li class="form-line form-line-column form-col-2 jf-required" data-type="control_email" id="id_6"><label class="form-label form-label-top" id="label_6" for="input_6" aria-hidden="false"> Email<span class="form-required">*</span> </label>
-        <div id="cid_6" class="form-input-wide jf-required" data-layout="half"> <input type="email" id="input_6" name="q6_studentEmail" class="form-textbox validate[required, Email]" data-defaultvalue="" autoComplete="section-input_6 email" style="width:310px" size="310" placeholder="Email" data-component="email" aria-labelledby="label_6" required="" value="" /> </div>
-      </li>
-      <li class="form-line form-line-column form-col-3 jf-required" data-type="control_phone" id="id_12" data-compound-hint=","><label class="form-label form-label-top" id="label_12" for="input_12_area" aria-hidden="false"> Phone / Whatsapp<span class="form-required">*</span> </label>
-        <div id="cid_12" class="form-input-wide jf-required" data-layout="half">
-          <div data-wrapper-react="true"><span class="form-sub-label-container" style="vertical-align:top" data-input-type="areaCode"><input type="tel" id="input_12_area" name="q12_phoneNumber[area]" class="form-textbox validate[required]" data-defaultvalue="" autoComplete="section-input_12 tel-area-code" data-component="areaCode" aria-labelledby="label_12 sublabel_12_area" required="" value="" /><span class="phone-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="input_12_area" id="sublabel_12_area" style="min-height:13px">Country Code</label></span><span class="form-sub-label-container" style="vertical-align:top" data-input-type="phone"><input type="tel" id="input_12_phone" name="q12_phoneNumber[phone]" class="form-textbox validate[required]" data-defaultvalue="" autoComplete="section-input_12 tel-local" data-component="phone" aria-labelledby="label_12 sublabel_12_phone" required="" value="" /><label class="form-sub-label" for="input_12_phone" id="sublabel_12_phone" style="min-height:13px">Phone Number</label></span></div>
-        </div>
-      </li>
-      <li class="form-line form-line-column form-col-4 jf-required" data-type="control_address" id="id_13" data-compound-hint=",,,,,,Please select,"><label class="form-label form-label-top" id="label_13" for="input_13_country" aria-hidden="false"> Country<span class="form-required">*</span> </label>
-        <div id="cid_13" class="form-input-wide jf-required" data-layout="full">
-          <div summary="" class="form-address-table jsTest-addressField">
-            <div class="form-address-line-wrapper jsTest-address-line-wrapperField" style="display:none"><span class="form-address-line form-address-street-line jsTest-address-lineField"><span class="form-sub-label-container" style="vertical-align:top"><input type="text" id="input_13_addr_line1" name="q13_address[addr_line1]" class="form-textbox validate[required] form-address-line" data-defaultvalue="" autoComplete="section-input_13 off" data-component="address_line_1" aria-labelledby="label_13 sublabel_13_addr_line1" required="" value="" /><label class="form-sub-label" for="input_13_addr_line1" id="sublabel_13_addr_line1" style="min-height:13px">Street Address</label></span></span></div>
-            <div class="form-address-line-wrapper jsTest-address-line-wrapperField" style="display:none"><span class="form-address-line form-address-street-line jsTest-address-lineField"><span class="form-sub-label-container" style="vertical-align:top"><input type="text" id="input_13_addr_line2" name="q13_address[addr_line2]" class="form-textbox form-address-line" data-defaultvalue="" autoComplete="section-input_13 off" data-component="address_line_2" aria-labelledby="label_13 sublabel_13_addr_line2" value="" /><label class="form-sub-label" for="input_13_addr_line2" id="sublabel_13_addr_line2" style="min-height:13px">Street Address Line 2</label></span></span></div>
-            <div class="form-address-line-wrapper jsTest-address-line-wrapperField" style="display:none"><span class="form-address-line form-address-city-line jsTest-address-lineField form-address-hiddenLine" style="display:none"><span class="form-sub-label-container" style="vertical-align:top"><input type="text" id="input_13_city" name="q13_address[city]" class="form-textbox validate[required] form-address-city" data-defaultvalue="" autoComplete="section-input_13 off" data-component="city" aria-labelledby="label_13 sublabel_13_city" required="" value="" /><label class="form-sub-label" for="input_13_city" id="sublabel_13_city" style="min-height:13px">City</label></span></span><span class="form-address-line form-address-state-line jsTest-address-lineField form-address-hiddenLine" style="display:none"><span class="form-sub-label-container" style="vertical-align:top"><input type="text" id="input_13_state" name="q13_address[state]" class="form-textbox validate[required] form-address-state" data-defaultvalue="" autoComplete="section-input_13 off" data-component="state" aria-labelledby="label_13 sublabel_13_state" required="" value="" /><label class="form-sub-label" for="input_13_state" id="sublabel_13_state" style="min-height:13px">State / Province</label></span></span></div>
-            <div class="form-address-line-wrapper jsTest-address-line-wrapperField"><span class="form-address-line form-address-zip-line jsTest-address-lineField form-address-hiddenLine" style="display:none"><span class="form-sub-label-container" style="vertical-align:top"><input type="text" id="input_13_postal" name="q13_address[postal]" class="form-textbox form-address-postal" data-defaultvalue="" autoComplete="section-input_13 off" data-component="zip" aria-labelledby="label_13 sublabel_13_postal" value="" /><label class="form-sub-label" for="input_13_postal" id="sublabel_13_postal" style="min-height:13px">Postal / Zip Code</label></span></span><span class="form-address-line form-address-country-line jsTest-address-lineField "><span class="form-sub-label-container" style="vertical-align:top"><select class="form-dropdown validate[required] form-address-country" name="q13_address[country]" id="input_13_country" data-component="country" required="" aria-labelledby="label_13" autoComplete="section-input_13 country">
-                    <option value="">Please select</option>
-                    <option value="Afghanistan">Afghanistan</option>
-                    <option value="Albania">Albania</option>
-                    <option value="Algeria">Algeria</option>
-                    <option value="American Samoa">American Samoa</option>
-                    <option value="Andorra">Andorra</option>
-                    <option value="Angola">Angola</option>
-                    <option value="Anguilla">Anguilla</option>
-                    <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                    <option value="Argentina">Argentina</option>
-                    <option value="Armenia">Armenia</option>
-                    <option value="Aruba">Aruba</option>
-                    <option value="Australia">Australia</option>
-                    <option value="Austria">Austria</option>
-                    <option value="Azerbaijan">Azerbaijan</option>
-                    <option value="The Bahamas">The Bahamas</option>
-                    <option value="Bahrain">Bahrain</option>
-                    <option value="Bangladesh">Bangladesh</option>
-                    <option value="Barbados">Barbados</option>
-                    <option value="Belarus">Belarus</option>
-                    <option value="Belgium">Belgium</option>
-                    <option value="Belize">Belize</option>
-                    <option value="Benin">Benin</option>
-                    <option value="Bermuda">Bermuda</option>
-                    <option value="Bhutan">Bhutan</option>
-                    <option value="Bolivia">Bolivia</option>
-                    <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-                    <option value="Botswana">Botswana</option>
-                    <option value="Brazil">Brazil</option>
-                    <option value="Brunei">Brunei</option>
-                    <option value="Bulgaria">Bulgaria</option>
-                    <option value="Burkina Faso">Burkina Faso</option>
-                    <option value="Burundi">Burundi</option>
-                    <option value="Cambodia">Cambodia</option>
-                    <option value="Cameroon">Cameroon</option>
-                    <option value="Canada">Canada</option>
-                    <option value="Cape Verde">Cape Verde</option>
-                    <option value="Cayman Islands">Cayman Islands</option>
-                    <option value="Central African Republic">Central African Republic</option>
-                    <option value="Chad">Chad</option>
-                    <option value="Chile">Chile</option>
-                    <option value="China">China</option>
-                    <option value="Christmas Island">Christmas Island</option>
-                    <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
-                    <option value="Colombia">Colombia</option>
-                    <option value="Comoros">Comoros</option>
-                    <option value="Congo">Congo</option>
-                    <option value="Cook Islands">Cook Islands</option>
-                    <option value="Costa Rica">Costa Rica</option>
-                    <option value="Cote d&#x27;Ivoire">Cote d&#x27;Ivoire</option>
-                    <option value="Croatia">Croatia</option>
-                    <option value="Cuba">Cuba</option>
-                    <option value="Curaçao">Curaçao</option>
-                    <option value="Cyprus">Cyprus</option>
-                    <option value="Czech Republic">Czech Republic</option>
-                    <option value="Democratic Republic of the Congo">Democratic Republic of the Congo</option>
-                    <option value="Denmark">Denmark</option>
-                    <option value="Djibouti">Djibouti</option>
-                    <option value="Dominica">Dominica</option>
-                    <option value="Dominican Republic">Dominican Republic</option>
-                    <option value="Ecuador">Ecuador</option>
-                    <option value="Egypt">Egypt</option>
-                    <option value="El Salvador">El Salvador</option>
-                    <option value="Equatorial Guinea">Equatorial Guinea</option>
-                    <option value="Eritrea">Eritrea</option>
-                    <option value="Estonia">Estonia</option>
-                    <option value="Ethiopia">Ethiopia</option>
-                    <option value="Falkland Islands">Falkland Islands</option>
-                    <option value="Faroe Islands">Faroe Islands</option>
-                    <option value="Fiji">Fiji</option>
-                    <option value="Finland">Finland</option>
-                    <option value="France">France</option>
-                    <option value="French Polynesia">French Polynesia</option>
-                    <option value="Gabon">Gabon</option>
-                    <option value="The Gambia">The Gambia</option>
-                    <option value="Georgia">Georgia</option>
-                    <option value="Germany">Germany</option>
-                    <option value="Ghana">Ghana</option>
-                    <option value="Gibraltar">Gibraltar</option>
-                    <option value="Greece">Greece</option>
-                    <option value="Greenland">Greenland</option>
-                    <option value="Grenada">Grenada</option>
-                    <option value="Guadeloupe">Guadeloupe</option>
-                    <option value="Guam">Guam</option>
-                    <option value="Guatemala">Guatemala</option>
-                    <option value="Guernsey">Guernsey</option>
-                    <option value="Guinea">Guinea</option>
-                    <option value="Guinea-Bissau">Guinea-Bissau</option>
-                    <option value="Guyana">Guyana</option>
-                    <option value="Haiti">Haiti</option>
-                    <option value="Honduras">Honduras</option>
-                    <option value="Hong Kong">Hong Kong</option>
-                    <option value="Hungary">Hungary</option>
-                    <option value="Iceland">Iceland</option>
-                    <option value="India">India</option>
-                    <option value="Indonesia">Indonesia</option>
-                    <option value="Iran">Iran</option>
-                    <option value="Iraq">Iraq</option>
-                    <option value="Ireland">Ireland</option>
-                    <option value="Israel">Israel</option>
-                    <option value="Italy">Italy</option>
-                    <option value="Jamaica">Jamaica</option>
-                    <option value="Japan">Japan</option>
-                    <option value="Jersey">Jersey</option>
-                    <option value="Jordan">Jordan</option>
-                    <option value="Kazakhstan">Kazakhstan</option>
-                    <option value="Kenya">Kenya</option>
-                    <option value="Kiribati">Kiribati</option>
-                    <option value="North Korea">North Korea</option>
-                    <option value="South Korea">South Korea</option>
-                    <option value="Kosovo">Kosovo</option>
-                    <option value="Kuwait">Kuwait</option>
-                    <option value="Kyrgyzstan">Kyrgyzstan</option>
-                    <option value="Laos">Laos</option>
-                    <option value="Latvia">Latvia</option>
-                    <option value="Lebanon">Lebanon</option>
-                    <option value="Lesotho">Lesotho</option>
-                    <option value="Liberia">Liberia</option>
-                    <option value="Libya">Libya</option>
-                    <option value="Liechtenstein">Liechtenstein</option>
-                    <option value="Lithuania">Lithuania</option>
-                    <option value="Luxembourg">Luxembourg</option>
-                    <option value="Macau">Macau</option>
-                    <option value="Macedonia">Macedonia</option>
-                    <option value="Madagascar">Madagascar</option>
-                    <option value="Malawi">Malawi</option>
-                    <option value="Malaysia">Malaysia</option>
-                    <option value="Maldives">Maldives</option>
-                    <option value="Mali">Mali</option>
-                    <option value="Malta">Malta</option>
-                    <option value="Marshall Islands">Marshall Islands</option>
-                    <option value="Martinique">Martinique</option>
-                    <option value="Mauritania">Mauritania</option>
-                    <option value="Mauritius">Mauritius</option>
-                    <option value="Mayotte">Mayotte</option>
-                    <option value="Mexico">Mexico</option>
-                    <option value="Micronesia">Micronesia</option>
-                    <option value="Moldova">Moldova</option>
-                    <option value="Monaco">Monaco</option>
-                    <option value="Mongolia">Mongolia</option>
-                    <option value="Montenegro">Montenegro</option>
-                    <option value="Montserrat">Montserrat</option>
-                    <option value="Morocco">Morocco</option>
-                    <option value="Mozambique">Mozambique</option>
-                    <option value="Myanmar">Myanmar</option>
-                    <option value="Nagorno-Karabakh">Nagorno-Karabakh</option>
-                    <option value="Namibia">Namibia</option>
-                    <option value="Nauru">Nauru</option>
-                    <option value="Nepal">Nepal</option>
-                    <option value="Netherlands">Netherlands</option>
-                    <option value="Netherlands Antilles">Netherlands Antilles</option>
-                    <option value="New Caledonia">New Caledonia</option>
-                    <option value="New Zealand">New Zealand</option>
-                    <option value="Nicaragua">Nicaragua</option>
-                    <option value="Niger">Niger</option>
-                    <option value="Nigeria">Nigeria</option>
-                    <option value="Niue">Niue</option>
-                    <option value="Norfolk Island">Norfolk Island</option>
-                    <option value="Turkish Republic of Northern Cyprus">Turkish Republic of Northern Cyprus</option>
-                    <option value="Northern Mariana">Northern Mariana</option>
-                    <option value="Norway">Norway</option>
-                    <option value="Oman">Oman</option>
-                    <option value="Pakistan">Pakistan</option>
-                    <option value="Palau">Palau</option>
-                    <option value="Palestine">Palestine</option>
-                    <option value="Panama">Panama</option>
-                    <option value="Papua New Guinea">Papua New Guinea</option>
-                    <option value="Paraguay">Paraguay</option>
-                    <option value="Peru">Peru</option>
-                    <option value="Philippines">Philippines</option>
-                    <option value="Pitcairn Islands">Pitcairn Islands</option>
-                    <option value="Poland">Poland</option>
-                    <option value="Portugal">Portugal</option>
-                    <option value="Puerto Rico">Puerto Rico</option>
-                    <option value="Qatar">Qatar</option>
-                    <option value="Republic of the Congo">Republic of the Congo</option>
-                    <option value="Romania">Romania</option>
-                    <option value="Russia">Russia</option>
-                    <option value="Rwanda">Rwanda</option>
-                    <option value="Saint Barthelemy">Saint Barthelemy</option>
-                    <option value="Saint Helena">Saint Helena</option>
-                    <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
-                    <option value="Saint Lucia">Saint Lucia</option>
-                    <option value="Saint Martin">Saint Martin</option>
-                    <option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
-                    <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
-                    <option value="Samoa">Samoa</option>
-                    <option value="San Marino">San Marino</option>
-                    <option value="Sao Tome and Principe">Sao Tome and Principe</option>
-                    <option value="Saudi Arabia">Saudi Arabia</option>
-                    <option value="Senegal">Senegal</option>
-                    <option value="Serbia">Serbia</option>
-                    <option value="Seychelles">Seychelles</option>
-                    <option value="Sierra Leone">Sierra Leone</option>
-                    <option value="Singapore">Singapore</option>
-                    <option value="Slovakia">Slovakia</option>
-                    <option value="Slovenia">Slovenia</option>
-                    <option value="Solomon Islands">Solomon Islands</option>
-                    <option value="Somalia">Somalia</option>
-                    <option value="Somaliland">Somaliland</option>
-                    <option value="South Africa">South Africa</option>
-                    <option value="South Ossetia">South Ossetia</option>
-                    <option value="South Sudan">South Sudan</option>
-                    <option value="Spain">Spain</option>
-                    <option value="Sri Lanka">Sri Lanka</option>
-                    <option value="Sudan">Sudan</option>
-                    <option value="Suriname">Suriname</option>
-                    <option value="Svalbard">Svalbard</option>
-                    <option value="eSwatini">eSwatini</option>
-                    <option value="Sweden">Sweden</option>
-                    <option value="Switzerland">Switzerland</option>
-                    <option value="Syria">Syria</option>
-                    <option value="Taiwan">Taiwan</option>
-                    <option value="Tajikistan">Tajikistan</option>
-                    <option value="Tanzania">Tanzania</option>
-                    <option value="Thailand">Thailand</option>
-                    <option value="Timor-Leste">Timor-Leste</option>
-                    <option value="Togo">Togo</option>
-                    <option value="Tokelau">Tokelau</option>
-                    <option value="Tonga">Tonga</option>
-                    <option value="Transnistria Pridnestrovie">Transnistria Pridnestrovie</option>
-                    <option value="Trinidad and Tobago">Trinidad and Tobago</option>
-                    <option value="Tristan da Cunha">Tristan da Cunha</option>
-                    <option value="Tunisia">Tunisia</option>
-                    <option value="Turkey">Turkey</option>
-                    <option value="Turkmenistan">Turkmenistan</option>
-                    <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
-                    <option value="Tuvalu">Tuvalu</option>
-                    <option value="Uganda">Uganda</option>
-                    <option value="Ukraine">Ukraine</option>
-                    <option value="United Arab Emirates">United Arab Emirates</option>
-                    <option value="United Kingdom">United Kingdom</option>
-                    <option value="United States">United States</option>
-                    <option value="Uruguay">Uruguay</option>
-                    <option value="Uzbekistan">Uzbekistan</option>
-                    <option value="Vanuatu">Vanuatu</option>
-                    <option value="Vatican City">Vatican City</option>
-                    <option value="Venezuela">Venezuela</option>
-                    <option value="Vietnam">Vietnam</option>
-                    <option value="British Virgin Islands">British Virgin Islands</option>
-                    <option value="Isle of Man">Isle of Man</option>
-                    <option value="US Virgin Islands">US Virgin Islands</option>
-                    <option value="Wallis and Futuna">Wallis and Futuna</option>
-                    <option value="Western Sahara">Western Sahara</option>
-                    <option value="Yemen">Yemen</option>
-                    <option value="Zambia">Zambia</option>
-                    <option value="Zimbabwe">Zimbabwe</option>
-                    <option value="other">Other</option>
-                  </select></span></span></div>
-          </div>
-        </div>
-      </li>
-      <li class="form-line jf-required" data-type="control_radio" id="id_11"><label class="form-label form-label-top form-label-auto" id="label_11" aria-hidden="false"> How many students?<span class="form-required">*</span> </label>
-        <div id="cid_11" class="form-input-wide jf-required" data-layout="full">
-          <div class="form-multiple-column" data-columncount="4" role="group" aria-labelledby="label_11" data-component="radio"><span class="form-radio-item"><span class="dragger-item"></span><input aria-describedby="label_11" type="radio" class="form-radio validate[required]" id="input_11_0" name="q11_typeA" required="" value="1" /><label id="label_input_11_0" for="input_11_0">1</label></span><span class="form-radio-item"><span class="dragger-item"></span><input aria-describedby="label_11" type="radio" class="form-radio validate[required]" id="input_11_1" name="q11_typeA" required="" value="2" /><label id="label_input_11_1" for="input_11_1">2</label></span><span class="form-radio-item"><span class="dragger-item"></span><input aria-describedby="label_11" type="radio" class="form-radio validate[required]" id="input_11_2" name="q11_typeA" required="" value="3" /><label id="label_input_11_2" for="input_11_2">3</label></span><span class="form-radio-item"><span class="dragger-item"></span><input aria-describedby="label_11" type="radio" class="form-radio validate[required]" id="input_11_3" name="q11_typeA" required="" value="4" /><label id="label_input_11_3" for="input_11_3">4</label></span></div>
-        </div>
-      </li>
-      <li class="form-line form-line-column form-col-1 jf-required form-field-hidden" style="display:none;" data-type="control_fullname" id="id_17" data-compound-hint="First Name,Last Name"><label class="form-label form-label-top" id="label_17" for="first_17" aria-hidden="false"> Student Name<span class="form-required">*</span> </label>
-        <div id="cid_17" class="form-input-wide jf-required" data-layout="full">
-          <div data-wrapper-react="true"><span class="form-sub-label-container" style="vertical-align:top" data-input-type="first"><input type="text" id="first_17" name="q17_studentName17[first]" class="form-textbox validate[required]" data-defaultvalue="" autoComplete="section-input_17 given-name" size="10" placeholder="First Name" data-component="first" aria-labelledby="label_17" required="" value="" /></span><span class="form-sub-label-container" style="vertical-align:top" data-input-type="last"><input type="text" id="last_17" name="q17_studentName17[last]" class="form-textbox validate[required]" data-defaultvalue="" autoComplete="section-input_17 family-name" size="15" placeholder="Last Name" data-component="last" aria-labelledby="label_17" required="" value="" /></span></div>
-        </div>
-      </li>
-      <li class="form-line form-line-column form-col-2 form-field-hidden" style="display:none;" data-type="control_fullname" id="id_20" data-compound-hint="First Name,Last Name"><label class="form-label form-label-top" id="label_20" for="first_20" aria-hidden="false"> Second Student </label>
-        <div id="cid_20" class="form-input-wide" data-layout="full">
-          <div data-wrapper-react="true"><span class="form-sub-label-container" style="vertical-align:top" data-input-type="first"><input type="text" id="first_20" name="q20_studentName20[first]" class="form-textbox" data-defaultvalue="" autoComplete="section-input_20 given-name" size="10" placeholder="First Name" data-component="first" aria-labelledby="label_20" value="" /></span><span class="form-sub-label-container" style="vertical-align:top" data-input-type="last"><input type="text" id="last_20" name="q20_studentName20[last]" class="form-textbox" data-defaultvalue="" autoComplete="section-input_20 family-name" size="15" placeholder="Last Name" data-component="last" aria-labelledby="label_20" value="" /></span></div>
-        </div>
-      </li>
-      <li class="form-line form-line-column form-col-3 form-field-hidden" style="display:none;" data-type="control_fullname" id="id_19" data-compound-hint="First Name,Last Name"><label class="form-label form-label-top" id="label_19" for="first_19" aria-hidden="false"> Third Student </label>
-        <div id="cid_19" class="form-input-wide" data-layout="full">
-          <div data-wrapper-react="true"><span class="form-sub-label-container" style="vertical-align:top" data-input-type="first"><input type="text" id="first_19" name="q19_studentName19[first]" class="form-textbox" data-defaultvalue="" autoComplete="section-input_19 given-name" size="10" placeholder="First Name" data-component="first" aria-labelledby="label_19" value="" /></span><span class="form-sub-label-container" style="vertical-align:top" data-input-type="last"><input type="text" id="last_19" name="q19_studentName19[last]" class="form-textbox" data-defaultvalue="" autoComplete="section-input_19 family-name" size="15" placeholder="Last Name" data-component="last" aria-labelledby="label_19" value="" /></span></div>
-        </div>
-      </li>
-      <li class="form-line form-line-column form-col-4 form-field-hidden" style="display:none;" data-type="control_fullname" id="id_18" data-compound-hint="First Name,Last Name"><label class="form-label form-label-top" id="label_18" for="first_18" aria-hidden="false"> Fourth Student </label>
-        <div id="cid_18" class="form-input-wide" data-layout="full">
-          <div data-wrapper-react="true"><span class="form-sub-label-container" style="vertical-align:top" data-input-type="first"><input type="text" id="first_18" name="q18_studentName18[first]" class="form-textbox" data-defaultvalue="" autoComplete="section-input_18 given-name" size="10" placeholder="First Name" data-component="first" aria-labelledby="label_18" value="" /></span><span class="form-sub-label-container" style="vertical-align:top" data-input-type="last"><input type="text" id="last_18" name="q18_studentName18[last]" class="form-textbox" data-defaultvalue="" autoComplete="section-input_18 family-name" size="15" placeholder="Last Name" data-component="last" aria-labelledby="label_18" value="" /></span></div>
-        </div>
-      </li>
-      <li class="form-line jf-required" data-type="control_radio" id="id_21"><label class="form-label form-label-top form-label-auto" id="label_21" aria-hidden="false"> How did you know about us?<span class="form-required">*</span> </label>
-        <div id="cid_21" class="form-input-wide jf-required" data-layout="full">
-          <div class="form-multiple-column" data-columncount="4" role="group" aria-labelledby="label_21" data-component="radio"><span class="form-radio-item"><span class="dragger-item"></span><input aria-describedby="label_21" type="radio" class="form-radio validate[required]" id="input_21_0" name="q21_howDid" required="" value="Google" /><label id="label_input_21_0" for="input_21_0">Google</label></span><span class="form-radio-item"><span class="dragger-item"></span><input aria-describedby="label_21" type="radio" class="form-radio validate[required]" id="input_21_1" name="q21_howDid" required="" value="Facebook" /><label id="label_input_21_1" for="input_21_1">Facebook</label></span><span class="form-radio-item"><span class="dragger-item"></span><input aria-describedby="label_21" type="radio" class="form-radio validate[required]" id="input_21_2" name="q21_howDid" required="" value="Friend/Colleague referral" /><label id="label_input_21_2" for="input_21_2">Friend/Colleague referral</label></span><span class="form-radio-item formRadioOther"><input type="radio" class="form-radio-other form-radio validate[required]" name="q21_howDid" id="other_21" tabindex="0" aria-label="Other" value="other" /><label id="label_other_21" style="text-indent:0" for="other_21">Other</label><span id="other_21_input" class="other-input-container" style="display:none"><input type="text" class="form-radio-other-input form-textbox" name="q21_howDid[other]" data-otherhint="Other" size="15" id="input_21" data-placeholder="Please type another option here" placeholder="Please type another option here" /></span></span></div>
-        </div>
-      </li>
-      <li id="cid_14" class="form-input-wide" data-type="control_pagebreak">
-        <div class="form-pagebreak" data-component="pagebreak">
-          <div class="form-pagebreak-back-container"><button id="form-pagebreak-back_14" type="button" class="form-pagebreak-back  jf-form-buttons" data-component="pagebreak-back">Back</button></div>
-          <div class="form-pagebreak-next-container"><button id="form-pagebreak-next_14" type="button" class="form-pagebreak-next  jf-form-buttons" data-component="pagebreak-next">Next</button></div>
-          <div style="clear:both" class="pageInfo form-sub-label" id="pageInfo_14"></div>
-        </div>
-      </li>
-    </ul>
-    <ul class="form-section page-section" role="presentation" style="display:none;">
-      <li class="form-line jf-required" data-type="control_appointment" id="id_15"><label class="form-label form-label-top form-label-auto" id="label_15" for="input_15" aria-hidden="false"> Evaluation Time<span class="form-required">*</span> </label>
-        <div id="cid_15" class="form-input-wide jf-required" data-layout="full">
-          <div id="input_15" class="appointmentFieldWrapper jfQuestion-fields"><input class="appointmentFieldInput" name="q15_appointment[implementation]" id="input_15implementation" aria-hidden="true" type="hidden" value="new" /><input class="appointmentFieldInput validate" name="q15_appointment[date]" id="input_15_date" data-timeformat="AM/PM" aria-hidden="true" type="hidden" /><input class="appointmentFieldInput" name="q15_appointment[duration]" id="input_15_duration" aria-hidden="true" type="hidden" value="30" /><input class="appointmentFieldInput" name="q15_appointment[timezone]" id="input_15_timezone" aria-hidden="true" type="hidden" value="Africa/Cairo (GMT+02:00)" />
-            <div class="appointmentField"></div>
-          </div>
-        </div>
-      </li>
-      <li class="form-line" data-type="control_button" id="id_16">
-        <div id="cid_16" class="form-input-wide" data-layout="full">
-          <div data-align="auto" class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField"><button id="input_16" type="submit" class="form-submit-button submit-button jf-form-buttons jsTest-submitField legacy-submit" data-component="button" data-content="">Submit</button></div>
-        </div>
-      </li>
-      <li style="clear:both"></li>
-      <li style="display:none">Should be Empty: <input type="text" name="website" value="" type="hidden" /></li>
-    </ul>
-  </div>
-  <script>
-    JotForm.showJotFormPowered = "new_footer";
-  </script>
-  <script>
-    JotForm.poweredByText = "Powered by Jotform";
-  </script><input type="hidden" class="simple_spc" id="simple_spc" name="simple_spc" value="230323546168555" />
-  <script type="text/javascript">
-    var all_spc = document.querySelectorAll("form[id='230323546168555'] .si" + "mple" + "_spc");
-    for (var i = 0; i < all_spc.length; i++)
-    {
-      all_spc[i].value = "230323546168555-230323546168555";
+    <script src="https://cdn02.jotfor.ms/static/prototype.forms.js?v=3.3.59220" type="text/javascript"></script>
+    <script src="https://cdn03.jotfor.ms/static/jotform.forms.js?v=3.3.59220" type="text/javascript"></script>
+    <script src="https://cdn01.jotfor.ms/js/punycode-1.4.1.min.js?v=3.3.59220" type="text/javascript" defer></script>
+    <script src="https://cdn01.jotfor.ms/s/umd/16a5c0bff08/for-appointment-field.js?v=3.3.59220" type="text/javascript"></script>
+    <script src="https://cdn01.jotfor.ms/s/umd/16a5c0bff08/for-form-branding-footer.js?v=3.3.59220" type="text/javascript" defer></script>
+    <script src="https://cdn02.jotfor.ms/js/vendor/smoothscroll.min.js?v=3.3.59220" type="text/javascript"></script>
+    <script src="https://cdn03.jotfor.ms/js/errorNavigation.js?v=3.3.59220" type="text/javascript"></script>
+    <script type="text/javascript">	JotForm.newDefaultTheme = true;
+      JotForm.extendsNewTheme = false;
+      JotForm.singleProduct = false;
+      JotForm.newPaymentUIForNewCreatedForms = false;
+      JotForm.texts = {"confirmEmail":"E-mail does not match","pleaseWait":"Please wait...","validateEmail":"You need to validate this e-mail","confirmClearForm":"Are you sure you want to clear the form","lessThan":"Your score should be less than or equal to","incompleteFields":"There are incomplete required fields. Please complete them.","required":"This field is required.","requireOne":"At least one field required.","requireEveryRow":"Every row is required.","requireEveryCell":"Every cell is required.","email":"Enter a valid e-mail address","alphabetic":"This field can only contain letters","numeric":"This field can only contain numeric values","alphanumeric":"This field can only contain letters and numbers.","cyrillic":"This field can only contain cyrillic characters","url":"This field can only contain a valid URL","currency":"This field can only contain currency values.","fillMask":"Field value must fill mask.","uploadExtensions":"You can only upload following files:","noUploadExtensions":"File has no extension file type (e.g. .txt, .png, .jpeg)","uploadFilesize":"File size cannot be bigger than:","uploadFilesizemin":"File size cannot be smaller than:","gradingScoreError":"Score total should only be less than or equal to","inputCarretErrorA":"Input should not be less than the minimum value:","inputCarretErrorB":"Input should not be greater than the maximum value:","maxDigitsError":"The maximum digits allowed is","minCharactersError":"The number of characters should not be less than the minimum value:","maxCharactersError":"The number of characters should not be more than the maximum value:","freeEmailError":"Free email accounts are not allowed","minSelectionsError":"The minimum required number of selections is ","maxSelectionsError":"The maximum number of selections allowed is ","pastDatesDisallowed":"Date must not be in the past.","dateLimited":"This date is unavailable.","dateInvalid":"This date is not valid. The date format is {format}","dateInvalidSeparate":"This date is not valid. Enter a valid {element}.","ageVerificationError":"You must be older than {minAge} years old to submit this form.","multipleFileUploads_typeError":"{file} has invalid extension. Only {extensions} are allowed.","multipleFileUploads_sizeError":"{file} is too large, maximum file size is {sizeLimit}.","multipleFileUploads_minSizeError":"{file} is too small, minimum file size is {minSizeLimit}.","multipleFileUploads_emptyError":"{file} is empty, please select files again without it.","multipleFileUploads_uploadFailed":"File upload failed, please remove it and upload the file again.","multipleFileUploads_onLeave":"The files are being uploaded, if you leave now the upload will be cancelled.","multipleFileUploads_fileLimitError":"Only {fileLimit} file uploads allowed.","dragAndDropFilesHere_infoMessage":"Drag and drop files here","chooseAFile_infoMessage":"Choose a file","maxFileSize_infoMessage":"Max. file size","generalError":"There are errors on the form. Please fix them before continuing.","generalPageError":"There are errors on this page. Please fix them before continuing.","wordLimitError":"Too many words. The limit is","wordMinLimitError":"Too few words.  The minimum is","characterLimitError":"Too many Characters.  The limit is","characterMinLimitError":"Too few characters. The minimum is","ccInvalidNumber":"Credit Card Number is invalid.","ccInvalidCVC":"CVC number is invalid.","ccInvalidExpireDate":"Expire date is invalid.","ccInvalidExpireMonth":"Expiration month is invalid.","ccInvalidExpireYear":"Expiration year is invalid.","ccMissingDetails":"Please fill up the credit card details.","ccMissingProduct":"Please select at least one product.","ccMissingDonation":"Please enter numeric values for donation amount.","disallowDecimals":"Please enter a whole number.","restrictedDomain":"This domain is not allowed","ccDonationMinLimitError":"Minimum amount is {minAmount} {currency}","requiredLegend":"All fields marked with * are required and must be filled.","geoPermissionTitle":"Permission Denied","geoPermissionDesc":"Check your browser's privacy settings.","geoNotAvailableTitle":"Position Unavailable","geoNotAvailableDesc":"Location provider not available. Please enter the address manually.","geoTimeoutTitle":"Timeout","geoTimeoutDesc":"Please check your internet connection and try again.","selectedTime":"Selected Time","formerSelectedTime":"Former Time","cancelAppointment":"Cancel Appointment","cancelSelection":"Cancel Selection","noSlotsAvailable":"No slots available","slotUnavailable":"{time} on {date} has been selected is unavailable. Please select another slot.","multipleError":"There are {count} errors on this page. Please correct them before moving on.","oneError":"There is {count} error on this page. Please correct it before moving on.","doneMessage":"Well done! All errors are fixed.","invalidTime":"Enter a valid time","doneButton":"Done","reviewSubmitText":"Review and Submit","nextButtonText":"Next","prevButtonText":"Previous","seeErrorsButton":"See Errors","notEnoughStock":"Not enough stock for the current selection","notEnoughStock_remainedItems":"Not enough stock for the current selection ({count} items left)","soldOut":"Sold Out","justSoldOut":"Just Sold Out","selectionSoldOut":"Selection Sold Out","subProductItemsLeft":"({count} items left)","startButtonText":"START","submitButtonText":"Submit","submissionLimit":"Sorry! Only one entry is allowed. <br> Multiple submissions are disabled for this form.","reviewBackText":"Back to Form","seeAllText":"See All","progressMiddleText":"of","fieldError":"field has an error.","error":"Error"};
+      JotForm.newPaymentUI = true;
+      JotForm.originalLanguage = "en";
+      JotForm.isFormViewTrackingAllowed = true;
+      JotForm.replaceTagTest = true;
+      JotForm.uploadServerURL = "https://upload.jotform.com/upload";
+    
+       JotForm.setConditions([{"action":[{"id":"action_1675371913767","visibility":"Show","isError":false,"field":"17"}],"id":"1675371931738","index":"0","link":"Any","priority":"0","terms":[{"id":"term_1675371913767","field":"11","operator":"equals","value":"1","isError":false}],"type":"field"},{"action":[{"id":"action_1675370695672","visibility":"ShowMultiple","isError":false,"fields":["17","20","19","18"]}],"id":"1675370711526","index":"1","link":"Any","priority":"1","terms":[{"id":"term_1675370695672","field":"11","operator":"equals","value":"4","isError":false}],"type":"field"},{"action":[{"id":"action_1675370667271","visibility":"Hide","isError":false,"field":"18"},{"id":"action_1675370634888","visibility":"ShowMultiple","isError":false,"fields":["17","20","19"]}],"id":"1675370687335","index":"2","link":"Any","priority":"2","terms":[{"id":"term_1675370634888","field":"11","operator":"equals","value":"3","isError":false}],"type":"field"},{"action":[{"id":"action_1675370561553","visibility":"HideMultiple","isError":false,"fields":["19","18"]},{"id":"action_1675370512018","visibility":"ShowMultiple","isError":false,"fields":["17","20"]}],"id":"1675370583400","index":"3","link":"Any","priority":"3","terms":[{"id":"term_1675370512018","field":"11","operator":"equals","value":"2","isError":false}],"type":"field"},{"action":[{"id":"action_0_1675369997248","visibility":"HideMultiple","isError":false,"fields":["20","19","18"]}],"id":"1675363940992","index":"5","link":"Any","priority":"5","terms":[{"id":"term_0_1675369997248","field":"11","operator":"isEmpty","value":"","isError":false}],"type":"field"}]);	JotForm.submitError="jumpToFirstError";
+    
+      JotForm.init(function(){
+      /*INIT-START*/
+    
+        JotForm.calendarMonths = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        JotForm.appointmentCalendarMonths = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        JotForm.appointmentCalendarDays = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+        JotForm.calendarOther = "Today";
+        window.initializeAppointment({"text":{"text":"Question","value":"Evaluation Time"},"labelAlign":{"text":"Label Align","value":"Auto","dropdown":[["Auto","Auto"],["Left","Left"],["Right","Right"],["Top","Top"]]},"required":{"text":"Required","value":"Yes","dropdown":[["No","No"],["Yes","Yes"]]},"description":{"text":"Hover Text","value":"","textarea":true},"slotDuration":{"text":"Slot Duration","value":"30","dropdown":[[15,"15 min"],[30,"30 min"],[45,"45 min"],[60,"60 min"],["custom","Custom min"]],"hint":"Select how long each slot will be."},"startDate":{"text":"Start Date","value":""},"endDate":{"text":"End Date","value":""},"intervals":{"text":"Intervals","value":[{"from":"8:00","to":"17:00","days":["Mon","Tue","Wed","Thu"]}],"hint":"The hours will be applied to the selected days and repeated."},"useBlockout":{"text":"Blockout Custom Dates","value":"No","dropdown":[["No","No"],["Yes","Yes"]],"hint":"Disable certain date(s) in the calendar."},"blockoutDates":{"text":"Blockout dates","value":[{"startDate":"2023-05-29","endDate":"2023-05-29"}]},"useLunchBreak":{"text":"Lunch Time","value":"No","dropdown":[["No","No"],["Yes","Yes"]],"hint":"Enable lunchtime in the calendar."},"lunchBreak":{"text":"Lunchtime hours","value":[{"from":"12:00","to":"14:00"}]},"timezone":{"text":"Timezone","value":"Africa\u002FCairo (GMT+02:00)"},"timeFormat":{"text":"Time Format","value":"AM\u002FPM","dropdown":[["24 Hour","24 Hour"],["AM\u002FPM","AM\u002FPM"]],"icon":"images\u002Fblank.gif","iconClassName":"toolbar-time_format_24"},"months":{"value":["January","February","March","April","May","June","July","August","September","October","November","December"],"hidden":true},"days":{"value":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"hidden":true},"startWeekOn":{"text":"Start Week On","value":"Monday","dropdown":[["Monday","Monday"],["Sunday","Sunday"]],"toolbar":false},"rollingDays":{"text":"Rolling Days","value":"7","toolbar":false},"prevMonthButtonText":{"text":"Previous month","value":""},"nextMonthButtonText":{"text":"Next month","value":""},"prevYearButtonText":{"text":"Previous year","value":""},"nextYearButtonText":{"text":"Next year","value":""},"prevDayButtonText":{"text":"Previous day","value":""},"nextDayButtonText":{"text":"Next day","value":""},"appointmentType":{"hidden":true,"value":"single"},"autoDetectTimezone":{"hidden":true,"value":"Yes"},"dateFormat":{"hidden":true,"value":"mm\u002Fdd\u002Fyyyy"},"hidden":{"hidden":true,"value":"No"},"maxAttendee":{"hidden":true,"value":"5"},"maxEvents":{"hidden":true,"value":""},"minScheduleNotice":{"hidden":true,"value":"3"},"name":{"hidden":true,"value":"appointment"},"order":{"hidden":true,"value":"13"},"qid":{"toolbar":false,"value":"input_15"},"reminderEmails":{"hidden":true,"value":{"schedule":[{"value":"1","unit":"day"},{"value":"2","unit":"hour"}],"emailSettings":{"PDFPassword":"","attachPDF":"false","updateEmail":"true","type":"APPOINTMENT_REMINDER","to":[{"id":"6","value":"{studentEmail}","name":"E-mail","text":"E-mail","isValid":"true","isQuestion":"true"}],"subject":"Waraqa: Your evaluation is on {appointment}","content":"\u003C!DOCTYPE html\u003E\r\n\u003Chtml\u003E\r\n\u003Chead\u003E\r\n\u003C\u002Fhead\u003E\r\n\u003Cbody\u003E\r\n\u003Ctable width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"#ecedf2\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 32px; min-width: 32px;\" width=\"32\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003Ctd\u003E\r\n\u003Ctable class=\"jmTable-wrapper\" style=\"width: 100%;\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"min-height: 36px;\" height=\"36\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"text-align: center;\" align=\"center\"\u003E\u003Cspan style=\"font-size: 18pt; font-family: arial, helvetica, sans-serif;\"\u003E\u003Cstrong\u003E\u003Cimg src=\"https:\u002F\u002Fwww.jotform.com\u002Fuploads\u002Fwaraqainc\u002Fform_files\u002FLogo.63dbd09e7d3169.95934229.png\" alt=\"Waraqa\" width=\"93\" height=\"93\" \u002F\u003E\u003C\u002Fstrong\u003E\u003C\u002Fspan\u003E\u003Cbr \u002F\u003E\r\n\u003Ctable id=\"jmOutcome-container\" class=\"jmTable\" style=\"min-width: 480px; max-width: 720px; width: 100%; background-color: transparent;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%; max-width: 100%; min-width: 100%;\"\u003E\r\n\u003Ctable width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr style=\"min-height: 26px; background-color: #fff;\"\u003E\r\n\u003Ctd style=\"width: 106%;\" colspan=\"3\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr style=\"background-color: #fff;\"\u003E\r\n\u003Ctd style=\"min-width: 40px; width: 6%;\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003Ctd id=\"jmButton-container\" style=\"width: 39.1686%;\"\u003E\r\n\u003Ctable class=\"jmTable\" style=\"min-width: 480px; max-width: 720px; width: 100%; background-color: #fff; font-weight: 300;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%; max-width: 100%; min-width: 100%;\"\u003E\r\n\u003Ctable style=\"width: 112.182%;\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%;\"\u003E\r\n\u003Ctable class=\"jmTable\" style=\"min-width: 480px; max-width: 720px; width: 472px; background-color: #ffffff; text-align: left; color: #0a1551; font-size: 18px; font-weight: bold; line-height: 28px; height: 26px;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 475.556px; max-width: 100%; min-width: 100%;\"\u003EHere is a friendly reminder email of your&nbsp;evaluation\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%;\" height=\"18\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%;\"\u003E\r\n\u003Ctable class=\"jmTable\" style=\"min-width: 100%; max-width: 100%; width: 100%; background-color: rgba(233, 236, 249, 0.4); text-align: center; border-radius: 4px; overflow: hidden;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%; max-width: 100%; min-width: 100%;\"\u003E\u003Ccenter\u003E\r\n\u003Ctable style=\"width: auto; max-width: 100%; padding: 15px 0;\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr style=\"vertical-align: text-top;\"\u003E\r\n\u003Ctd\u003E\u003Cimg style=\"margin-right: 5px;\" src=\"https:\u002F\u002Femails.jotform.com\u002Fimg\u002Fappointment\u002Fdate.png?v=1.0\" alt=\"appointment icon\" width=\"14\" \u002F\u003E\u003C\u002Ftd\u003E\r\n\u003Ctd\u003E\r\n\u003Ctable\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd\u003E\u003Cspan style=\"color: #a5a8b3; font-size: 12px; font-weight: 400; line-height: 20px;\"\u003EAppointment\u003C\u002Fspan\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd\u003E\u003Cspan style=\"color: #2b3245; font-size: 14px; font-weight: 400; line-height: 20px;\"\u003E{appointment:date}\u003C\u002Fspan\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr style=\"vertical-align: text-top;\"\u003E\r\n\u003Ctd\u003E\u003Cimg style=\"margin-right: 5px;\" src=\"https:\u002F\u002Femails.jotform.com\u002Fimg\u002Fappointment\u002Fduration.png?v=1.0\" alt=\"appointment icon\" width=\"14\" \u002F\u003E\u003C\u002Ftd\u003E\r\n\u003Ctd\u003E\r\n\u003Ctable\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd\u003E\u003Cspan style=\"color: #a5a8b3; font-size: 12px; font-weight: 400; line-height: 20px;\"\u003EDuration\u003C\u002Fspan\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd\u003E\u003Cspan style=\"color: #2b3245; font-size: 14px; font-weight: 400; line-height: 20px;\"\u003E{appointment:duration}\u003C\u002Fspan\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr style=\"vertical-align: text-top;\"\u003E\r\n\u003Ctd\u003E\r\n\u003Cp\u003E&nbsp;\u003C\u002Fp\u003E\r\n\u003Cp\u003E\u003Cimg style=\"margin-right: 5px;\" src=\"https:\u002F\u002Femails.jotform.com\u002Fimg\u002Fappointment\u002Ftimezone.png?v=1.0\" alt=\"appointment icon\" width=\"14\" \u002F\u003E\u003C\u002Fp\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003Ctd\u003E\r\n\u003Ctable style=\"width: 470px;\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 558.799px;\"\u003E\u003Cspan style=\"color: #a5a8b3; font-size: 12px; font-weight: 400; line-height: 20px;\"\u003ETimezone\u003C\u002Fspan\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 558.799px;\"\u003E\u003Cspan style=\"color: #2b3245; font-size: 14px; font-weight: 400; line-height: 20px;\"\u003E{appointment:timezone}\u003C\u002Fspan\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 558.799px;\"\u003E\u003Cspan style=\"color: #2b3245;\"\u003EZoom Link\u003C\u002Fspan\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 558.799px;\"\u003E\r\n\u003Cp\u003E\u003Ca href=\"https:\u002F\u002Fus04web.zoom.us\u002Fj\u002F7874054018?pwd=UDJzdFpZVWlUYWxGa2ZmeDE3WHp0UT09\"\u003Ehttps:\u002F\u002Fus04web.zoom.us\u002Fj\u002F7874054018?pwd=UDJzdFpZVWlUYWxGa2ZmeDE3WHp0UT09\u003C\u002Fa\u003E\u003C\u002Fp\u003E\r\n\u003Cp\u003EMeeting ID: 787 405 4018\u003C\u002Fp\u003E\r\n\u003Cp\u003E&nbsp;Passcode: 00\u003C\u002Fp\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003Ctd style=\"width: 10px;\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Fcenter\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%;\"\u003E\r\n\u003Ctable class=\"jmTable\" style=\"min-width: 480px; max-width: 720px; width: 100%; background-color: #fff; text-align: center; font-size: 14px; line-height: 16px;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%; max-width: 100%; min-width: 100%;\"\u003EAdd to&nbsp; \u003Ca href=\"{googleCalendarLink:appointment}\"\u003EGoogle\u003C\u002Fa\u003E &nbsp;&bull;&nbsp; \u003Ca href=\"{outlookLink:appointment}\"\u003EOutlook\u003C\u002Fa\u003E &nbsp;&bull;&nbsp; \u003Ca href=\"{icalLink:appointment}\"\u003EiCal\u003C\u002Fa\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%;\"\u003E\r\n\u003Ctable class=\"jmTable\" style=\"min-width: 480px; max-width: 720px; width: 518px; background-color: #ffffff; text-align: center; height: 67px;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 513.542px; max-width: 100%; min-width: 100%;\"\u003E\u003Ca style=\"min-width: 64px; background-color: #ff6100; color: #fff; border-radius: 4px; font-size: 20px; font-weight: bold; line-height: 23px; text-align: center; padding: 16px 26px; display: inline-block; text-decoration: none; margin-top: 8px;\" href=\"{edit_link_v2}\"\u003E&nbsp;Reschedule or Cancel Appointment&nbsp;\u003C\u002Fa\u003E\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003Ctd style=\"min-width: 40px; width: 60.8314%;\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr style=\"min-height: 26px; background-color: #fff;\"\u003E\r\n\u003Ctd style=\"width: 106%;\" colspan=\"3\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003Cbr \u002F\u003E\r\n\u003Ctable class=\"jmTable-wrapper\" style=\"width: 100%;\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr style=\"display: none;\"\u003E\r\n\u003Ctd style=\"min-height: 64px;\" height=\"64\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd align=\"center\"\u003E\r\n\u003Ctable style=\"max-width: 720px;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"line-height: 0; font-size: 0; border-radius: 4px 4px 0 0;\" bgcolor=\"#FF6100\" height=\"8\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003Ctable class=\"jmTable\" style=\"min-width: 480px; max-width: 720px; width: 100%; background-color: #fff;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"width: 100%; max-width: 100%; min-width: 100%;\"\u003E\r\n\u003Ctable width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"\u003E\r\n\u003Ctbody\u003E\r\n\u003Ctr style=\"min-height: 24px;\"\u003E\r\n\u003Ctd colspan=\"3\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"min-width: 40px;\" width=\"40\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003Ctd\u003E\u003Cspan id=\"jmTitle-container\" style=\"font-size: 18px; font-weight: bold; color: #0a1551;\"\u003E{form_titlef}\u003C\u002Fspan\u003E\u003C\u002Ftd\u003E\r\n\u003Ctd style=\"min-width: 40px;\" width=\"40\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr style=\"min-height: 16px;\"\u003E\r\n\u003Ctd style=\"min-width: 40px;\" width=\"40\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003Ctd style=\"border-bottom: 1px solid #ECEDF2;\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003Ctd style=\"min-width: 40px;\" width=\"40\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd colspan=\"3\"\u003E\r\n\u003Ctable id=\"jmSubmission-container\" class=\"jmSubmissionTable\" style=\"width: 100%;\" cellspacing=\"0\" cellpadding=\"24\"\u003E\r\n\u003Ctbody id=\"emailFieldsTableBody\"\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd\u003E\r\n\u003Ctable id=\"jmSubmission-container\" class=\"emailFieldsInnerTable\" width=\"100%\" cellspacing=\"0\" cellpadding=\"12\"\u003E\r\n\u003Ctbody id=\"emailFieldsTableInnerBody\"\u003E\r\n\u003Ctr id=\"row_11\" class=\"questionRow\"\u003E\r\n\u003Ctd id=\"question_11\" class=\"questionColumn\" style=\"color: #6f76a7; font-size: 14px; width: 32.3934%;\" bgcolor=\"transparent\"\u003EHow many students?\u003C\u002Ftd\u003E\r\n\u003Ctd id=\"value_11\" class=\"valueColumn\" style=\"color: #0a1551; font-size: 14px; width: 66.6066%;\" bgcolor=\"transparent\"\u003E{typeA}\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr id=\"row_4\" class=\"questionRow\"\u003E\r\n\u003Ctd id=\"question_4\" class=\"questionColumn\" style=\"color: #6f76a7; font-size: 14px; width: 32.3934%;\" bgcolor=\"transparent\"\u003EStudent Name\u003C\u002Ftd\u003E\r\n\u003Ctd id=\"value_4\" class=\"valueColumn\" style=\"color: #0a1551; font-size: 14px; width: 66.6066%;\" bgcolor=\"transparent\"\u003E{studentName}\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr id=\"row_6\" class=\"questionRow\"\u003E\r\n\u003Ctd id=\"question_6\" class=\"questionColumn\" style=\"color: #6f76a7; font-size: 14px; width: 32.3934%;\" bgcolor=\"transparent\"\u003EE-mail\u003C\u002Ftd\u003E\r\n\u003Ctd id=\"value_6\" class=\"valueColumn\" style=\"color: #0a1551; font-size: 14px; width: 66.6066%;\" bgcolor=\"transparent\"\u003E{studentEmail}\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr id=\"row_12\" class=\"questionRow\"\u003E\r\n\u003Ctd id=\"question_12\" class=\"questionColumn\" style=\"color: #6f76a7; font-size: 14px; width: 32.3934%;\" bgcolor=\"transparent\"\u003EPhone \u002F Whatsapp\u003C\u002Ftd\u003E\r\n\u003Ctd id=\"value_12\" class=\"valueColumn\" style=\"color: #0a1551; font-size: 14px; width: 66.6066%;\" bgcolor=\"transparent\"\u003E{phoneNumber}\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr id=\"row_13\" class=\"questionRow\"\u003E\r\n\u003Ctd id=\"question_13\" class=\"questionColumn\" style=\"color: #6f76a7; font-size: 14px; width: 32.3934%;\" bgcolor=\"transparent\"\u003ECountry\u003C\u002Ftd\u003E\r\n\u003Ctd id=\"value_13\" class=\"valueColumn\" style=\"color: #0a1551; font-size: 14px; width: 66.6066%;\" bgcolor=\"transparent\"\u003E{address}\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr id=\"row_15\" class=\"questionRow\"\u003E\r\n\u003Ctd id=\"question_15\" class=\"questionColumn\" style=\"color: #6f76a7; font-size: 14px; width: 32.3934%;\" bgcolor=\"transparent\"\u003EAppointment\u003C\u002Ftd\u003E\r\n\u003Ctd id=\"value_15\" class=\"valueColumn\" style=\"color: #0a1551; font-size: 14px; width: 66.6066%;\" bgcolor=\"transparent\"\u003E{appointment}\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003Ctr\u003E\r\n\u003Ctd style=\"min-height: 64px;\" height=\"64\"\u003E\r\n\u003Cdiv class=\"gmail_signature\" dir=\"ltr\" style=\"color: #222222; font-family: Arial, Helvetica, sans-serif; font-size: small; text-align: start;\" data-smartmail=\"gmail_signature\"\u003E\r\n\u003Cdiv dir=\"ltr\"\u003E\r\n\u003Ctable id=\"emailFieldsTable\" class=\"mceNonEditable\" style=\"font-size: 14px; font-family: Helvetica, sans-serif;\" border=\"0\" width=\"100%\" cellspacing=\"0\" cellpadding=\"5\"\u003E\r\n\u003Ctbody id=\"emailFieldsTableBody\"\u003E\r\n\u003Ctr id=\"row_21\" class=\"questionRow\"\u003E\r\n\u003Ctd id=\"question_21\" class=\"questionColumn\" style=\"padding: 5px !important; width: 17.9806%;\" valign=\"top\" bgcolor=\"white\"\u003E\u003Cimg style=\"display: block; margin-left: auto; margin-right: auto;\" src=\"https:\u002F\u002Fwww.jotform.com\u002Fuploads\u002Fwaraqainc\u002Fform_files\u002Flogo.e09b367c.632ccc605b77e6.28867472.jpg\" alt=\"\" width=\"104\" height=\"105\" \u002F\u003E\u003C\u002Ftd\u003E\r\n\u003Ctd id=\"value_21\" class=\"valueColumn\" style=\"padding: 5px !important; width: 78.0194%;\" bgcolor=\"white\"\u003E\r\n\u003Cp\u003E\u003Cspan style=\"font-size: 14pt; font-family: book antiqua, palatino, serif;\"\u003E\u003Cstrong\u003EWaraqa\u003C\u002Fstrong\u003E\u003C\u002Fspan\u003E\u003C\u002Fp\u003E\r\n\u003Cp\u003E\u003Cspan style=\"font-family: arial, helvetica, sans-serif;\"\u003E\u003Cstrong\u003EQuran and Arabic online institute.\u003C\u002Fstrong\u003E\u003C\u002Fspan\u003E\u003C\u002Fp\u003E\r\n\u003Cp\u003E\u003Cspan style=\"font-family: Arial; font-size: small;\"\u003E\u003Cstrong\u003EP +20 120 032 4956\u003C\u002Fstrong\u003E\u003C\u002Fspan\u003E\u003C\u002Fp\u003E\r\n\u003Cp\u003E\u003Cstrong style=\"text-align: center; background-color: #f3f3fe;\"\u003E\u003Cspan style=\"font-family: Arial; font-size: small;\"\u003EW&nbsp; https:\u002F\u002Fwww.waraqaweb.com\u003C\u002Fspan\u003E\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\r\n\u003Cp\u003E\u003Cspan style=\"font-size: 10pt;\"\u003E\u003Cstrong\u003EE waraqainc@gmail.com | Alexandria, Egypt\u003C\u002Fstrong\u003E\u003C\u002Fspan\u003E\u003C\u002Fp\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Fdiv\u003E\r\n\u003C\u002Fdiv\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Ftd\u003E\r\n\u003Ctd style=\"width: 32px; min-width: 32px;\" width=\"32\"\u003E&nbsp;\u003C\u002Ftd\u003E\r\n\u003C\u002Ftr\u003E\r\n\u003C\u002Ftbody\u003E\r\n\u003C\u002Ftable\u003E\r\n\u003C\u002Fbody\u003E\r\n\u003C\u002Fhtml\u003E","senderName":"Waraqa","replyTo":"waraqainc@gmail.com","branding21Email":"1","attachment":"","senderEmail":"noreply@jotform.com","hideEmptyFields":"true","sendOnEdit":"false","sendOnSubmit":"","enablePDFPassword":"false","sendDate":"","uploadAttachment":"","usesNewPDF":"Yes","recipientLimit":"0","teamMembers":""}}},"type":{"hidden":true,"value":"control_appointment"},"useReminderEmails":{"hidden":true,"value":"Yes"},"id":{"toolbar":false,"value":"15"},"qname":{"toolbar":false,"value":"q15_appointment"},"cdnconfig":{"CDN":"https:\u002F\u002Fcdn.jotfor.ms\u002F"},"passive":false,"formProperties":{"highlightLine":"Enabled","coupons":false,"useStripeCoupons":false,"taxes":false,"comparePaymentForm":"","paymentListSettings":false,"newPaymentUIForNewCreatedForms":false,"formBackground":"#fff","newAppointment":false,"isAutoCompleteEnabled":true},"formID":230323546168555,"isPaymentForm":false,"isOpenedInPortal":false,"isCheckoutForm":false,"isImportPDFForm":false,"isOfflineForms":false,"SSL_URL":"https:\u002F\u002Fwww.jotform.com\u002F","themeVersion":"v2","isEnterprise":false,"environment":"PRODUCTION"});
+            JotForm.alterTexts({"ageVerificationError":"You must be older than {minAge} years old to submit this form.","alphabetic":"This field can only contain letters","alphanumeric":"This field can only contain letters and numbers.","appointmentSelected":"You’ve selected {time} on {date}","ccDonationMinLimitError":"Minimum amount is {minAmount} {currency}","ccInvalidCVC":"CVC number is invalid.","ccInvalidExpireDate":"Expire date is invalid.","ccInvalidExpireMonth":"Expiration month is invalid.","ccInvalidExpireYear":"Expiration year is invalid.","ccInvalidNumber":"Credit Card Number is invalid.","ccMissingDetails":"Please fill up the credit card details.","ccMissingDonation":"Please enter numeric values for donation amount.","ccMissingProduct":"Please select at least one product.","characterLimitError":"Too many Characters.  The limit is","characterMinLimitError":"Too few characters. The minimum is","confirmClearForm":"Are you sure you want to clear the form","confirmEmail":"E-mail does not match","currency":"This field can only contain currency values.","cyrillic":"This field can only contain cyrillic characters","dateInvalid":"This date is not valid. The date format is {format}","dateInvalidSeparate":"This date is not valid. Enter a valid {element}.","dateLimited":"This date is unavailable.","disallowDecimals":"Please enter a whole number.","doneButton":"Done","doneMessage":"Well done! All errors are fixed.","dragAndDropFilesHere_infoMessage":"Drag and drop files here","email":"Enter a valid e-mail address","fillMask":"Field value must fill mask.","freeEmailError":"Free email accounts are not allowed","generalError":"There are errors on the form. Please fix them before continuing.","generalPageError":"There are errors on this page. Please fix them before continuing.","geoNotAvailableDesc":"Location provider not available. Please enter the address manually.","geoNotAvailableTitle":"Position Unavailable","geoPermissionDesc":"Check your browser's privacy settings.","geoPermissionTitle":"Permission Denied","geoTimeoutDesc":"Please check your internet connection and try again.","geoTimeoutTitle":"Timeout","gradingScoreError":"Score total should only be less than or equal to","incompleteFields":"There are incomplete required fields. Please complete them.","inputCarretErrorA":"Input should not be less than the minimum value:","inputCarretErrorB":"Input should not be greater than the maximum value:","justSoldOut":"Just Sold Out","lessThan":"Your score should be less than or equal to","maxDigitsError":"The maximum digits allowed is","maxFileSize_infoMessage":"Max. file size","maxSelectionsError":"The maximum number of selections allowed is ","minCharactersError":"The number of characters should not be less than the minimum value:","minSelectionsError":"The minimum required number of selections is ","multipleError":"There are {count} errors in this page. Please correct them before moving on.","multipleFileUploads_emptyError":"{file} is empty, please select files again without it.","multipleFileUploads_fileLimitError":"Only {fileLimit} file uploads allowed.","multipleFileUploads_minSizeError":"{file} is too small, minimum file size is {minSizeLimit}.","multipleFileUploads_onLeave":"The files are being uploaded, if you leave now the upload will be cancelled.","multipleFileUploads_sizeError":"{file} is too large, maximum file size is {sizeLimit}.","multipleFileUploads_typeError":"{file} has invalid extension. Only {extensions} are allowed.","multipleFileUploads_uploadFailed":"File upload failed, please remove it and upload the file again.","nextButtonText":"Next","noSlotsAvailable":"No slots available","notEnoughStock":"Not enough stock for the current selection","notEnoughStock_remainedItems":"Not enough stock for the current selection ({count} items left)","noUploadExtensions":"File has no extension file type (e.g. .txt, .png, .jpeg)","numeric":"This field can only contain numeric values","oneError":"There is {count} error in this page. Please correct it before moving on.","pastDatesDisallowed":"Date must not be in the past.","pleaseWait":"Please wait...","prevButtonText":"Previous","required":"This field is required.","requiredLegend":"All fields marked with * are required and must be filled.","requireEveryCell":"Every cell is required.","requireEveryRow":"Every row is required.","requireOne":"At least one field required.","restrictedDomain":"This domain is not allowed","reviewSubmitText":"Review and Submit","seeErrorsButton":"See Errors","selectionSoldOut":"Selection Sold Out","slotUnavailable":"{time} on {date} has been selected is unavailable. Please select another slot.","soldOut":"Sold Out","subProductItemsLeft":"({count} items left)","uploadExtensions":"You can only upload following files:","uploadFilesize":"File size cannot be bigger than:","uploadFilesizemin":"File size cannot be smaller than:","url":"This field can only contain a valid URL","validateEmail":"You need to validate this e-mail","wordLimitError":"Too many words. The limit is","wordMinLimitError":"Too few words.  The minimum is"});
+      /*INIT-END*/
+      });
+    
+       setTimeout(function() {
+    JotForm.paymentExtrasOnTheFly([null,{"name":"clickTo","qid":"1","text":"Unlock your learning potential!","type":"control_head"},null,null,{"description":"","name":"studentName","qid":"4","text":"Gurdian Name","type":"control_fullname"},null,{"description":"","name":"studentEmail","qid":"6","subLabel":"","text":"Email","type":"control_email"},null,null,null,null,{"description":"","name":"typeA","qid":"11","text":"How many students?","type":"control_radio"},{"description":"","name":"phoneNumber","qid":"12","text":"Phone \u002F Whatsapp","type":"control_phone"},{"description":"","name":"address","qid":"13","text":"Country","type":"control_address"},{"name":"pageBreak","qid":"14","text":"Page Break","type":"control_pagebreak"},{"description":"","name":"appointment","qid":"15","text":"Evaluation Time","type":"control_appointment"},{"name":"submit","qid":"16","text":"Submit","type":"control_button"},{"description":"","name":"studentName17","qid":"17","text":"Student Name","type":"control_fullname"},{"description":"","name":"studentName18","qid":"18","text":"Fourth Student","type":"control_fullname"},{"description":"","name":"studentName19","qid":"19","text":"Third Student","type":"control_fullname"},{"description":"","name":"studentName20","qid":"20","text":"Second Student","type":"control_fullname"},{"description":"","name":"howDid","qid":"21","text":"How did you know about us?","type":"control_radio"}]);}, 20); 
+    </script>
+    <link type="text/css" rel="stylesheet" href="https://cdn01.jotfor.ms/stylebuilder/static/form-common.css?v=71e44d6
+    "/>
+    <style type="text/css">@media print{*{-webkit-print-color-adjust: exact !important;color-adjust: exact !important;}.form-section{display:inline!important}.form-pagebreak{display:none!important}.form-section-closed{height:auto!important}.page-section{position:initial!important}}</style>
+    <link type="text/css" rel="stylesheet" href="https://cdn02.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?v=3.3.59220&themeRevisionID=63a2351435646363a50e3ee0"/>
+    <link type="text/css" rel="stylesheet" href="https://cdn03.jotfor.ms/css/styles/payment/payment_styles.css?3.3.59220" />
+    <link type="text/css" rel="stylesheet" href="https://cdn01.jotfor.ms/css/styles/payment/payment_feature.css?3.3.59220" />
+    <style type="text/css" id="form-designer-style">
+        /* Injected CSS Code */
+    
+    *,
+    *:after,
+    *:before {
+      margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        /* user-select: none; */
     }
-  </script>
-</form><script type="text/javascript">JotForm.ownerView=true;</script><script type="text/javascript">JotForm.isNewSACL=true;</script>
-  </main>
+    body{
+      background-color: #E1DFDB;
+    }
+    .form-all {
+      font-family: "Inter", sans-serif;
+        display: block;
+        margin-top: 0em;
+        unicode-bidi: isolate;
+    }
+    .main .jotform-form {
+      width: 100%;
+      padding: 0 3%;
+    }
+    .form-all {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 752px;
+    }
+    .form-line-active {
+      background-color: #ffffe0 !important;
+    }
+    .form-all {
+      font-size: 16px;
+    }
+    li.form-line {
+      margin-top: 6px;
+      margin-bottom: 6px;
+    }
+    .form-line {
+      padding: 10px 10px;
+    }
+    .supernova .form-all,
+    .form-all {
+      border-radius: 20px;
+    }
+    .form-section:first-child {
+      border-radius: 20px 20px 0 0;
+    }
+    .form-section:last-child {
+      border-radius: 0 0 20px 20px;
+    }
+    .form-section {
+      padding: 0px 38px;
+    }
+    .form-textbox,
+    .form-textarea,
+    .form-radio-other-input,
+    .form-checkbox-other-input,
+    .form-captcha input,
+    .form-spinner input {
+      background-color: #ffffff;
+    }
+    .form-label {
+      margin-bottom: 5px;
+      margin-right: 0;
+    }
+    .form-label {
+      font-family: "Inter", sans-serif;
+    }
+    .form-line-column {
+      width: calc(50% - 8px);
+    }
+    .form-line-column {
+      width: calc(100/2 * 1% - 8px);
+    }
+    .form-checkbox-item label,
+    .form-checkbox-item span,
+    .form-radio-item label,
+    .form-radio-item span {
+      color: #404a64;
+    }
+    .form-radio-item,
+    .form-checkbox-item {
+      padding-bottom: 0px !important;
+    }
+    .form-radio-item:last-child,
+    .form-checkbox-item:last-child {
+      padding-bottom: 0;
+    }
+    .form-single-column .form-checkbox-item,
+    .form-single-column .form-radio-item {
+      width: 100%;
+    }
+    .form-checkbox-item .editor-container div,
+    .form-radio-item .editor-container div {
+      position: relative;
+    }
+    .form-checkbox-item .editor-container div:before,
+    .form-radio-item .editor-container div:before {
+      display: inline-block;
+      vertical-align: middle;
+      left: 0;
+      width: 20px;
+      height: 20px;
+    }
+    .form-radio-item:not(#foo),
+    .form-checkbox-item:not(#foo) {
+      position: relative;
+    }
+    .form-radio-item:not(#foo) .form-radio + span:before,
+    .form-checkbox-item:not(#foo) .form-radio + span:before,
+    .form-radio-item:not(#foo) .form-radio + span:after,
+    .form-checkbox-item:not(#foo) .form-radio + span:after,
+    .form-radio-item:not(#foo) .form-radio:checked + span div:after,
+    .form-checkbox-item:not(#foo) .form-radio:checked + span div:after,
+    .form-radio-item:not(#foo) .form-checkbox + span:before,
+    .form-checkbox-item:not(#foo) .form-checkbox + span:before,
+    .form-radio-item:not(#foo) .form-checkbox + span:after,
+    .form-checkbox-item:not(#foo) .form-checkbox + span:after {
+      display: none;
+    }
+    .form-radio-item:not(#foo) label:before,
+    .form-checkbox-item:not(#foo) label:before {
+      background-color: transparent;
+      border: 2px solid #2e69ff;
+    }
+    .form-radio-item:not(#foo) label:focus:before,
+    .form-checkbox-item:not(#foo) label:focus:before {
+      border-color: #588ee6;
+    }
+    .form-radio-item:not(#foo) .form-radio:checked + label:after,
+    .form-checkbox-item:not(#foo) .form-radio:checked + label:after,
+    .form-radio-item:not(#foo) .form-checkbox:checked + label:after,
+    .form-checkbox-item:not(#foo) .form-checkbox:checked + label:after {
+      background: none;
+      border-bottom: 3px solid #2e69ff;
+      border-left: 3px solid #2e69ff;
+      display: inline-block;
+      transform: rotate(-45deg) !important;
+      height: 9px;
+      width: 18px;
+      top: 0;
+      border-radius: 2px;
+    }
+    .form-radio-item:not(#foo) .form-radio-other,
+    .form-radio-item:not(#foo) .form-checkbox-other {
+      display: inline-block;
+      margin-right: 13px;
+      margin-top: 0px;
+    }
+    .form-radio-item:not(#foo) .form-radio-item label,
+    .form-radio-item:not(#foo) .form-radio-item label {
+      float: left;
+      margin-left: 0;
+      outline: none;
+    }
+    .form-radio-item:not(#foo) label:before {
+      content: '';
+      position: absolute;
+      display: inline-block;
+      vertical-align: baseline;
+      margin-right: 4px;
+      border-radius: 50%;
+      left: 4px;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+    .form-radio-item:not(#foo) label:after {
+      content: '';
+      position: absolute;
+      display: inline-block;
+      top: 4px;
+      left: 8px;
+      width: 10px;
+      height: 10px;
+    }
+    .form-radio-item:not(#foo) input:checked + label:after {
+      opacity: 1;
+    }
+    .form-checkbox-item:not(#foo) .form-radio-other,
+    .form-checkbox-item:not(#foo) .form-checkbox-other {
+      display: inline-block;
+      margin-right: 13px;
+      margin-top: 0px;
+    }
+    .form-checkbox-item:not(#foo) .form-radio-item label,
+    .form-checkbox-item:not(#foo) .form-radio-item label {
+      float: left;
+      margin-left: 0;
+      outline: none;
+    }
+    .form-checkbox-item:not(#foo) label:before {
+      content: '';
+      position: absolute;
+      display: inline-block;
+      vertical-align: baseline;
+      margin-right: 4px;
+      border-radius: 2px;
+      left: 4px;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+    .form-checkbox-item:not(#foo) label:after {
+      content: '';
+      position: absolute;
+      display: inline-block;
+      top: 6px;
+      left: 10px;
+      width: 4px;
+      height: 4px;
+    }
+    .form-checkbox-item:not(#foo) input:checked + label:after {
+      opacity: 1;
+    }
+    .submit-button {
+      font-size: 16px;
+      font-weight: normal;
+      font-family: "Inter", sans-serif;
+    }
+    .submit-button {
+      min-width: 180px;
+    }
+    .form-all .form-pagebreak-back,
+    .form-all .form-pagebreak-next {
+      font-family: "Inter", sans-serif;
+      font-size: 16px;
+      font-weight: normal;
+    }
+    .form-all .form-pagebreak-back,
+    .form-all .form-pagebreak-next {
+      min-width: 128px;
+    }
+    li[data-type="control_image"] div {
+      text-align: left;
+    }
+    li[data-type="control_image"] img {
+      border: none;
+      border-width: 0px !important;
+      border-style: solid !important;
+      border-color: false !important;
+    }
+    .supernova {
+      height: 100%;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      background-position: center top;
+      background-repeat: repeat;
+    }
+    .supernova {
+      background-image: none;
+    }
+    #stage {
+      background-image: none;
+    }
+    /* | */
+    .form-all {
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      background-position: center top;
+      background-repeat: repeat;
+    }
+    .form-header-group {
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      background-position: center top;
+    }
+    .header-large h1.form-header {
+      font-size: 2em;
+    }
+    .header-large h2.form-header {
+      font-size: 1.5em;
+    }
+    .header-large h3.form-header {
+      font-size: 1.17em;
+    }
+    .header-large h1 + .form-subHeader {
+      font-size: 1em;
+    }
+    .header-large h2 + .form-subHeader {
+      font-size: .875em;
+    }
+    .header-large h3 + .form-subHeader {
+      font-size: .75em;
+    }
+    .header-default h1.form-header {
+      font-size: 2em;
+    }
+    .header-default h2.form-header {
+      font-size: 1.5em;
+    }
+    .header-default h3.form-header {
+      font-size: 1.17em;
+    }
+    .header-default h1 + .form-subHeader {
+      font-size: 1em;
+    }
+    .header-default h2 + .form-subHeader {
+      font-size: .875em;
+    }
+    .header-default h3 + .form-subHeader {
+      font-size: .75em;
+    }
+    .header-small h1.form-header {
+      font-size: 2em;
+    }
+    .header-small h2.form-header {
+      font-size: 1.5em;
+    }
+    .header-small h3.form-header {
+      font-size: 1.17em;
+    }
+    .header-small h1 + .form-subHeader {
+      font-size: 1em;
+    }
+    .header-small h2 + .form-subHeader {
+      font-size: .875em;
+    }
+    .header-small h3 + .form-subHeader {
+      font-size: .75em;
+    }
+    .form-header-group {
+      text-align: left;
+    }
+    .form-header-group {
+      font-family: "Inter", sans-serif;
+    }
+    div.form-header-group.header-large,
+    div.form-header-group.hasImage {
+      margin: 0px -38px;
+    }
+    div.form-header-group.header-large,
+    div.form-header-group.hasImage {
+      padding: 40px 52px;
+    }
+    .form-header-group .form-header,
+    .form-header-group .form-subHeader {
+      color: 0;
+    }
+    .form-all {
+      position: relative;
+    }
+    .form-all:before {
+      content: "";
+      background-image: url("https://www.jotform.com/uploads/waraqainc/form_files/logo.e09b367c.632ccc605b77e6.28867472.jpg");
+      display: inline-block;
+      height: 140px;
+      position: absolute;
+      background-size: 140px 140px;
+      background-repeat: no-repeat;
+      width: 100%;
+    }
+    .form-all { margin-top: 155px; }
+    .form-all:before {
+      top: -145px;
+      background-position: top center;
+    }
+    .form-line-error {
+      overflow: hidden;
+      -webkit-transition-property: none;
+      -moz-transition-property: none;
+      -ms-transition-property: none;
+      -o-transition-property: none;
+      transition-property: none;
+      -webkit-transition-duration: 0.3s;
+      -moz-transition-duration: 0.3s;
+      -ms-transition-duration: 0.3s;
+      -o-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      -webkit-transition-timing-function: ease;
+      -moz-transition-timing-function: ease;
+      -ms-transition-timing-function: ease;
+      -o-transition-timing-function: ease;
+      transition-timing-function: ease;
+      background-color: #fff4f4;
+    }
+    .form-line-error .form-error-message {
+      background-color: #f23a3c;
+      clear: both;
+      float: none;
+    }
+    .form-line-error .form-error-message .form-error-arrow {
+      border-bottom-color: #f23a3c;
+    }
+    .form-line-error input:not(#coupon-input),
+    .form-line-error textarea,
+    .form-line-error .form-validation-error {
+      border: 1px solid #f23a3c;
+      box-shadow: 0 0 3px #f23a3c;
+    }
+    .supernova {
+      background-color: #ffffff;
+      background-color: #e1dfdb;
+    }
+    .supernova body {
+      background-color: transparent;
+    }
+    .supernova .form-all,
+    .form-all {
+      background-color: #ffffff;
+    }
+    .form-textbox,
+    .form-textarea,
+    .form-radio-other-input,
+    .form-checkbox-other-input,
+    .form-captcha input,
+    .form-spinner input {
+      background-color: #ffffff;
+    }
+    .form-matrix-table tr {
+      border-color: #e6e6e6;
+    }
+    .form-matrix-table tr:nth-child(2n) {
+      background-color: #f2f2f2;
+    }
+    .form-all {
+      color: #2c3345;
+    }
+    .form-label-top,
+    .form-label-left,
+    .form-label-right,
+    .form-html {
+      color: #2c3345;
+    }
+    .form-line-error {
+      overflow: hidden;
+      -webkit-transition-property: none;
+      -moz-transition-property: none;
+      -ms-transition-property: none;
+      -o-transition-property: none;
+      transition-property: none;
+      -webkit-transition-duration: 0.3s;
+      -moz-transition-duration: 0.3s;
+      -ms-transition-duration: 0.3s;
+      -o-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      -webkit-transition-timing-function: ease;
+      -moz-transition-timing-function: ease;
+      -ms-transition-timing-function: ease;
+      -o-transition-timing-function: ease;
+      transition-timing-function: ease;
+      background-color: #fff4f4;
+    }
+    .form-header-group .form-header,
+    .form-header-group .form-subHeader {
+      color: 0;
+    }
+    
+    /*PREFERENCES STYLE*/
+        .form-all {
+          font-family: Inter, sans-serif;
+        }
+        .form-all .qq-upload-button,
+        .form-all .form-submit-button,
+        .form-all .form-submit-reset,
+        .form-all .form-submit-print {
+          font-family: Inter, sans-serif;
+        }
+        .form-all .form-pagebreak-back-container,
+        .form-all .form-pagebreak-next-container {
+          font-family: Inter, sans-serif;
+        }
+        .form-header-group {
+          font-family: Inter, sans-serif;
+        }
+        .form-label {
+          font-family: Inter, sans-serif;
+        }
+      
+        .form-label.form-label-auto {
+          
+        display: block;
+        float: none;
+        text-align: left;
+        width: 100%;
+      
+        }
+      
+        .form-line {
+          margin-top: 12px 36px 12px 36px px;
+          margin-bottom: 12px 36px 12px 36px px;
+        }
+      
+        .form-all {
+          max-width: 752px;
+          width: 100%;
+        }
+      
+        .form-label.form-label-left,
+        .form-label.form-label-right,
+        .form-label.form-label-left.form-label-auto,
+        .form-label.form-label-right.form-label-auto {
+          width: 230px;
+        }
+      
+        .form-all {
+          font-size: 16px
+        }
+        .form-all .qq-upload-button,
+        .form-all .qq-upload-button,
+        .form-all .form-submit-button,
+        .form-all .form-submit-reset,
+        .form-all .form-submit-print {
+          font-size: 16px
+        }
+        .form-all .form-pagebreak-back-container,
+        .form-all .form-pagebreak-next-container {
+          font-size: 16px
+        }
+      
+        .supernova .form-all, .form-all {
+          background-color: #fff;
+        }
+      
+        .form-all {
+          color: #2C3345;
+        }
+        .form-header-group .form-header {
+          color: #2C3345;
+        }
+        .form-header-group .form-subHeader {
+          color: #2C3345;
+        }
+        .form-label-top,
+        .form-label-left,
+        .form-label-right,
+        .form-html,
+        .form-checkbox-item label,
+        .form-radio-item label,
+        span.FITB .qb-checkbox-label,
+        span.FITB .qb-radiobox-label,
+        span.FITB .form-radio label,
+        span.FITB .form-checkbox label,
+        [data-blotid][data-type=checkbox] [data-labelid],
+        [data-blotid][data-type=radiobox] [data-labelid],
+        span.FITB-inptCont[data-type=checkbox] label,
+        span.FITB-inptCont[data-type=radiobox] label {
+          color: #2C3345;
+        }
+        .form-sub-label {
+          color: #464d5f;
+        }
+      
+        .supernova {
+          background-color: #e1dfdb;
+        }
+        .supernova body {
+          background: transparent;
+        }
+      
+        .form-textbox,
+        .form-textarea,
+        .form-dropdown,
+        .form-radio-other-input,
+        .form-checkbox-other-input,
+        .form-captcha input,
+        .form-spinner input {
+          background-color: #fff;
+        }
+      
+        .supernova {
+          background-image: none;
+        }
+        #stage {
+          background-image: none;
+        }
+      
+        .form-all {
+          background-image: none;
+        }
+      
+        .form-all {
+          position: relative;
+        }
+        .form-all:before {
+          content: "";
+          background-image: url("https://www.jotform.com/uploads/waraqainc/form_files/logo.e09b367c.632ccc605b77e6.28867472.jpg");
+          display: inline-block;
+          height: 140px;
+          position: absolute;
+          background-size: 140px 140px;
+          background-repeat: no-repeat;
+          width: 100%;
+        }
+        .form-all { margin-top: 160px; }
+        .form-all:before {
+          top: -150px;
+          background-position: top center;
+          left: 0;
+        }
+               
+      .ie-8 .form-all:before { display: none; }
+      .ie-8 {
+        margin-top: auto;
+        margin-top: initial;
+      }
+      
+      /*PREFERENCES STYLE*//*__INSPECT_SEPERATOR__*/.formFooter {
+        display : none;
+    }
+        /* Injected CSS Code */
+    </style>
+    
+    <form class="jotform-form" onsubmit="return typeof testSubmitFunction !== 'undefined' && testSubmitFunction();" action="https://submit.jotform.com/submit/230323546168555" method="post" name="form_230323546168555" id="230323546168555" accept-charset="utf-8" autocomplete="on"><input type="hidden" name="formID" value="230323546168555" /><input type="hidden" id="JWTContainer" value="" /><input type="hidden" id="cardinalOrderNumber" value="" /><input type="hidden" id="jsExecutionTracker" name="jsExecutionTracker" value="build-date-1733412072306" /><input type="hidden" id="submitSource" name="submitSource" value="unknown" /><input type="hidden" id="buildDate" name="buildDate" value="1733412072306" /><input type="hidden" name="uploadServerUrl" value="https://upload.jotform.com/upload" /><input type="hidden" name="eventObserver" value="1" />
+      <div id="formCoverLogo" style="margin-bottom:10px" class="form-cover-wrapper form-has-cover form-page-cover-image-align-center">
+        <div class="form-page-cover-image-wrapper" style="max-width:752px"><img src="https://www.jotform.com/uploads/waraqainc/form_files/logo.e09b367c.632ccc605b77e6.28867472.jpg" class="form-page-cover-image" width="140" height="140" alt="Waraqa Evaluation Logo" style="aspect-ratio:140/140" /></div>
+      </div>
+      <div role="main" class="form-all">
+        <ul class="form-section page-section" role="presentation">
+          <li id="cid_1" class="form-input-wide" data-type="control_head">
+            <div class="form-header-group  header-default">
+              <div class="header-text httac htvam">
+                <h2 id="header_1" class="form-header" data-component="header">Unlock your learning potential!</h2>
+              </div>
+            </div>
+          </li>
+          <li class="form-line form-line-column form-col-1 jf-required" data-type="control_fullname" id="id_4" data-compound-hint="First Name,First Name"><label class="form-label form-label-top" id="label_4" for="first_4" aria-hidden="false"> Gurdian Name<span class="form-required">*</span> </label>
+            <div id="cid_4" class="form-input-wide jf-required" data-layout="full">
+              <div data-wrapper-react="true"><span class="form-sub-label-container" style="vertical-align:top" data-input-type="first"><input type="text" id="first_4" name="q4_studentName[first]" class="form-textbox validate[required]" data-defaultvalue="" autoComplete="section-input_4 given-name" size="10" placeholder="First Name" data-component="first" aria-labelledby="label_4" required="" value="" /></span><span class="form-sub-label-container" style="vertical-align:top" data-input-type="last"><input type="text" id="last_4" name="q4_studentName[last]" class="form-textbox validate[required]" data-defaultvalue="" autoComplete="section-input_4 family-name" size="15" placeholder="First Name" data-component="last" aria-labelledby="label_4" required="" value="" /></span></div>
+            </div>
+          </li>
+          <li class="form-line form-line-column form-col-2 jf-required" data-type="control_email" id="id_6"><label class="form-label form-label-top" id="label_6" for="input_6" aria-hidden="false"> Email<span class="form-required">*</span> </label>
+            <div id="cid_6" class="form-input-wide jf-required" data-layout="half"> <input type="email" id="input_6" name="q6_studentEmail" class="form-textbox validate[required, Email]" data-defaultvalue="" autoComplete="section-input_6 email" style="width:310px" size="310" placeholder="Email" data-component="email" aria-labelledby="label_6" required="" value="" /> </div>
+          </li>
+          <li class="form-line form-line-column form-col-3 jf-required" data-type="control_phone" id="id_12" data-compound-hint=","><label class="form-label form-label-top" id="label_12" for="input_12_area" aria-hidden="false"> Phone / Whatsapp<span class="form-required">*</span> </label>
+            <div id="cid_12" class="form-input-wide jf-required" data-layout="half">
+              <div data-wrapper-react="true"><span class="form-sub-label-container" style="vertical-align:top" data-input-type="areaCode"><input type="tel" id="input_12_area" name="q12_phoneNumber[area]" class="form-textbox validate[required]" data-defaultvalue="" autoComplete="section-input_12 tel-area-code" data-component="areaCode" aria-labelledby="label_12 sublabel_12_area" required="" value="" /><span class="phone-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="input_12_area" id="sublabel_12_area" style="min-height:13px">Country Code</label></span><span class="form-sub-label-container" style="vertical-align:top" data-input-type="phone"><input type="tel" id="input_12_phone" name="q12_phoneNumber[phone]" class="form-textbox validate[required]" data-defaultvalue="" autoComplete="section-input_12 tel-local" data-component="phone" aria-labelledby="label_12 sublabel_12_phone" required="" value="" /><label class="form-sub-label" for="input_12_phone" id="sublabel_12_phone" style="min-height:13px">Phone Number</label></span></div>
+            </div>
+          </li>
+          <li class="form-line form-line-column form-col-4 jf-required" data-type="control_address" id="id_13" data-compound-hint=",,,,,,Please select,"><label class="form-label form-label-top" id="label_13" for="input_13_country" aria-hidden="false"> Country<span class="form-required">*</span> </label>
+            <div id="cid_13" class="form-input-wide jf-required" data-layout="full">
+              <div summary="" class="form-address-table jsTest-addressField">
+                <div class="form-address-line-wrapper jsTest-address-line-wrapperField" style="display:none"><span class="form-address-line form-address-street-line jsTest-address-lineField"><span class="form-sub-label-container" style="vertical-align:top"><input type="text" id="input_13_addr_line1" name="q13_address[addr_line1]" class="form-textbox validate[required] form-address-line" data-defaultvalue="" autoComplete="section-input_13 off" data-component="address_line_1" aria-labelledby="label_13 sublabel_13_addr_line1" required="" value="" /><label class="form-sub-label" for="input_13_addr_line1" id="sublabel_13_addr_line1" style="min-height:13px">Street Address</label></span></span></div>
+                <div class="form-address-line-wrapper jsTest-address-line-wrapperField" style="display:none"><span class="form-address-line form-address-street-line jsTest-address-lineField"><span class="form-sub-label-container" style="vertical-align:top"><input type="text" id="input_13_addr_line2" name="q13_address[addr_line2]" class="form-textbox form-address-line" data-defaultvalue="" autoComplete="section-input_13 off" data-component="address_line_2" aria-labelledby="label_13 sublabel_13_addr_line2" value="" /><label class="form-sub-label" for="input_13_addr_line2" id="sublabel_13_addr_line2" style="min-height:13px">Street Address Line 2</label></span></span></div>
+                <div class="form-address-line-wrapper jsTest-address-line-wrapperField" style="display:none"><span class="form-address-line form-address-city-line jsTest-address-lineField form-address-hiddenLine" style="display:none"><span class="form-sub-label-container" style="vertical-align:top"><input type="text" id="input_13_city" name="q13_address[city]" class="form-textbox validate[required] form-address-city" data-defaultvalue="" autoComplete="section-input_13 off" data-component="city" aria-labelledby="label_13 sublabel_13_city" required="" value="" /><label class="form-sub-label" for="input_13_city" id="sublabel_13_city" style="min-height:13px">City</label></span></span><span class="form-address-line form-address-state-line jsTest-address-lineField form-address-hiddenLine" style="display:none"><span class="form-sub-label-container" style="vertical-align:top"><input type="text" id="input_13_state" name="q13_address[state]" class="form-textbox validate[required] form-address-state" data-defaultvalue="" autoComplete="section-input_13 off" data-component="state" aria-labelledby="label_13 sublabel_13_state" required="" value="" /><label class="form-sub-label" for="input_13_state" id="sublabel_13_state" style="min-height:13px">State / Province</label></span></span></div>
+                <div class="form-address-line-wrapper jsTest-address-line-wrapperField"><span class="form-address-line form-address-zip-line jsTest-address-lineField form-address-hiddenLine" style="display:none"><span class="form-sub-label-container" style="vertical-align:top"><input type="text" id="input_13_postal" name="q13_address[postal]" class="form-textbox form-address-postal" data-defaultvalue="" autoComplete="section-input_13 off" data-component="zip" aria-labelledby="label_13 sublabel_13_postal" value="" /><label class="form-sub-label" for="input_13_postal" id="sublabel_13_postal" style="min-height:13px">Postal / Zip Code</label></span></span><span class="form-address-line form-address-country-line jsTest-address-lineField "><span class="form-sub-label-container" style="vertical-align:top"><select class="form-dropdown validate[required] form-address-country" name="q13_address[country]" id="input_13_country" data-component="country" required="" aria-labelledby="label_13" autoComplete="section-input_13 country">
+                        <option value="">Please select</option>
+                        <option value="Afghanistan">Afghanistan</option>
+                        <option value="Albania">Albania</option>
+                        <option value="Algeria">Algeria</option>
+                        <option value="American Samoa">American Samoa</option>
+                        <option value="Andorra">Andorra</option>
+                        <option value="Angola">Angola</option>
+                        <option value="Anguilla">Anguilla</option>
+                        <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Armenia">Armenia</option>
+                        <option value="Aruba">Aruba</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Austria">Austria</option>
+                        <option value="Azerbaijan">Azerbaijan</option>
+                        <option value="The Bahamas">The Bahamas</option>
+                        <option value="Bahrain">Bahrain</option>
+                        <option value="Bangladesh">Bangladesh</option>
+                        <option value="Barbados">Barbados</option>
+                        <option value="Belarus">Belarus</option>
+                        <option value="Belgium">Belgium</option>
+                        <option value="Belize">Belize</option>
+                        <option value="Benin">Benin</option>
+                        <option value="Bermuda">Bermuda</option>
+                        <option value="Bhutan">Bhutan</option>
+                        <option value="Bolivia">Bolivia</option>
+                        <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                        <option value="Botswana">Botswana</option>
+                        <option value="Brazil">Brazil</option>
+                        <option value="Brunei">Brunei</option>
+                        <option value="Bulgaria">Bulgaria</option>
+                        <option value="Burkina Faso">Burkina Faso</option>
+                        <option value="Burundi">Burundi</option>
+                        <option value="Cambodia">Cambodia</option>
+                        <option value="Cameroon">Cameroon</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Cape Verde">Cape Verde</option>
+                        <option value="Cayman Islands">Cayman Islands</option>
+                        <option value="Central African Republic">Central African Republic</option>
+                        <option value="Chad">Chad</option>
+                        <option value="Chile">Chile</option>
+                        <option value="China">China</option>
+                        <option value="Christmas Island">Christmas Island</option>
+                        <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Comoros">Comoros</option>
+                        <option value="Congo">Congo</option>
+                        <option value="Cook Islands">Cook Islands</option>
+                        <option value="Costa Rica">Costa Rica</option>
+                        <option value="Cote d&#x27;Ivoire">Cote d&#x27;Ivoire</option>
+                        <option value="Croatia">Croatia</option>
+                        <option value="Cuba">Cuba</option>
+                        <option value="Curaçao">Curaçao</option>
+                        <option value="Cyprus">Cyprus</option>
+                        <option value="Czech Republic">Czech Republic</option>
+                        <option value="Democratic Republic of the Congo">Democratic Republic of the Congo</option>
+                        <option value="Denmark">Denmark</option>
+                        <option value="Djibouti">Djibouti</option>
+                        <option value="Dominica">Dominica</option>
+                        <option value="Dominican Republic">Dominican Republic</option>
+                        <option value="Ecuador">Ecuador</option>
+                        <option value="Egypt">Egypt</option>
+                        <option value="El Salvador">El Salvador</option>
+                        <option value="Equatorial Guinea">Equatorial Guinea</option>
+                        <option value="Eritrea">Eritrea</option>
+                        <option value="Estonia">Estonia</option>
+                        <option value="Ethiopia">Ethiopia</option>
+                        <option value="Falkland Islands">Falkland Islands</option>
+                        <option value="Faroe Islands">Faroe Islands</option>
+                        <option value="Fiji">Fiji</option>
+                        <option value="Finland">Finland</option>
+                        <option value="France">France</option>
+                        <option value="French Polynesia">French Polynesia</option>
+                        <option value="Gabon">Gabon</option>
+                        <option value="The Gambia">The Gambia</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Germany">Germany</option>
+                        <option value="Ghana">Ghana</option>
+                        <option value="Gibraltar">Gibraltar</option>
+                        <option value="Greece">Greece</option>
+                        <option value="Greenland">Greenland</option>
+                        <option value="Grenada">Grenada</option>
+                        <option value="Guadeloupe">Guadeloupe</option>
+                        <option value="Guam">Guam</option>
+                        <option value="Guatemala">Guatemala</option>
+                        <option value="Guernsey">Guernsey</option>
+                        <option value="Guinea">Guinea</option>
+                        <option value="Guinea-Bissau">Guinea-Bissau</option>
+                        <option value="Guyana">Guyana</option>
+                        <option value="Haiti">Haiti</option>
+                        <option value="Honduras">Honduras</option>
+                        <option value="Hong Kong">Hong Kong</option>
+                        <option value="Hungary">Hungary</option>
+                        <option value="Iceland">Iceland</option>
+                        <option value="India">India</option>
+                        <option value="Indonesia">Indonesia</option>
+                        <option value="Iran">Iran</option>
+                        <option value="Iraq">Iraq</option>
+                        <option value="Ireland">Ireland</option>
+                        <option value="Israel">Israel</option>
+                        <option value="Italy">Italy</option>
+                        <option value="Jamaica">Jamaica</option>
+                        <option value="Japan">Japan</option>
+                        <option value="Jersey">Jersey</option>
+                        <option value="Jordan">Jordan</option>
+                        <option value="Kazakhstan">Kazakhstan</option>
+                        <option value="Kenya">Kenya</option>
+                        <option value="Kiribati">Kiribati</option>
+                        <option value="North Korea">North Korea</option>
+                        <option value="South Korea">South Korea</option>
+                        <option value="Kosovo">Kosovo</option>
+                        <option value="Kuwait">Kuwait</option>
+                        <option value="Kyrgyzstan">Kyrgyzstan</option>
+                        <option value="Laos">Laos</option>
+                        <option value="Latvia">Latvia</option>
+                        <option value="Lebanon">Lebanon</option>
+                        <option value="Lesotho">Lesotho</option>
+                        <option value="Liberia">Liberia</option>
+                        <option value="Libya">Libya</option>
+                        <option value="Liechtenstein">Liechtenstein</option>
+                        <option value="Lithuania">Lithuania</option>
+                        <option value="Luxembourg">Luxembourg</option>
+                        <option value="Macau">Macau</option>
+                        <option value="Macedonia">Macedonia</option>
+                        <option value="Madagascar">Madagascar</option>
+                        <option value="Malawi">Malawi</option>
+                        <option value="Malaysia">Malaysia</option>
+                        <option value="Maldives">Maldives</option>
+                        <option value="Mali">Mali</option>
+                        <option value="Malta">Malta</option>
+                        <option value="Marshall Islands">Marshall Islands</option>
+                        <option value="Martinique">Martinique</option>
+                        <option value="Mauritania">Mauritania</option>
+                        <option value="Mauritius">Mauritius</option>
+                        <option value="Mayotte">Mayotte</option>
+                        <option value="Mexico">Mexico</option>
+                        <option value="Micronesia">Micronesia</option>
+                        <option value="Moldova">Moldova</option>
+                        <option value="Monaco">Monaco</option>
+                        <option value="Mongolia">Mongolia</option>
+                        <option value="Montenegro">Montenegro</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Morocco">Morocco</option>
+                        <option value="Mozambique">Mozambique</option>
+                        <option value="Myanmar">Myanmar</option>
+                        <option value="Nagorno-Karabakh">Nagorno-Karabakh</option>
+                        <option value="Namibia">Namibia</option>
+                        <option value="Nauru">Nauru</option>
+                        <option value="Nepal">Nepal</option>
+                        <option value="Netherlands">Netherlands</option>
+                        <option value="Netherlands Antilles">Netherlands Antilles</option>
+                        <option value="New Caledonia">New Caledonia</option>
+                        <option value="New Zealand">New Zealand</option>
+                        <option value="Nicaragua">Nicaragua</option>
+                        <option value="Niger">Niger</option>
+                        <option value="Nigeria">Nigeria</option>
+                        <option value="Niue">Niue</option>
+                        <option value="Norfolk Island">Norfolk Island</option>
+                        <option value="Turkish Republic of Northern Cyprus">Turkish Republic of Northern Cyprus</option>
+                        <option value="Northern Mariana">Northern Mariana</option>
+                        <option value="Norway">Norway</option>
+                        <option value="Oman">Oman</option>
+                        <option value="Pakistan">Pakistan</option>
+                        <option value="Palau">Palau</option>
+                        <option value="Palestine">Palestine</option>
+                        <option value="Panama">Panama</option>
+                        <option value="Papua New Guinea">Papua New Guinea</option>
+                        <option value="Paraguay">Paraguay</option>
+                        <option value="Peru">Peru</option>
+                        <option value="Philippines">Philippines</option>
+                        <option value="Pitcairn Islands">Pitcairn Islands</option>
+                        <option value="Poland">Poland</option>
+                        <option value="Portugal">Portugal</option>
+                        <option value="Puerto Rico">Puerto Rico</option>
+                        <option value="Qatar">Qatar</option>
+                        <option value="Republic of the Congo">Republic of the Congo</option>
+                        <option value="Romania">Romania</option>
+                        <option value="Russia">Russia</option>
+                        <option value="Rwanda">Rwanda</option>
+                        <option value="Saint Barthelemy">Saint Barthelemy</option>
+                        <option value="Saint Helena">Saint Helena</option>
+                        <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                        <option value="Saint Lucia">Saint Lucia</option>
+                        <option value="Saint Martin">Saint Martin</option>
+                        <option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
+                        <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+                        <option value="Samoa">Samoa</option>
+                        <option value="San Marino">San Marino</option>
+                        <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                        <option value="Saudi Arabia">Saudi Arabia</option>
+                        <option value="Senegal">Senegal</option>
+                        <option value="Serbia">Serbia</option>
+                        <option value="Seychelles">Seychelles</option>
+                        <option value="Sierra Leone">Sierra Leone</option>
+                        <option value="Singapore">Singapore</option>
+                        <option value="Slovakia">Slovakia</option>
+                        <option value="Slovenia">Slovenia</option>
+                        <option value="Solomon Islands">Solomon Islands</option>
+                        <option value="Somalia">Somalia</option>
+                        <option value="Somaliland">Somaliland</option>
+                        <option value="South Africa">South Africa</option>
+                        <option value="South Ossetia">South Ossetia</option>
+                        <option value="South Sudan">South Sudan</option>
+                        <option value="Spain">Spain</option>
+                        <option value="Sri Lanka">Sri Lanka</option>
+                        <option value="Sudan">Sudan</option>
+                        <option value="Suriname">Suriname</option>
+                        <option value="Svalbard">Svalbard</option>
+                        <option value="eSwatini">eSwatini</option>
+                        <option value="Sweden">Sweden</option>
+                        <option value="Switzerland">Switzerland</option>
+                        <option value="Syria">Syria</option>
+                        <option value="Taiwan">Taiwan</option>
+                        <option value="Tajikistan">Tajikistan</option>
+                        <option value="Tanzania">Tanzania</option>
+                        <option value="Thailand">Thailand</option>
+                        <option value="Timor-Leste">Timor-Leste</option>
+                        <option value="Togo">Togo</option>
+                        <option value="Tokelau">Tokelau</option>
+                        <option value="Tonga">Tonga</option>
+                        <option value="Transnistria Pridnestrovie">Transnistria Pridnestrovie</option>
+                        <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                        <option value="Tristan da Cunha">Tristan da Cunha</option>
+                        <option value="Tunisia">Tunisia</option>
+                        <option value="Turkey">Turkey</option>
+                        <option value="Turkmenistan">Turkmenistan</option>
+                        <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+                        <option value="Tuvalu">Tuvalu</option>
+                        <option value="Uganda">Uganda</option>
+                        <option value="Ukraine">Ukraine</option>
+                        <option value="United Arab Emirates">United Arab Emirates</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="United States">United States</option>
+                        <option value="Uruguay">Uruguay</option>
+                        <option value="Uzbekistan">Uzbekistan</option>
+                        <option value="Vanuatu">Vanuatu</option>
+                        <option value="Vatican City">Vatican City</option>
+                        <option value="Venezuela">Venezuela</option>
+                        <option value="Vietnam">Vietnam</option>
+                        <option value="British Virgin Islands">British Virgin Islands</option>
+                        <option value="Isle of Man">Isle of Man</option>
+                        <option value="US Virgin Islands">US Virgin Islands</option>
+                        <option value="Wallis and Futuna">Wallis and Futuna</option>
+                        <option value="Western Sahara">Western Sahara</option>
+                        <option value="Yemen">Yemen</option>
+                        <option value="Zambia">Zambia</option>
+                        <option value="Zimbabwe">Zimbabwe</option>
+                        <option value="other">Other</option>
+                      </select></span></span></div>
+              </div>
+            </div>
+          </li>
+          <li class="form-line jf-required" data-type="control_radio" id="id_11"><label class="form-label form-label-top form-label-auto" id="label_11" aria-hidden="false"> How many students?<span class="form-required">*</span> </label>
+            <div id="cid_11" class="form-input-wide jf-required" data-layout="full">
+              <div class="form-multiple-column" data-columncount="4" role="group" aria-labelledby="label_11" data-component="radio"><span class="form-radio-item"><span class="dragger-item"></span><input aria-describedby="label_11" type="radio" class="form-radio validate[required]" id="input_11_0" name="q11_typeA" required="" value="1" /><label id="label_input_11_0" for="input_11_0">1</label></span><span class="form-radio-item"><span class="dragger-item"></span><input aria-describedby="label_11" type="radio" class="form-radio validate[required]" id="input_11_1" name="q11_typeA" required="" value="2" /><label id="label_input_11_1" for="input_11_1">2</label></span><span class="form-radio-item"><span class="dragger-item"></span><input aria-describedby="label_11" type="radio" class="form-radio validate[required]" id="input_11_2" name="q11_typeA" required="" value="3" /><label id="label_input_11_2" for="input_11_2">3</label></span><span class="form-radio-item"><span class="dragger-item"></span><input aria-describedby="label_11" type="radio" class="form-radio validate[required]" id="input_11_3" name="q11_typeA" required="" value="4" /><label id="label_input_11_3" for="input_11_3">4</label></span></div>
+            </div>
+          </li>
+          <li class="form-line form-line-column form-col-1 jf-required form-field-hidden" style="display:none;" data-type="control_fullname" id="id_17" data-compound-hint="First Name,Last Name"><label class="form-label form-label-top" id="label_17" for="first_17" aria-hidden="false"> Student Name<span class="form-required">*</span> </label>
+            <div id="cid_17" class="form-input-wide jf-required" data-layout="full">
+              <div data-wrapper-react="true"><span class="form-sub-label-container" style="vertical-align:top" data-input-type="first"><input type="text" id="first_17" name="q17_studentName17[first]" class="form-textbox validate[required]" data-defaultvalue="" autoComplete="section-input_17 given-name" size="10" placeholder="First Name" data-component="first" aria-labelledby="label_17" required="" value="" /></span><span class="form-sub-label-container" style="vertical-align:top" data-input-type="last"><input type="text" id="last_17" name="q17_studentName17[last]" class="form-textbox validate[required]" data-defaultvalue="" autoComplete="section-input_17 family-name" size="15" placeholder="Last Name" data-component="last" aria-labelledby="label_17" required="" value="" /></span></div>
+            </div>
+          </li>
+          <li class="form-line form-line-column form-col-2 form-field-hidden" style="display:none;" data-type="control_fullname" id="id_20" data-compound-hint="First Name,Last Name"><label class="form-label form-label-top" id="label_20" for="first_20" aria-hidden="false"> Second Student </label>
+            <div id="cid_20" class="form-input-wide" data-layout="full">
+              <div data-wrapper-react="true"><span class="form-sub-label-container" style="vertical-align:top" data-input-type="first"><input type="text" id="first_20" name="q20_studentName20[first]" class="form-textbox" data-defaultvalue="" autoComplete="section-input_20 given-name" size="10" placeholder="First Name" data-component="first" aria-labelledby="label_20" value="" /></span><span class="form-sub-label-container" style="vertical-align:top" data-input-type="last"><input type="text" id="last_20" name="q20_studentName20[last]" class="form-textbox" data-defaultvalue="" autoComplete="section-input_20 family-name" size="15" placeholder="Last Name" data-component="last" aria-labelledby="label_20" value="" /></span></div>
+            </div>
+          </li>
+          <li class="form-line form-line-column form-col-3 form-field-hidden" style="display:none;" data-type="control_fullname" id="id_19" data-compound-hint="First Name,Last Name"><label class="form-label form-label-top" id="label_19" for="first_19" aria-hidden="false"> Third Student </label>
+            <div id="cid_19" class="form-input-wide" data-layout="full">
+              <div data-wrapper-react="true"><span class="form-sub-label-container" style="vertical-align:top" data-input-type="first"><input type="text" id="first_19" name="q19_studentName19[first]" class="form-textbox" data-defaultvalue="" autoComplete="section-input_19 given-name" size="10" placeholder="First Name" data-component="first" aria-labelledby="label_19" value="" /></span><span class="form-sub-label-container" style="vertical-align:top" data-input-type="last"><input type="text" id="last_19" name="q19_studentName19[last]" class="form-textbox" data-defaultvalue="" autoComplete="section-input_19 family-name" size="15" placeholder="Last Name" data-component="last" aria-labelledby="label_19" value="" /></span></div>
+            </div>
+          </li>
+          <li class="form-line form-line-column form-col-4 form-field-hidden" style="display:none;" data-type="control_fullname" id="id_18" data-compound-hint="First Name,Last Name"><label class="form-label form-label-top" id="label_18" for="first_18" aria-hidden="false"> Fourth Student </label>
+            <div id="cid_18" class="form-input-wide" data-layout="full">
+              <div data-wrapper-react="true"><span class="form-sub-label-container" style="vertical-align:top" data-input-type="first"><input type="text" id="first_18" name="q18_studentName18[first]" class="form-textbox" data-defaultvalue="" autoComplete="section-input_18 given-name" size="10" placeholder="First Name" data-component="first" aria-labelledby="label_18" value="" /></span><span class="form-sub-label-container" style="vertical-align:top" data-input-type="last"><input type="text" id="last_18" name="q18_studentName18[last]" class="form-textbox" data-defaultvalue="" autoComplete="section-input_18 family-name" size="15" placeholder="Last Name" data-component="last" aria-labelledby="label_18" value="" /></span></div>
+            </div>
+          </li>
+          <li class="form-line jf-required" data-type="control_radio" id="id_21"><label class="form-label form-label-top form-label-auto" id="label_21" aria-hidden="false"> How did you know about us?<span class="form-required">*</span> </label>
+            <div id="cid_21" class="form-input-wide jf-required" data-layout="full">
+              <div class="form-multiple-column" data-columncount="4" role="group" aria-labelledby="label_21" data-component="radio"><span class="form-radio-item"><span class="dragger-item"></span><input aria-describedby="label_21" type="radio" class="form-radio validate[required]" id="input_21_0" name="q21_howDid" required="" value="Google" /><label id="label_input_21_0" for="input_21_0">Google</label></span><span class="form-radio-item"><span class="dragger-item"></span><input aria-describedby="label_21" type="radio" class="form-radio validate[required]" id="input_21_1" name="q21_howDid" required="" value="Facebook" /><label id="label_input_21_1" for="input_21_1">Facebook</label></span><span class="form-radio-item"><span class="dragger-item"></span><input aria-describedby="label_21" type="radio" class="form-radio validate[required]" id="input_21_2" name="q21_howDid" required="" value="Friend/Colleague referral" /><label id="label_input_21_2" for="input_21_2">Friend/Colleague referral</label></span><span class="form-radio-item formRadioOther"><input type="radio" class="form-radio-other form-radio validate[required]" name="q21_howDid" id="other_21" tabindex="0" aria-label="Other" value="other" /><label id="label_other_21" style="text-indent:0" for="other_21">Other</label><span id="other_21_input" class="other-input-container" style="display:none"><input type="text" class="form-radio-other-input form-textbox" name="q21_howDid[other]" data-otherhint="Other" size="15" id="input_21" data-placeholder="Please type another option here" placeholder="Please type another option here" /></span></span></div>
+            </div>
+          </li>
+          <li id="cid_14" class="form-input-wide" data-type="control_pagebreak">
+            <div class="form-pagebreak" data-component="pagebreak">
+              <div class="form-pagebreak-back-container"><button id="form-pagebreak-back_14" type="button" class="form-pagebreak-back  jf-form-buttons" data-component="pagebreak-back">Back</button></div>
+              <div class="form-pagebreak-next-container"><button id="form-pagebreak-next_14" type="button" class="form-pagebreak-next  jf-form-buttons" data-component="pagebreak-next">Next</button></div>
+              <div style="clear:both" class="pageInfo form-sub-label" id="pageInfo_14"></div>
+            </div>
+          </li>
+        </ul>
+        <ul class="form-section page-section" role="presentation" style="display:none;">
+          <li class="form-line jf-required" data-type="control_appointment" id="id_15"><label class="form-label form-label-top form-label-auto" id="label_15" for="input_15" aria-hidden="false"> Evaluation Time<span class="form-required">*</span> </label>
+            <div id="cid_15" class="form-input-wide jf-required" data-layout="full">
+              <div id="input_15" class="appointmentFieldWrapper jfQuestion-fields"><input class="appointmentFieldInput" name="q15_appointment[implementation]" id="input_15implementation" aria-hidden="true" type="hidden" value="new" /><input class="appointmentFieldInput validate" name="q15_appointment[date]" id="input_15_date" data-timeformat="AM/PM" aria-hidden="true" type="hidden" /><input class="appointmentFieldInput" name="q15_appointment[duration]" id="input_15_duration" aria-hidden="true" type="hidden" value="30" /><input class="appointmentFieldInput" name="q15_appointment[timezone]" id="input_15_timezone" aria-hidden="true" type="hidden" value="Africa/Cairo (GMT+02:00)" />
+                <div class="appointmentField"></div>
+              </div>
+            </div>
+          </li>
+          <li class="form-line" data-type="control_button" id="id_16">
+            <div id="cid_16" class="form-input-wide" data-layout="full">
+              <div data-align="auto" class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField"><button id="input_16" type="submit" class="form-submit-button submit-button jf-form-buttons jsTest-submitField legacy-submit" data-component="button" data-content="">Submit</button></div>
+            </div>
+          </li>
+          <li style="clear:both"></li>
+          <li style="display:none">Should be Empty: <input type="text" name="website" value="" type="hidden" /></li>
+        </ul>
+      </div>
+      <script>
+        JotForm.poweredByText = "Powered by Jotform";
+      </script><input type="hidden" class="simple_spc" id="simple_spc" name="simple_spc" value="230323546168555" />
+      <script type="text/javascript">
+        var all_spc = document.querySelectorAll("form[id='230323546168555'] .si" + "mple" + "_spc");
+        for (var i = 0; i < all_spc.length; i++)
+        {
+          all_spc[i].value = "230323546168555-230323546168555";
+        }
+      </script>
+    </form><script type="text/javascript">JotForm.ownerView=true;</script><script type="text/javascript">JotForm.isNewSACL=true;</script>
+</section>
 </body>
 
 </html>
