@@ -241,21 +241,6 @@ button:hover {
     font-size: 1rem; /* Font size */
 }
 
-/* Like Button Styles */
-.like-button {
-    margin-top: 2%; /* Margin for like button text */
-    color: var(--black); /* Color for like button text */
-    font-size: 1.3rem; /* Font size for like button text */
-}
-
-.like-button button {
-    margin-right: 5px; /* Margin for right side of like button */
-    font-size: 1.3rem; /* Font size for like button */
-    text-shadow: 0px 0px 1px black; /* Text shadow for visibility */
-    background-color: transparent; /* Transparent background for like button */
-    transition: .15s; /* Quick transition effect for like button */
-}
-
 /* Content Section */
 .content-section {
     margin: 3% 0;

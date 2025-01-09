@@ -446,11 +446,10 @@ app.get('/contact', (req, res) => {
     user });
 });
 
-// Blog Page
 app.get('/blog', async (req, res) => {
   console.log("GET request to '/blog'");
   try {
-    const page = parseInt(req.query.page) || 1;
+    const page = parseInt(req.query.page) || 1; // Default to page 1 if no query is provided
     const limit = 17; // Display up to 17 posts per page
     const skip = (page - 1) * limit;
 
@@ -458,22 +457,27 @@ app.get('/blog', async (req, res) => {
     const posts = await PosT.find().sort({ date: -1 }).skip(skip).limit(limit).exec();
     const totalPosts = await PosT.countDocuments(); // Count total posts for pagination
 
-    const sortedPosts = await PosT.find().sort({ like: -1 }).limit(5).exec(); // Top liked posts
+    // Set pageTitle dynamically based on page number
+    const pageTitle = page === 0 ? 'Blog - Waraqa' : `Blog - Waraqa (Page ${page})`;
+    // Set metaDescription dynamically for paginated pages
+    const metaDescription = page === 0 
+      ? 'Read the latest articles and insights from Waraqa on Quranic studies, Arabic language, Islamic teachings, and more. Stay informed with our expert-authored blog posts.'
+      : `Explore more articles on Quranic studies, Arabic language, Islamic teachings, and more on Waraqa Blog (Page ${page}).`;
 
     res.render('blog', {
-      pageTitle: 'Blog - Waraqa',
+      pageTitle: pageTitle,
       metaDescription: 'Read the latest articles and insights from Waraqa on Quranic studies, Arabic language, Islamic teachings, and more. Stay informed with our expert-authored blog posts.',
       metaKeywords: 'Waraqa, blog, Quranic studies, Arabic language, Islamic teachings, Islamic blog, Arabic education, Quran recitation, Arabic learning, Islamic studies blog',
       ogImage: '/images/home-og-image.jpg',
       ogUrl: 'https://www.waraqaweb.com/blog',
       user: req.session.username || "Guest",
       posts: posts,
-      sposts: sortedPosts,
       fpost: posts[0] || null,
       date: Date.now(),
       currentPage: page,
       totalPages: Math.ceil(totalPosts / limit)
     });
+
     console.log("Blog page rendered successfully");
 
   } catch (err) {
@@ -481,8 +485,6 @@ app.get('/blog', async (req, res) => {
     res.render('error', { error: "Error fetching posts" });
   }
 });
-
-
 
 // Dashboard (for admin/users)
 app.get('/dashboard', (req, res) => {
@@ -723,6 +725,8 @@ const getEjsFiles = (dir) => {
       "edit-post.ejs", //Not important
       "dashboard.ejs", //Not important
       "compose.ejs", //Not important
+      "home.ejs", //Not important
+      "posts.ejs", //Not important
       "Layout/header.ejs", //Not important
       "Layout/head.ejs", //Not important
       "Layout/footer.ejs", //Not important
@@ -836,53 +840,6 @@ app.get("/posts/:slug", async (req, res) => {
 });
 
 
-
-// Route to like or dislike a post
-app.post("/posts/:custom", (req, res) => {
-  const id = req.params.custom; // Extract post ID from URL
-  var userid = req.session.username; // Get the current user's username
-
-  PosT.findOne({ _id: { $eq: id } }, (err, result) => { // Find post by ID
-    if (result.likedby.includes(userid)) { // If the user has already liked the post
-      PosT.findOneAndUpdate(
-        { _id: id },
-        { $pull: { likedby: userid } }, // Remove user from likedby array
-        { new: true }
-      ).exec((err, result) => {
-        if (err) {
-          console.log(err); // Log any errors
-        } else {
-          // Decrement the like count
-          PosT.findOneAndUpdate({ _id: id }, { $inc: { like: -1 } }, (err) => {
-            if (err) {
-              console.log(err); // Log any errors
-            }
-          });
-        }
-      });
-    } else {
-      PosT.findOneAndUpdate(
-        { _id: id },
-        { $push: { likedby: userid } }, // Add user to likedby array
-        { new: true }
-      ).exec((err, result) => {
-        if (err) {
-          console.log(err); // Log any errors
-        } else {
-          // Increment the like count
-          PosT.findOneAndUpdate({ _id: id }, { $inc: { like: 1 } }, (err) => {
-            if (err) {
-              console.log(err); // Log any errors
-            }
-          });
-        }
-      });
-    }
-    if (err) {
-      console.log(err); // Log any errors
-    }
-  });
-});
 
 // Route to get the edit post page
 app.get("/update/:custom", (req, res) => {
