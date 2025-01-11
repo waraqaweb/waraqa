@@ -2,35 +2,35 @@
 <html>
 
 <head>
-       <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNS2R14ETD"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
 
-        gtag('config', 'G-GNS2R14ETD');
-        </script>
-    <!-- Event snippet for New Evaluation (1) conversion page
-    In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
-    <script>
-        function gtag_report_conversion(url) {
-          var callback = function () {
-            if (typeof(url) != 'undefined') {
-              window.location = url;
-            }
-          };
-          gtag('event', 'conversion', {
-              'send_to': 'AW-11377251166/ooC_CIHNt4MaEN6mjLEq',
-              'event_callback': callback
-          });
-          return false;
-        }
-        </script>
-        
     <!-- Include the head template -->
     <%- include('Layout/head') %>
-    
+           <!-- Google tag (gtag.js) -->
+           <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNS2R14ETD"></script>
+           <script>
+           window.dataLayer = window.dataLayer || [];
+           function gtag(){dataLayer.push(arguments);}
+           gtag('js', new Date());
+   
+           gtag('config', 'G-GNS2R14ETD');
+           </script>
+       <!-- Event snippet for New Evaluation (1) conversion page
+       In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+       <script>
+           function gtag_report_conversion(url) {
+             var callback = function () {
+               if (typeof(url) != 'undefined') {
+                 window.location = url;
+               }
+             };
+             gtag('event', 'conversion', {
+                 'send_to': 'AW-11377251166/ooC_CIHNt4MaEN6mjLEq',
+                 'event_callback': callback
+             });
+             return false;
+           }
+           </script>
+           
     <!-- Page-specific title -->
     <title>Book Evaluation</title>
     <!-- Link to the custom admin CSS for styling -->
