@@ -73,4 +73,23 @@
 
         gtag('config', 'G-GNS2R14ETD');
         </script>
+
+        <!-- Conditional for Page-Specific Conversion Tracking -->
+        <% if (pageTitle === 'Book Evaluation - Waraqa') { %>
+        <script>
+        function gtag_report_conversion(url) {
+            var callback = function () {
+            if (typeof(url) != 'undefined') {
+                window.location = url;
+            }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-11377251166/tAdvCOqbqYMaEN6mjLEq',
+                'event_callback': callback
+            });
+            return false;
+        }
+        </script>
+        <% } %>
+
 </head>
