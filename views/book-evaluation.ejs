@@ -1,70 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <!-- Page-specific title -->
-    <title>Book Evaluation</title>
-    
-    <!-- Google Tag Manager -->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': 
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], 
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); 
-      })(window,document,'script','dataLayer','GTM-WB7DNKPL');
-    </script>
-    <!-- End Google Tag Manager -->
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNS2R14ETD"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-GNS2R14ETD');
-    </script>
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/styles/custom.css">
+    <!-- Include the head template -->
+    <%- include('Layout/head') %>
+    <!-- Page-Specific Title -->
+    <title>Book evaluation</title>
 </head>
+
 <body>
-
-    <!-- Form Section -->
-    <div class="form-container">
-        <form action="/submit-evaluation" method="post">
-            <!-- Other form fields -->
-            <div data-align="auto" class="form-buttons-wrapper form-buttons-auto jsTest-button-wrapperField">
-                <button id="input_16" type="submit" class="form-submit-button submit-button jf-form-buttons jsTest-submitField legacy-submit" data-component="button" data-content="">
-                    Submit
-                </button>
-            </div>
-        </form>
-    </div>
-
-    <!-- Conversion Tracking Script -->
-    <script>
-      window.onload = function() {
-        var submitButton = document.getElementById('input_16');
-        if (submitButton) {
-          submitButton.addEventListener('click', function(event) {
-            gtag_report_conversion();
-            console.log('Conversion event triggered.');
-          });
-        }
-      };
-
-      function gtag_report_conversion(url) {
-        var callback = function () {
-          if (typeof(url) !== 'undefined') {
-            window.location = url;
-          }
-        };
-        gtag('event', 'conversion', {
-          'send_to': 'AW-11377251166/tAdvCOqbqYMaEN6mjLEq',
-          'event_callback': callback
-        });
-        return false;
-      }
-    </script>
-
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB7DNKPL"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+   
+    <!-- Header Section -->
+    <header>
+        <%- include('Layout/header') %>
+    </header>
+    <main>
+      <script type="text/javascript" src="https://form.jotform.com/jsform/230323546168555"></script>    
+    </main>
 </body>
 </html>
