@@ -19,34 +19,26 @@
     </header>
 
     <main>
-        <!-- Embedded JotForm -->
-        <script type="text/javascript" src="https://form.jotform.com/jsform/230323546168555"></script>
-        
-        <!-- Google Ads Conversion Tracking for Form Submission -->
-        <script>
-          function gtag_report_conversion(url) {
-            var callback = function () {
-              if (typeof(url) != 'undefined') {
-                window.location = url;
-              }
-            };
-            gtag('event', 'conversion', {
-                'send_to': 'AW-11377251166/tAdvCOqbqYMaEN6mjLEq',
-                'event_callback': callback
-            });
-            return false;
+      <!-- Embedded JotForm -->
+      <script type="text/javascript" src="https://form.jotform.com/jsform/230323546168555"></script>
+  
+      <!-- Google Ads Conversion Tracking for Form Submission -->
+      <script>
+        function gtag_report_conversion() {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-6986288618/tAdvCOqbqYMaEN6mjLEq',  // New Student Evaluation Conversion
+          });
+        }
+  
+        // Listen for form submission completion from JotForm
+        window.addEventListener('message', function(event) {
+          const validOrigins = ['https://form.jotform.com', 'https://submit.jotform.com'];
+          if (validOrigins.includes(event.origin) && event.data && event.data.action === 'submission-completed') {
+            gtag_report_conversion();  // Trigger the specific conversion
           }
-
-          // Listen for form submission completion from JotForm
-          window.addEventListener('message', function(event) {
-            const validOrigins = ['https://form.jotform.com', 'https://submit.jotform.com'];
-            if (validOrigins.includes(event.origin)) {
-              if (event.data && event.data.action === 'submission-completed') {
-                gtag_report_conversion();
-              }
-            }
-          }, false);
-        </script>
-    </main>
+        });
+      </script>
+  </main>
+  
 </body>
 </html>
