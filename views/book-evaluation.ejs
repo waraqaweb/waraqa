@@ -5,21 +5,49 @@
     <!-- Include the head template -->
     <%- include('Layout/head') %>
     <!-- Page-Specific Title -->
-    <title>Book evaluation</title>
+    <title>Book Evaluation</title>
 </head>
 
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB7DNKPL"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-   
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB7DNKPL"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <!-- Header Section -->
     <header>
         <%- include('Layout/header') %>
     </header>
+
     <main>
-      <script type="text/javascript" src="https://form.jotform.com/jsform/230323546168555"></script>    
+        <!-- Embedded JotForm -->
+        <script type="text/javascript" src="https://form.jotform.com/jsform/230323546168555"></script>
+        
+        <!-- Google Ads Conversion Tracking for Form Submission -->
+        <script>
+          function gtag_report_conversion(url) {
+            var callback = function () {
+              if (typeof(url) != 'undefined') {
+                window.location = url;
+              }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-11377251166/tAdvCOqbqYMaEN6mjLEq',
+                'event_callback': callback
+            });
+            return false;
+          }
+
+          // Listen for form submission completion from JotForm
+          window.addEventListener('message', function(event) {
+            if (event.origin === 'https://submit.jotform.com') {
+              if (event.data && event.data.action === 'submission-completed') {
+                gtag_report_conversion();
+              }
+            }
+          }, false);
+        </script>
     </main>
 </body>
+
 </html>
