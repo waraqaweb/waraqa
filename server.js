@@ -445,6 +445,16 @@ app.get('/register-student', (req, res) => {
     ogUrl: 'https://www.waraqaweb.com/register-student',
     user });
 });
+app.get('/follow-up-meeting', (req, res) => {
+  console.log("GET request to '/follow-up-meeting'");
+  res.render('follow-up-meeting', { 
+    pageTitle: 'Follow up meeting - Waraqa',
+    metaDescription: 'Schedule a follow-up meeting to evaluate progress and optimize your study plan for the best results.',
+    metaKeywords: 'follow-up meeting, study plan, progress assessment, optimize study plan, academic success, learning goals, progress review, study improvements',
+    ogImage: '/images/home-og-image.jpg',
+    ogUrl: 'https://www.waraqaweb.com/follow-up-meeting',
+    user });
+});
 app.get('/contact', (req, res) => {
   console.log("GET request to '/contact'");
   res.render('contact', { 
