@@ -435,6 +435,16 @@ app.get('/book-evaluation', (req, res) => {
     ogUrl: 'https://www.waraqaweb.com/book-evaluation',
     user });
 });
+app.get('/register-student', (req, res) => {
+  console.log("GET request to '/register-student'");
+  res.render('register-student', { 
+    pageTitle: 'Register Student - Waraqa',
+    metaDescription: 'Register with Waraqa  to strart your classes as soon as you wish',
+    metaKeywords: 'Waraqa, Free registration, Quran classes, Arabic lessons, Islamic Studies, online Quran school, Quran recitation, Tajweed, Quranic Arabic, Quran courses, Arabic learning, Islamic education, free trial, Al-Azhar graduates, educational evaluation',
+    ogImage: '/images/home-og-image.jpg',
+    ogUrl: 'https://www.waraqaweb.com/register-student',
+    user });
+});
 app.get('/contact', (req, res) => {
   console.log("GET request to '/contact'");
   res.render('contact', { 
