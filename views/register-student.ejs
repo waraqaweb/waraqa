@@ -4,7 +4,7 @@
     <!-- Include the head template -->
     <%- include('Layout/head') %>
     <!-- Page-Specific Title -->
-    <title>Register Student</title>
+    <title>Book Evaluation</title>
 </head>
 
 <body>
@@ -19,8 +19,30 @@
     </header>
 
     <main>
-      <script type="text/javascript" src="https://form.jotform.com/jsform/212456211275550"></script>
-    </main>
-  
+        <!-- Embedded JotForm -->
+        <script type="text/javascript" src="https://form.jotform.com/jsform/212456211275550"></script>
+      
+        <!-- Google Ads Conversion Tracking for Student Registration Form Submission -->
+        <script>
+          // New conversion tracking for student registration
+          function gtag_report_conversion_student_registration() {
+            var callback = function() {
+              console.log('Student registration conversion tracked.');
+            };
+            gtag('event', 'conversion', {
+              'send_to': 'AW-11377251166/c_NXCPql9oMaEN6mjLEq',  // Student Registration Conversion ID
+              'event_callback': callback
+            });
+          }
+      
+          // Listen for form submission completion from JotForm
+          window.addEventListener('message', function(event) {
+            const validOrigins = ['https://form.jotform.com', 'https://submit.jotform.com'];
+            if (validOrigins.includes(event.origin) && event.data && event.data.action === 'submission-completed') {
+              gtag_report_conversion_student_registration();  // Trigger the student registration conversion
+            }
+          });
+        </script>
+      </main>
 </body>
 </html>
